@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>蜡笔小新</title>
   
-  
+  <subtitle>蜡笔小新</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wanzhr.github.io/"/>
@@ -24,6 +24,18 @@
     <updated>2020-06-04T15:42:38.480Z</updated>
     
     <summary type="html">
+    
+      
+      
+        
+        
+          &lt;script&gt;
+        document.querySelectorAll(&#39;.github-emoji&#39;)
+          .forEach(el =&gt; {
+            if (!el.dataset.src) { return; }
+       
+        
+      
     
     </summary>
     
