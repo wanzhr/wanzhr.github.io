@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wanzhr.github.io/"/>
-  <updated>2020-07-26T04:51:28.332Z</updated>
+  <updated>2020-07-26T06:31:06.645Z</updated>
   <id>https://wanzhr.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>first article</title>
-    <link href="https://wanzhr.github.io/posts/bd8.html"/>
-    <id>https://wanzhr.github.io/posts/bd8.html</id>
-    <published>2020-06-04T15:42:38.000Z</published>
-    <updated>2020-07-26T04:51:28.332Z</updated>
+    <title>JS基础知识储备(一)</title>
+    <link href="https://wanzhr.github.io/posts/323b.html"/>
+    <id>https://wanzhr.github.io/posts/323b.html</id>
+    <published>2020-07-26T06:29:44.000Z</published>
+    <updated>2020-07-26T06:31:06.645Z</updated>
     
     <summary type="html">
     
@@ -30,6 +30,35 @@
         
         
           &lt;h1 id=&quot;一、预编译&quot;&gt;&lt;a href=&quot;#一、预编译&quot; class=&quot;headerlink&quot; title=&quot;一、预编译&quot;&gt;&lt;/a&gt;一、预编译&lt;/h1&gt;&lt;h2 id=&quot;1、预编译前奏&quot;&gt;&lt;a href=&quot;#1、预编译前奏&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="JS" scheme="https://wanzhr.github.io/tags/JS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>first article</title>
+    <link href="https://wanzhr.github.io/posts/bd8.html"/>
+    <id>https://wanzhr.github.io/posts/bd8.html</id>
+    <published>2020-06-04T15:42:38.000Z</published>
+    <updated>2020-07-26T06:30:45.574Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;script&gt;
+        document.querySelectorAll(&#39;.github-emoji&#39;)
+          .forEach(el =&gt; {
+            if (!el.dataset.src) { return; }
+       
         
       
     
