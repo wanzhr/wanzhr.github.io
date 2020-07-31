@@ -508,7 +508,7 @@ console.log(a.user); //undefined</code></pre><pre><code>function fn()
     return 1;
 }
 var a = new fn;  
-console.log(a.user); //蜡笔小清新</code></pre><p>如果返回值是一个对象（除了null），那么this指向的就是那个返回的对象，如果返回值不是一个对象那么this还是指向函数的实例。</p>
+console.log(a.user); //蜡笔小清新</code></pre><p>如果返回值是一个对象（除了null,undefined），那么this指向的就是那个返回的对象，如果返回值不是一个对象那么this还是指向函数的实例。</p>
 <h1 id="二、call-apply"><a href="#二、call-apply" class="headerlink" title="二、call/apply"></a>二、call/apply</h1><h2 id="1、说明-1"><a href="#1、说明-1" class="headerlink" title="1、说明"></a>1、说明</h2><ul>
 <li>两者都可以改变this指向<pre><code>var a = {
   user:"蜡笔小清新",
@@ -560,7 +560,7 @@ function Student(name, age, sex, tel, grade) {
     this.grade = grade;
 }
 var student = new Student('小万', 20, 'male', 187, 2017);</code></pre><h1 id="三、bind"><a href="#三、bind" class="headerlink" title="三、bind"></a>三、bind</h1><h2 id="1、区别"><a href="#1、区别" class="headerlink" title="1、区别"></a>1、区别</h2><ul>
-<li>bind和call、apply方法不同，实际上bind方法返回的是一个修改过后的函数。</li>
+<li>bind和call、apply方法不同，实际上bind方法返回的是一个修改过后的函数。(可以通过call和apply方法来实现bind)</li>
 </ul>
 <pre><code>var a = {
     user:"蜡笔小清新",
@@ -571,7 +571,7 @@ var student = new Student('小万', 20, 'male', 187, 2017);</code></pre><h1 id="
 var b = a.fn;
 var c = b.bind(a);
 c();</code></pre><h2 id="2、传参"><a href="#2、传参" class="headerlink" title="2、传参"></a>2、传参</h2><ul>
-<li>同样bind也可以有多个参数，并且参数可以执行的时候再次添加，但是要注意的是，参数是按照形参的顺序进行的。</li>
+<li>同样bind也可以有多个参数，并且参数可以执行的时候再次添加，但是要注意的是，参数是按照形参的顺序进行的。如果传值是对象，返回的是对象的实例。</li>
 </ul>
 <pre><code>var a = {
     user:"蜡笔小清新",
