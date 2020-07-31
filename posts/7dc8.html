@@ -539,8 +539,12 @@ Person.call(obj);</code></pre></li>
 - call 和 apply 基本上是一样的，只是写法不一样，call 需要把实参一个个传进去，但 是 apply 只能传一个值 arguments，即实参列表</code></pre><p>function Person(name, age, sex) {<br>    this.name = name;<br>    this.age = age;<br>    this.sex = sex;<br>}</p>
 <p>function Student(name, age, sex, tel, grade) {<br>    Person.apply(this, [name, age, sex]);<br>    this.tel = tel;<br>    this.grade = grade;<br>}<br>var student = new Student(‘小万’, 20, ‘male’, 187, 2017);</p>
 <pre><code># 三、bind
-- bind和call、apply方法不同，实际上bind方法返回的是一个修改过后的函数。</code></pre><p>var a = {<br>    user:”蜡笔小清新”,<br>    fn:function(){<br>        console.log(this.user); //蜡笔小清新<br>    }<br>}<br>var b = a.fn;<br>var c = b.bind(a);<br>c();</p>
-<pre><code>- 同样bind也可以有多个参数，并且参数可以执行的时候再次添加，但是要注意的是，参数是按照形参的顺序进行的。</code></pre><p>var a = {<br>    user:”蜡笔小清新”,<br>    fn:function(e,d,f){<br>        console.log(this.user); //蜡笔小清新<br>        console.log(e,d,f); //10 1 2<br>    }<br>}<br>var b = a.fn;<br>var c = b.bind(a,10);<br>c(1,2);</p>
+
+- bind和call、apply方法不同，实际上bind方法返回的是一个修改过后的函数。
+</code></pre><p>var a = {<br>    user:”蜡笔小清新”,<br>    fn:function(){<br>        console.log(this.user); //蜡笔小清新<br>    }<br>}<br>var b = a.fn;<br>var c = b.bind(a);<br>c();</p>
+<pre><code>
+- 同样bind也可以有多个参数，并且参数可以执行的时候再次添加，但是要注意的是，参数是按照形参的顺序进行的。
+</code></pre><p>var a = {<br>    user:”蜡笔小清新”,<br>    fn:function(e,d,f){<br>        console.log(this.user); //蜡笔小清新<br>        console.log(e,d,f); //10 1 2<br>    }<br>}<br>var b = a.fn;<br>var c = b.bind(a,10);<br>c(1,2);</p>
 <pre><code></code></pre><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
