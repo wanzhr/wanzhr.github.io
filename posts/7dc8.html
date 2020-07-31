@@ -559,7 +559,10 @@ function Student(name, age, sex, tel, grade) {
     this.tel = tel;
     this.grade = grade;
 }
-var student = new Student('小万', 20, 'male', 187, 2017);</code></pre><h1 id="三、bind"><a href="#三、bind" class="headerlink" title="三、bind"></a>三、bind</h1><h2 id="1、-bind和call、apply方法不同，实际上bind方法返回的是一个修改过后的函数。"><a href="#1、-bind和call、apply方法不同，实际上bind方法返回的是一个修改过后的函数。" class="headerlink" title="1、 bind和call、apply方法不同，实际上bind方法返回的是一个修改过后的函数。"></a>1、 bind和call、apply方法不同，实际上bind方法返回的是一个修改过后的函数。</h2><pre><code>var a = {
+var student = new Student('小万', 20, 'male', 187, 2017);</code></pre><h1 id="三、bind"><a href="#三、bind" class="headerlink" title="三、bind"></a>三、bind</h1><h2 id="1、区别"><a href="#1、区别" class="headerlink" title="1、区别"></a>1、区别</h2><ul>
+<li>bind和call、apply方法不同，实际上bind方法返回的是一个修改过后的函数。</li>
+</ul>
+<pre><code>var a = {
     user:"蜡笔小清新",
     fn:function(){
         console.log(this.user); //蜡笔小清新
@@ -567,7 +570,10 @@ var student = new Student('小万', 20, 'male', 187, 2017);</code></pre><h1 id="
 }
 var b = a.fn;
 var c = b.bind(a);
-c();</code></pre><h2 id="2、同样bind也可以有多个参数，并且参数可以执行的时候再次添加，但是要注意的是，参数是按照形参的顺序进行的。"><a href="#2、同样bind也可以有多个参数，并且参数可以执行的时候再次添加，但是要注意的是，参数是按照形参的顺序进行的。" class="headerlink" title="2、同样bind也可以有多个参数，并且参数可以执行的时候再次添加，但是要注意的是，参数是按照形参的顺序进行的。"></a>2、同样bind也可以有多个参数，并且参数可以执行的时候再次添加，但是要注意的是，参数是按照形参的顺序进行的。</h2><pre><code>var a = {
+c();</code></pre><h2 id="2、传参"><a href="#2、传参" class="headerlink" title="2、传参"></a>2、传参</h2><ul>
+<li>同样bind也可以有多个参数，并且参数可以执行的时候再次添加，但是要注意的是，参数是按照形参的顺序进行的。</li>
+</ul>
+<pre><code>var a = {
     user:"蜡笔小清新",
     fn:function(e,d,f){
         console.log(this.user); //蜡笔小清新
