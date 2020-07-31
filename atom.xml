@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wanzhr.github.io/"/>
-  <updated>2020-07-26T06:53:25.638Z</updated>
+  <updated>2020-07-31T05:31:39.942Z</updated>
   <id>https://wanzhr.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JS基础知识储备（二）</title>
+    <link href="https://wanzhr.github.io/posts/7dc8.html"/>
+    <id>https://wanzhr.github.io/posts/7dc8.html</id>
+    <published>2020-07-31T05:29:13.000Z</published>
+    <updated>2020-07-31T05:31:39.942Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;一、this&quot;&gt;&lt;a href=&quot;#一、this&quot; class=&quot;headerlink&quot; title=&quot;一、this&quot;&gt;&lt;/a&gt;一、this&lt;/h1&gt;&lt;h2 id=&quot;1、说明&quot;&gt;&lt;a href=&quot;#1、说明&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="JS" scheme="https://wanzhr.github.io/tags/JS/"/>
+    
+  </entry>
   
   <entry>
     <title>JS基础知识储备(一)</title>
