@@ -526,26 +526,67 @@ this.name = name;
 this.age = age; }
 var obj = {};
 Person.call(obj);</code></pre></li>
-<li>call 后边的括号里是可以传东西的，比如传一个 obj 进去，他就会引导着 Person 发生 很大的变化。如果在 Person 底下 new 的话，this 就代表了构造函数所 产生的对象，我们假如说没有new的话，this默认是指向window的，但是我们在call 里传 obj 了，那么这个 this 就不是默认的了，就变成 obj 了，就是 call 里边传谁进 去，this 就是谁。等于说里边现在执行的时候就是 obj.name = name，obj.age = age， 即使是这样，依然可以传参:<br>Person.call(obj,’小万’,20);<br>现在访问 obj 就得到{name: “小万”, age: 20},因为 call 括号里的第一位会改变 this 指向，第一位以后都会当成正常的实参传到形参里边去（null就指向window），所以这里边第二个实参对应 的是函数执行的第一位形参，第三个实参对应的是函数执行的第二位形参。所以 call 的根本原因是改变 this 指向，借用 Person 的执行封装了 obj，借用你的方法来实现我 的功能。<h2 id="3、示例"><a href="#3、示例" class="headerlink" title="3、示例"></a>3、示例</h2><pre><code>function Wheel(wheelSize, style) {
-  this.wheelSize = wheelSize;
-  this.style = style;
-}
-</code></pre></li>
+<li>call 后边的括号里是可以传东西的，比如传一个 obj 进去，他就会引导着 Person 发生 很大的变化。如果在 Person 底下 new 的话，this 就代表了构造函数所 产生的对象，我们假如说没有new的话，this默认是指向window的，但是我们在call 里传 obj 了，那么这个 this 就不是默认的了，就变成 obj 了，就是 call 里边传谁进 去，this 就是谁。等于说里边现在执行的时候就是 obj.name = name，obj.age = age， 即使是这样，依然可以传参:<br>Person.call(obj,’小万’,20);<br>现在访问 obj 就得到{name: “小万”, age: 20},因为 call 括号里的第一位会改变 this 指向，第一位以后都会当成正常的实参传到形参里边去（null就指向window），所以这里边第二个实参对应 的是函数执行的第一位形参，第三个实参对应的是函数执行的第二位形参。所以 call 的根本原因是改变 this 指向，借用 Person 的执行封装了 obj，借用你的方法来实现我 的功能。<h2 id="3、示例"><a href="#3、示例" class="headerlink" title="3、示例"></a>3、示例</h2></li>
 </ul>
-<p>function Sit(c, sitColor) {<br>    this.c = c;<br>    this.sitColor = sitColor;<br>}</p>
-<p>function Model(height, width, len) {<br>    this.height = height;<br>    this.width = width;<br>    this.len = len;<br>}</p>
-<p>function Car(wheelSize, style, c, sitColor, height, width, len) {<br>    Wheel.call(this, wheelSize, style);<br>    Sit.call(this, c, sitColor);<br>    Model.call(this, height, width, len);<br>}<br>var car = new Car(100, “魂动之恶魔之眼”, “织物”, “white”, 1800, 1900, 4900);</p>
-<pre><code>## 4、apply
-- call 和 apply 基本上是一样的，只是写法不一样，call 需要把实参一个个传进去，但 是 apply 只能传一个值 arguments，即实参列表</code></pre><p>function Person(name, age, sex) {<br>    this.name = name;<br>    this.age = age;<br>    this.sex = sex;<br>}</p>
-<p>function Student(name, age, sex, tel, grade) {<br>    Person.apply(this, [name, age, sex]);<br>    this.tel = tel;<br>    this.grade = grade;<br>}<br>var student = new Student(‘小万’, 20, ‘male’, 187, 2017);</p>
-<pre><code># 三、bind
+<pre><code>function Wheel(wheelSize, style) {
+    this.wheelSize = wheelSize;
+    this.style = style;
+}
 
-- bind和call、apply方法不同，实际上bind方法返回的是一个修改过后的函数。
-</code></pre><p>var a = {<br>    user:”蜡笔小清新”,<br>    fn:function(){<br>        console.log(this.user); //蜡笔小清新<br>    }<br>}<br>var b = a.fn;<br>var c = b.bind(a);<br>c();</p>
-<pre><code>
-- 同样bind也可以有多个参数，并且参数可以执行的时候再次添加，但是要注意的是，参数是按照形参的顺序进行的。
-</code></pre><p>var a = {<br>    user:”蜡笔小清新”,<br>    fn:function(e,d,f){<br>        console.log(this.user); //蜡笔小清新<br>        console.log(e,d,f); //10 1 2<br>    }<br>}<br>var b = a.fn;<br>var c = b.bind(a,10);<br>c(1,2);</p>
-<pre><code></code></pre><script>
+function Sit(c, sitColor) {
+    this.c = c;
+    this.sitColor = sitColor;
+}
+
+function Model(height, width, len) {
+    this.height = height;
+    this.width = width;
+    this.len = len;
+}
+
+function Car(wheelSize, style, c, sitColor, height, width, len) {
+    Wheel.call(this, wheelSize, style);
+    Sit.call(this, c, sitColor);
+    Model.call(this, height, width, len);
+}
+var car = new Car(100, "魂动之恶魔之眼", "织物", "white", 1800, 1900, 4900);</code></pre><h2 id="4、apply"><a href="#4、apply" class="headerlink" title="4、apply"></a>4、apply</h2><ul>
+<li>call 和 apply 基本上是一样的，只是写法不一样，call 需要把实参一个个传进去，但 是 apply 只能传一个值 arguments，即实参列表</li>
+</ul>
+<pre><code>function Person(name, age, sex) {
+    this.name = name;
+    this.age = age;
+    this.sex = sex;
+}
+
+function Student(name, age, sex, tel, grade) {
+    Person.apply(this, [name, age, sex]);
+    this.tel = tel;
+    this.grade = grade;
+}
+var student = new Student('小万', 20, 'male', 187, 2017);</code></pre><h1 id="三、bind"><a href="#三、bind" class="headerlink" title="三、bind"></a>三、bind</h1><ul>
+<li>bind和call、apply方法不同，实际上bind方法返回的是一个修改过后的函数。</li>
+</ul>
+<pre><code>var a = {
+    user:"蜡笔小清新",
+    fn:function(){
+        console.log(this.user); //蜡笔小清新
+    }
+}
+var b = a.fn;
+var c = b.bind(a);
+c();</code></pre><ul>
+<li>同样bind也可以有多个参数，并且参数可以执行的时候再次添加，但是要注意的是，参数是按照形参的顺序进行的。</li>
+</ul>
+<pre><code>var a = {
+    user:"蜡笔小清新",
+    fn:function(e,d,f){
+        console.log(this.user); //蜡笔小清新
+        console.log(e,d,f); //10 1 2
+    }
+}
+var b = a.fn;
+var c = b.bind(a,10);
+c(1,2);</code></pre><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
