@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="JS基础知识储备-二, HTML,CSS,JavaScript,JQuery,React,Vue.js等">
+    <meta name="keywords" content="JS基础知识储备-三, HTML,CSS,JavaScript,JQuery,React,Vue.js等">
     <meta name="description" content="学习Web,Android,分享生活,分享知识">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>JS基础知识储备-二 | Wanzhr</title>
+    <title>JS基础知识储备-三 | Wanzhr</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -311,12 +311,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">JS基础知识储备-二</h1>
+                    <h1 class="description center-align post-title">JS基础知识储备-三</h1>
                 </div>
             </div>
         </div>
@@ -431,13 +431,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/JS/">
-                                <span class="chip bg-color">JS</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -449,7 +445,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-07-31
+                    2020-08-24
                 </div>
                 
 
@@ -465,124 +461,297 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一、this"><a href="#一、this" class="headerlink" title="一、this"></a>一、this</h1><h2 id="1、说明"><a href="#1、说明" class="headerlink" title="1、说明"></a>1、说明</h2><p>this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，实际上this的最终指向的是那个调用它的对象</p>
-<h2 id="2、举例"><a href="#2、举例" class="headerlink" title="2、举例"></a>2、举例</h2><pre><code>var test = {
-    a : 10,
-    b : {
-        a : 12,
-        fn : function(){
-            console.log(this.a); //12
-        }
-    }
-}
-test.b.fn();</code></pre><h2 id="3、解读"><a href="#3、解读" class="headerlink" title="3、解读"></a>3、解读</h2><p>这里同样也是对象test点出来的，但是同样this并没有执行它，那你肯定会说我一开始说的那些不就都是错误的吗？其实也不是，只是一开始说的不准确</p>
+                <h1 id="一、异步编程"><a href="#一、异步编程" class="headerlink" title="一、异步编程"></a>一、异步编程</h1><h2 id="1、异步的概念"><a href="#1、异步的概念" class="headerlink" title="1、异步的概念"></a>1、异步的概念</h2><p>异步（Asynchronous, async）是与同步（Synchronous, sync）相对的概念。</p>
+<p>在我们学习的传统单线程编程中，程序的运行是同步的（同步不意味着所有步骤同时运行，而是指步骤在一个控制流序列中按顺序执行）。而异步的概念则是不保证同步的概念，也就是说，一个异步过程的执行将不再与原有的序列有顺序关系。<br>简单来理解就是：同步按你的代码顺序执行，异步不按照代码顺序执行，异步的执行效果更高。</p>
+<p>以上是关于异步的概念的解释，接下来我们通俗地解释一下异步：异步就是从主线程发射一个子线程来完成任务。<br><img src="https://upload-images.jianshu.io/upload_images/13449852-c751b03f38672ea6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="同步异步.png"></p>
+<h2 id="2、什么时候用异步编程"><a href="#2、什么时候用异步编程" class="headerlink" title="2、什么时候用异步编程"></a>2、什么时候用异步编程</h2><p>在编程中，我们在处理一些简短、快速的操作时，例如计算 1 + 1 的结果，往往在主线程中就可以完成。主线程作为一个线程，不能够同时接受多方面的请求。所以，当一个事件没有结束时，界面将无法处理其他请求。</p>
+<p>为了避免这种情况的发生，我们常常用子线程来完成一些可能消耗时间足够长以至于被用户察觉的事情，比如读取一个大文件或者发出一个网络请求。因为子线程独立于主线程，所以即使出现阻塞也不会影响主线程的运行。但是子线程有一个局限：一旦发射了以后就会与主线程失去同步，我们无法确定它的结束，如果结束之后需要处理一些事情，比如处理来自服务器的信息，我们是无法将它合并到主线程中去的。<br>为了解决这个问题，JavaScript 中的异步操作函数往往通过回调函数来实现异步任务的结果处理。</p>
+<h2 id="3、回调函数"><a href="#3、回调函数" class="headerlink" title="3、回调函数"></a>3、回调函数</h2><p>回调函数就是一个函数，它是在我们启动一个异步任务的时候就告诉它：等你完成了这个任务之后要干什么。这样一来主线程几乎不用关心异步任务的状态了，他自己会善始善终。</p>
+<pre><code>setTimeout(function () {
+    console.log("蜡笔小新！");
+}, 1000);
+console.log("你真帅！");</code></pre><h1 id="二、Promise"><a href="#二、Promise" class="headerlink" title="二、Promise"></a>二、Promise</h1><h2 id="1、介绍"><a href="#1、介绍" class="headerlink" title="1、介绍"></a>1、介绍</h2><p>Promise 是一个 ECMAScript 6 提供的类，目的是更加优雅地书写复杂的异步任务。<br>由于 Promise 是 ES6 新增加的，所以一些旧的浏览器并不支持，苹果的 Safari 10 和 Windows 的 Edge 14 版本以上浏览器才开始支持 ES6 特性。</p>
+<p>以下是 Promise 浏览器支持的情况：<br><img src="https://upload-images.jianshu.io/upload_images/13449852-774d169e23770db5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="promise浏览器支持情况.png"></p>
+<h2 id="2、构造Promise"><a href="#2、构造Promise" class="headerlink" title="2、构造Promise"></a>2、构造Promise</h2><pre><code>new Promise(function (resolve, reject) {
+    // do somesthing...
+});</code></pre><p>示例比较：</p>
+<pre><code>//正常书写
+setTimeout(function () {
+    console.log("我");
+    setTimeout(function () {
+        console.log("很");
+        setTimeout(function () {
+            console.log("帅");
+        }, 3000);
+    }, 4000);
+}, 1000);</code></pre><pre><code>new Promise(function (resolve, reject) {
+    setTimeout(function () {
+        console.log("我");
+        resolve();
+    }, 1000);
+}).then(function () {
+    return new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            console.log("很");
+            resolve();
+        }, 4000);
+    });
+}).then(function () {
+    setTimeout(function () {
+        console.log("帅");
+    }, 3000);
+});</code></pre><h2 id="3、剖析"><a href="#3、剖析" class="headerlink" title="3、剖析"></a>3、剖析</h2><p>Promise 构造函数只有一个参数，是一个函数，这个函数在构造之后会直接被异步运行，所以我们称之为起始函数。起始函数包含两个参数 resolve 和 reject。<br>当 Promise 被构造时，起始函数会被异步执行。<br>resolve 和 reject 都是函数，其中调用 resolve 代表一切正常，reject 是出现异常时所调用的：</p>
+<pre><code>new Promise(function (resolve, reject) {
+    var a = 0;
+    var b = 1;
+    if (b == 0) reject("Diveide zero");
+    else resolve(a / b);
+}).then(function (value) {
+    console.log("a / b = " + value);
+}).catch(function (err) {
+    console.log(err);
+}).finally(function () {
+    console.log("End");
+});</code></pre><p>Promise 类有 .then() .catch() 和 .finally() 三个方法，这三个方法的参数都是一个函数，.then() 可以将参数中的函数添加到当前 Promise 的正常执行序列，.catch() 则是设定 Promise 的异常处理序列，.finally() 是在 Promise 执行的最后一定会执行的序列。 .then() 传入的函数会按顺序依次执行，有任何异常都会直接跳到 catch 序列。</p>
+<pre><code>new Promise(function (resolve, reject) {
+    console.log(1111);
+    resolve(2222);
+}).then(function (value) {
+    console.log(value);
+    return 3333;
+}).then(function (value) {
+    console.log(value);
+    throw "An error";
+}).catch(function (err) {
+    console.log(err);
+});</code></pre><p>resolve() 中可以放置一个参数用于向下一个 then 传递一个值，then 中的函数也可以返回一个值传递给 then。但是，如果 then 中返回的是一个 Promise 对象，那么下一个 then 将相当于对这个返回的 Promise 进行操作，这一点从刚才的计时器的例子中可以看出来。</p>
+<p>reject() 参数中一般会传递一个异常给之后的 catch 函数用于处理异常。</p>
+<p>但是请注意以下两点：</p>
 <ul>
-<li><p>情况1：如果一个函数中有this，但是它没有被上一级的对象所调用，那么this指向的就是window，这里需要说明的是在js的严格版中this指向的不是window（undefined），但是我们这里不探讨严格版的问题。</p>
-</li>
-<li><p>情况2：如果一个函数中有this，这个函数有被上一级的对象所调用，那么this指向的就是上一级的对象。</p>
-</li>
-<li><p>情况3：如果一个函数中有this，这个函数中包含多个对象，尽管这个函数是被最外层的对象所调用，this指向的也只是它上一级的对象。</p>
-</li>
+<li>resolve 和 reject 的作用域只有起始函数，不包括 then 以及其他序列；</li>
+<li>resolve 和 reject 并不能够使起始函数停止运行，别忘了 return。</li>
 </ul>
-<h2 id="4、例题解析"><a href="#4、例题解析" class="headerlink" title="4、例题解析"></a>4、例题解析</h2><pre><code>var test = {
-    a:10,
-    b:{
-        a:12,
-        fn:function(){
-            console.log(this.a); //undefined
-            console.log(this); //window
-        }
-    }
+<h2 id="4、Promise函数"><a href="#4、Promise函数" class="headerlink" title="4、Promise函数"></a>4、Promise函数</h2><p>上述的 “计时器” 程序看上去比函数瀑布还要长，所以我们可以将它的核心部分写成一个 Promise 函数：</p>
+<pre><code>function print(delay, message) {
+    return new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            console.log(message);
+            resolve();
+        }, delay);
+    });
+}</code></pre><p>然后实现功能：</p>
+<pre><code>print(1000, "First").then(function () {
+    return print(4000, "Second");
+}).then(function () {
+    print(3000, "Third");
+});
+//异步函数（async function）是 ECMAScript 2017 (ECMA-262) 标准的规范，几乎被所有浏览器所支持，除了 Internet Explorer。
+async function asyncFunc() {
+    await print(1000, "First");
+    await print(4000, "Second");
+    await print(3000, "Third");
 }
-var j = test.b.fn;
-j();</code></pre><p>this永远指向的是最后调用它的对象，也就是看它执行的时候是谁调用的，例子4中虽然函数fn是被对象b所引用，但是在将fn赋值给变量j的时候并没有执行所以最终指向的是window。</p>
-<h2 id="5、当this遇到return"><a href="#5、当this遇到return" class="headerlink" title="5、当this遇到return"></a>5、当this遇到return</h2><pre><code>function fn()  
-{  
-    this.user = '蜡笔小清新';  
-    return function(){};
-}
-var a = new fn;  
-console.log(a.user); //undefined</code></pre><pre><code>function fn()  
-{  
-    this.user = '蜡笔小清新';  
-    return 1;
-}
-var a = new fn;  
-console.log(a.user); //蜡笔小清新</code></pre><p>如果返回值是一个对象（除了null,undefined），那么this指向的就是那个返回的对象，如果返回值不是一个对象那么this还是指向函数的实例。</p>
-<h1 id="二、call-apply"><a href="#二、call-apply" class="headerlink" title="二、call/apply"></a>二、call/apply</h1><h2 id="1、说明-1"><a href="#1、说明-1" class="headerlink" title="1、说明"></a>1、说明</h2><ul>
-<li>两者都可以改变this指向<pre><code>var a = {
-  user:"蜡笔小清新",
-  fn:function(){
-      console.log(this.user); //蜡笔小清新
-  }
-}
-var b = a.fn;
-b.call(a);</code></pre></li>
-<li>任何一个方法都可以.call，其实方法的执行就是方法.call 执行，例如test() 就相当于 test.call()<pre><code>function test() {
-console.log(’蜡笔小清新‘); //蜡笔小清新
-}
-test.call();</code></pre><h2 id="2、用法"><a href="#2、用法" class="headerlink" title="2、用法"></a>2、用法</h2><pre><code>function Person(name,age) {
-this.name = name;
-this.age = age; }
-var obj = {};
-Person.call(obj);</code></pre></li>
-<li>call 后边的括号里是可以传东西的，比如传一个 obj 进去，他就会引导着 Person 发生 很大的变化。如果在 Person 底下 new 的话，this 就代表了构造函数所 产生的对象，我们假如说没有new的话，this默认是指向window的，但是我们在call 里传 obj 了，那么这个 this 就不是默认的了，就变成 obj 了，就是 call 里边传谁进 去，this 就是谁。等于说里边现在执行的时候就是 obj.name = name，obj.age = age， 即使是这样，依然可以传参:<br>Person.call(obj,’小万’,20);<br>现在访问 obj 就得到{name: “小万”, age: 20},因为 call 括号里的第一位会改变 this 指向，第一位以后都会当成正常的实参传到形参里边去（null就指向window），所以这里边第二个实参对应 的是函数执行的第一位形参，第三个实参对应的是函数执行的第二位形参。所以 call 的根本原因是改变 this 指向，借用 Person 的执行封装了 obj，借用你的方法来实现我 的功能。<h2 id="3、示例"><a href="#3、示例" class="headerlink" title="3、示例"></a>3、示例</h2></li>
+asyncFunc();</code></pre><p>这种返回值为一个 Promise 对象的函数称作 Promise 函数，它常常用于开发基于异步操作的库。</p>
+<h2 id="5、解惑"><a href="#5、解惑" class="headerlink" title="5、解惑"></a>5、解惑</h2><ul>
+<li>then、catch 和 finally 序列顺序可以颠倒，效果完全一样。但不建议这样做，最好按 then-catch-finally 的顺序编写程序。</li>
+<li>then 块如何中断：then 块默认会向下顺序执行，return 是不能中断的，可以通过 throw 来跳转至 catch 实现中断。</li>
+<li>Promise 不是一种将异步转换为同步的方法，Promise 只不过是一种更良好的编程风格。</li>
 </ul>
-<pre><code>function Wheel(wheelSize, style) {
-    this.wheelSize = wheelSize;
-    this.style = style;
-}
-function Sit(c, sitColor) {
-    this.c = c;
-    this.sitColor = sitColor;
-}
-function Model(height, width, len) {
-    this.height = height;
-    this.width = width;
-    this.len = len;
-}
-function Car(wheelSize, style, c, sitColor, height, width, len) {
-    Wheel.call(this, wheelSize, style);
-    Sit.call(this, c, sitColor);
-    Model.call(this, height, width, len);
-}
-var car = new Car(100, "魂动之恶魔之眼", "织物", "white", 1800, 1900, 4900);</code></pre><h2 id="4、apply"><a href="#4、apply" class="headerlink" title="4、apply"></a>4、apply</h2><ul>
-<li>call 和 apply 基本上是一样的，只是写法不一样，call 需要把实参一个个传进去，但 是 apply 只能传一个值 arguments，即实参列表</li>
+<h1 id="三、Event-loop"><a href="#三、Event-loop" class="headerlink" title="三、Event loop"></a>三、Event loop</h1><h2 id="1、定义"><a href="#1、定义" class="headerlink" title="1、定义"></a>1、定义</h2><p>event loop是一个执行模型，在不同的地方有不同的实现。浏览器和NodeJS基于不同的技术实现了各自的Event Loop。</p>
+<ul>
+<li>浏览器的Event Loop是在<a href="https://www.w3.org/TR/html5/webappapis.html#event-loops" target="_blank" rel="noopener">html5的规范</a>中明确定义。</li>
+<li>NodeJS的Event Loop是基于libuv实现的。可以参考Node的<a href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/" target="_blank" rel="noopener">官方文档</a>以及libuv的<a href="http://docs.libuv.org/en/v1.x/design.html" target="_blank" rel="noopener">官方文档</a>。</li>
+<li>libuv已经对Event Loop做出了实现，而HTML5规范中只是定义了浏览器中Event Loop的模型，具体的实现留给了浏览器厂商。</li>
 </ul>
-<pre><code>function Person(name, age, sex) {
-    this.name = name;
-    this.age = age;
-    this.sex = sex;
-}
-function Student(name, age, sex, tel, grade) {
-    Person.apply(this, [name, age, sex]);
-    this.tel = tel;
-    this.grade = grade;
-}
-var student = new Student('小万', 20, 'male', 187, 2017);</code></pre><h1 id="三、bind"><a href="#三、bind" class="headerlink" title="三、bind"></a>三、bind</h1><h2 id="1、区别"><a href="#1、区别" class="headerlink" title="1、区别"></a>1、区别</h2><ul>
-<li>bind和call、apply方法不同，实际上bind方法返回的是一个修改过后的函数。(可以通过call和apply方法来实现bind)</li>
+<h2 id="2、宏队列和微队列"><a href="#2、宏队列和微队列" class="headerlink" title="2、宏队列和微队列"></a>2、宏队列和微队列</h2><p>宏队列，macrotask，也叫tasks。 一些异步任务的回调会依次进入macro task queue，等待后续被调用，这些异步任务包括</p>
+<ul>
+<li>setTimeout</li>
+<li>setInterval</li>
+<li>setImmediate (Node独有)</li>
+<li>requestAnimationFrame (浏览器独有)</li>
+<li>I/O</li>
+<li>UI rendering (浏览器独有)<br>微队列，microtask，也叫jobs。 另一些异步任务的回调会依次进入micro task queue，等待后续被调用，这些异步任务包括：</li>
+<li>process.nextTick (Node独有)</li>
+<li>Promise</li>
+<li>Object.observe</li>
+<li>MutationObserver<br>（注：这里只针对浏览器和NodeJS）</li>
 </ul>
-<pre><code>var a = {
-    user:"蜡笔小清新",
-    fn:function(){
-        console.log(this.user); //蜡笔小清新
-    }
-}
-var b = a.fn;
-var c = b.bind(a);
-c();</code></pre><h2 id="2、传参"><a href="#2、传参" class="headerlink" title="2、传参"></a>2、传参</h2><ul>
-<li>同样bind也可以有多个参数，并且参数可以执行的时候再次添加，但是要注意的是，参数是按照形参的顺序进行的。如果传值是对象，返回的是对象的实例。</li>
+<h2 id="3、浏览器的Event-Loop"><a href="#3、浏览器的Event-Loop" class="headerlink" title="3、浏览器的Event Loop"></a>3、浏览器的Event Loop</h2><h3 id="（1）图解："><a href="#（1）图解：" class="headerlink" title="（1）图解："></a>（1）图解：</h3><p><img src="https://upload-images.jianshu.io/upload_images/13449852-be449e05ecaf4ea5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="浏览器的Eventloop.png"></p>
+<h3 id="（2）执行一个JavaScript代码的具体流程："><a href="#（2）执行一个JavaScript代码的具体流程：" class="headerlink" title="（2）执行一个JavaScript代码的具体流程："></a>（2）执行一个JavaScript代码的具体流程：</h3><ol>
+<li>执行全局Script同步代码，这些同步代码有一些是同步语句，有一些是异步语句（比如setTimeout等）；</li>
+<li>全局Script代码执行完毕后，调用栈Stack会清空；</li>
+<li>从微队列microtask queue中取出位于队首的回调任务，放入调用栈Stack中执行，执行完后microtask queue长度减1；</li>
+<li>继续取出位于队首的任务，放入调用栈Stack中执行，以此类推，直到直到把microtask queue中的所有任务都执行完毕。注意，如果在执行microtask的过程中，又产生了microtask，那么会加入到队列的末尾，也会在这个周期被调用执行；</li>
+<li>microtask queue中的所有任务都执行完毕，此时microtask queue为空队列，调用栈Stack也为空；</li>
+<li>取出宏队列macrotask queue中位于队首的任务，放入Stack中执行；</li>
+<li>执行完毕后，调用栈Stack为空；</li>
+<li>重复第3-7个步骤；</li>
+<li>重复第3-7个步骤；<br>……</li>
+</ol>
+<h3 id="（3）归纳3个重点："><a href="#（3）归纳3个重点：" class="headerlink" title="（3）归纳3个重点："></a>（3）归纳3个重点：</h3><ol>
+<li>宏队列macrotask一次只从队列中取一个任务执行，执行完后就去执行微任务队列中的任务；</li>
+<li>微任务队列中所有的任务都会被依次取出来执行，知道microtask queue为空；</li>
+<li>图中没有画UI rendering的节点，因为这个是由浏览器自行判断决定的，但是只要执行UI rendering，它的节点是在执行完所有的microtask之后，下一个macrotask之前，紧跟着执行UI render。</li>
+</ol>
+<h3 id="（4）示例代码"><a href="#（4）示例代码" class="headerlink" title="（4）示例代码"></a>（4）示例代码</h3><pre><code>console.log(1);
+
+setTimeout(() =&gt; {
+  console.log(2);
+  Promise.resolve().then(() =&gt; {
+    console.log(3)
+  });
+});
+
+new Promise((resolve, reject) =&gt; {
+  console.log(4)
+  resolve(5)
+}).then((data) =&gt; {
+  console.log(data);
+})
+
+setTimeout(() =&gt; {
+  console.log(6);
+})
+
+console.log(7);</code></pre><p>结果输出：</p>
+<pre><code>// 正确答案
+1
+4
+7
+5
+2
+3
+6</code></pre><h3 id="（5）例题解析"><a href="#（5）例题解析" class="headerlink" title="（5）例题解析"></a>（5）例题解析</h3><ul>
+<li>执行全局Script代码</li>
 </ul>
-<pre><code>var a = {
-    user:"蜡笔小清新",
-    fn:function(e,d,f){
-        console.log(this.user); //蜡笔小清新
-        console.log(e,d,f); //10 1 2
-    }
-}
-var b = a.fn;
-var c = b.bind(a,10);
-c(1,2);</code></pre><script>
+<h4 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1"></a>Step 1</h4><pre><code>console.log(1)</code></pre><p>Stack Queue: [console]</p>
+<p>Macrotask Queue: []</p>
+<p>Microtask Queue: []<br>打印结果：<br>1</p>
+<h4 id="Step-2"><a href="#Step-2" class="headerlink" title="Step 2"></a>Step 2</h4><pre><code>setTimeout(() =&gt; {
+  // 这个回调函数叫做callback1，setTimeout属于macrotask，所以放到macrotask queue中
+  console.log(2);
+  Promise.resolve().then(() =&gt; {
+    console.log(3)
+  });
+});</code></pre><p>Stack Queue: [setTimeout]</p>
+<p>Macrotask Queue: [callback1]</p>
+<p>Microtask Queue: []</p>
+<p>打印结果：<br>1</p>
+<h4 id="Step-3"><a href="#Step-3" class="headerlink" title="Step 3"></a>Step 3</h4><pre><code>new Promise((resolve, reject) =&gt; {
+  // 注意，这里是同步执行的
+  console.log(4)
+  resolve(5)
+}).then((data) =&gt; {
+  // 这个回调函数叫做callback2，promise属于microtask，所以放到microtask queue中
+  console.log(data);
+})</code></pre><p>Stack Queue: [promise]</p>
+<p>Macrotask Queue: [callback1]</p>
+<p>Microtask Queue: [callback2]</p>
+<p>打印结果：<br>1<br>4</p>
+<h4 id="Step-4"><a href="#Step-4" class="headerlink" title="Step 4"></a>Step 4</h4><pre><code>setTimeout(() =&gt; {
+  // 这个回调函数叫做callback3，setTimeout属于macrotask，所以放到macrotask queue中
+  console.log(6);
+})</code></pre><p>Stack Queue: [setTimeout]</p>
+<p>Macrotask Queue: [callback1, callback3]</p>
+<p>Microtask Queue: [callback2]</p>
+<p>打印结果：<br>1<br>4</p>
+<h4 id="Step-5"><a href="#Step-5" class="headerlink" title="Step 5"></a>Step 5</h4><pre><code>console.log(7)</code></pre><p>Stack Queue: [console]</p>
+<p>Macrotask Queue: [callback1, callback3]</p>
+<p>Microtask Queue: [callback2]</p>
+<p>打印结果：<br>1<br>4<br>7</p>
+<ul>
+<li>好啦，全局Script代码执行完了，进入下一个步骤，从microtask queue中依次取出任务执行，直到microtask queue队列为空。</li>
+</ul>
+<h4 id="Step-6"><a href="#Step-6" class="headerlink" title="Step 6"></a>Step 6</h4><pre><code>console.log(data)       // 这里data是Promise的决议值5</code></pre><p>Stack Queue: [callback2]</p>
+<p>Macrotask Queue: [callback1, callback3]</p>
+<p>Microtask Queue: []</p>
+<p>打印结果：<br>1<br>4<br>7<br>5</p>
+<ul>
+<li>这里microtask queue中只有一个任务，执行完后开始从宏任务队列macrotask queue中取位于队首的任务执行</li>
+</ul>
+<h4 id="Step-7"><a href="#Step-7" class="headerlink" title="Step 7"></a>Step 7</h4><pre><code>console.log(2)</code></pre><p>Stack Queue: [callback1]</p>
+<p>Macrotask Queue: [callback3]</p>
+<p>Microtask Queue: []</p>
+<p>打印结果：<br>1<br>4<br>7<br>5<br>2</p>
+<ul>
+<li>但是，执行callback1的时候又遇到了另一个Promise，Promise异步执行完后在microtask queue中又注册了一个callback4回调函数</li>
+</ul>
+<h4 id="Step-8"><a href="#Step-8" class="headerlink" title="Step 8"></a>Step 8</h4><pre><code>Promise.resolve().then(() =&gt; {
+  // 这个回调函数叫做callback4，promise属于microtask，所以放到microtask queue中
+  console.log(3)
+});</code></pre><p>Stack Queue: [promise]</p>
+<p>Macrotask v: [callback3]</p>
+<p>Microtask Queue: [callback4]</p>
+<p>打印结果：<br>1<br>4<br>7<br>5<br>2</p>
+<ul>
+<li>取出一个宏任务macrotask执行完毕，然后再去微任务队列microtask queue中依次取出执行</li>
+</ul>
+<h4 id="Step-9"><a href="#Step-9" class="headerlink" title="Step 9"></a>Step 9</h4><pre><code>console.log(3)</code></pre><p>Stack Queue: [callback4]</p>
+<p>Macrotask Queue: [callback3]</p>
+<p>Microtask Queue: []</p>
+<p>打印结果：<br>1<br>4<br>7<br>5<br>2<br>3</p>
+<ul>
+<li>微任务队列全部执行完，再去宏任务队列中取第一个任务执行</li>
+</ul>
+<h4 id="Step-10"><a href="#Step-10" class="headerlink" title="Step 10"></a>Step 10</h4><pre><code>console.log(6)</code></pre><p>Stack Queue: [callback3]</p>
+<p>Macrotask Queue: []</p>
+<p>Microtask Queue: []</p>
+<p>打印结果：<br>1<br>4<br>7<br>5<br>2<br>3<br>6</p>
+<ul>
+<li>以上，全部执行完后，Stack Queue为空，Macrotask Queue为空，Micro Queue为空</li>
+</ul>
+<h4 id="Step-11"><a href="#Step-11" class="headerlink" title="Step 11"></a>Step 11</h4><p>Stack Queue: []</p>
+<p>Macrotask Queue: []</p>
+<p>Microtask Queue: []</p>
+<p>最终打印结果：<br>1<br>4<br>7<br>5<br>2<br>3<br>6</p>
+<h3 id="（6）练习（巩固）"><a href="#（6）练习（巩固）" class="headerlink" title="（6）练习（巩固）"></a>（6）练习（巩固）</h3><pre><code>console.log(1);
+
+setTimeout(() =&gt; {
+  console.log(2);
+  Promise.resolve().then(() =&gt; {
+    console.log(3)
+  });
+});
+
+new Promise((resolve, reject) =&gt; {
+  console.log(4)
+  resolve(5)
+}).then((data) =&gt; {
+  console.log(data);
+
+  Promise.resolve().then(() =&gt; {
+    console.log(6)
+  }).then(() =&gt; {
+    console.log(7)
+
+    setTimeout(() =&gt; {
+      console.log(8)
+    }, 0);
+  });
+})
+
+setTimeout(() =&gt; {
+  console.log(9);
+})
+
+console.log(10);
+
+// 正确答案
+1
+4
+10
+5
+6
+7
+2
+3
+9
+8</code></pre><h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a href="https://www.runoob.com/js/js-async.html" target="_blank" rel="noopener">JavaScript 异步编程</a></li>
+<li><a href="https://www.runoob.com/js/js-promise.html" target="_blank" rel="noopener">JavaScript Promise</a></li>
+<li><a href="https://segmentfault.com/a/1190000016278115" target="_blank" rel="noopener">带你彻底弄懂Event Loop</a></li>
+</ul>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -625,7 +794,7 @@ c(1,2);</code></pre><script>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://wanzhr.github.io/posts/7dc8.html">https://wanzhr.github.io/posts/7dc8.html</a>
+                    <a href="https://wanzhr.github.io/posts/b1ae.html">https://wanzhr.github.io/posts/b1ae.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -662,11 +831,7 @@ c(1,2);</code></pre><script>
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/JS/">
-                                    <span class="chip bg-color">JS</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -835,7 +1000,7 @@ c(1,2);</code></pre><script>
         repo: 'wanzhr.github.io',
         owner: 'wanzhr',
         admin: "wanzhr",
-        id: '2020-07-31T13-29-13',
+        id: '2020-08-24T16-39-08',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -859,9 +1024,10 @@ c(1,2);</code></pre><script>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/posts/b1ae.html">
                     <div class="card-image">
@@ -880,9 +1046,9 @@ c(1,2);</code></pre><script>
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-24
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -891,6 +1057,7 @@ c(1,2);</code></pre><script>
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -901,24 +1068,28 @@ c(1,2);</code></pre><script>
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/323b.html">
+                <a href="/posts/7dc8.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="JS基础知识储备-一">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="JS基础知识储备-二">
                         
-                        <span class="card-title">JS基础知识储备-一</span>
+                        <span class="card-title">JS基础知识储备-二</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一、预编译1、预编译前奏JavaScript执行三部曲：我们知道，JS是解释性语言，解释一行执行一行，但是在解释执行之前，他会进行两个过程，语法分析和预编译，语法分析就是他会把正片JS代码扫描一遍，看看有没有语法错误，接下来进行的就预编译。
+                            一、this1、说明this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，实际上this的最终指向的是那个调用它的对象
+2、举例var test = {
+    a : 10,
+    b : {
+   
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-31
                             </span>
                         <span class="publish-author">
                             
