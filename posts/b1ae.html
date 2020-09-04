@@ -559,7 +559,10 @@ asyncFunc();</code></pre><p>这种返回值为一个 Promise 对象的函数称�
 <h2 id="5、解惑"><a href="#5、解惑" class="headerlink" title="5、解惑"></a>5、解惑</h2><ul>
 <li>then、catch 和 finally 序列顺序可以颠倒，效果完全一样。但不建议这样做，最好按 then-catch-finally 的顺序编写程序。</li>
 <li>then 块如何中断：then 块默认会向下顺序执行，return 是不能中断的，可以通过 throw 来跳转至 catch 实现中断。</li>
-<li>Promise 不是一种将异步转换为同步的方法，Promise 只不过是一种更良好的编程风格。<h2 id="6、promise-A-规范"><a href="#6、promise-A-规范" class="headerlink" title="6、promise/A+规范"></a>6、promise/A+规范</h2>其实Promise 规范有很多，如Promise/A，Promise/B，Promise/D 以及 Promise/A 的升级版 Promise/A+。ES6中采用了 Promise/A+ 规范。<h3 id="解读"><a href="#解读" class="headerlink" title="解读"></a>解读</h3></li>
+<li>Promise 不是一种将异步转换为同步的方法，Promise 只不过是一种更良好的编程风格。</li>
+</ul>
+<h2 id="6、promise-A-规范"><a href="#6、promise-A-规范" class="headerlink" title="6、promise/A+规范"></a>6、promise/A+规范</h2><p>其实Promise 规范有很多，如Promise/A，Promise/B，Promise/D 以及 Promise/A 的升级版 Promise/A+。ES6中采用了 Promise/A+ 规范。</p>
+<h3 id="解读"><a href="#解读" class="headerlink" title="解读"></a>解读</h3><ul>
 <li>一个promise的当前状态只能是pending、fulfilled和rejected三种之一。状态改变只能是pending到fulfilled或者pending到rejected。状态改变不可逆。</li>
 <li>promise的then方法接收两个可选参数，表示该promise状态改变时的回调(promise.then(onFulfilled, onRejected))。then方法返回一个promise，then 方法可以被同一个 promise 调用多次。</li>
 <li>Promise/A+并未规范race、all、catch方法，这些是ES6自己规范的。</li>
