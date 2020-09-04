@@ -467,7 +467,7 @@
             <div id="articleContent">
                 <h1 id="一、异步编程"><a href="#一、异步编程" class="headerlink" title="一、异步编程"></a>一、异步编程</h1><h2 id="1、异步的概念"><a href="#1、异步的概念" class="headerlink" title="1、异步的概念"></a>1、异步的概念</h2><p>异步（Asynchronous, async）是与同步（Synchronous, sync）相对的概念。</p>
 <p>在我们学习的传统单线程编程中，程序的运行是同步的（同步不意味着所有步骤同时运行，而是指步骤在一个控制流序列中按顺序执行）。而异步的概念则是不保证同步的概念，也就是说，一个异步过程的执行将不再与原有的序列有顺序关系。<br>简单来理解就是：同步按你的代码顺序执行，异步不按照代码顺序执行，异步的执行效果更高。</p>
-<p>以上是关于异步的概念的解释，接下来我们通俗地解释一下异步：异步就是从主线程发射一个子线程来完成任务。<br><img src="https://upload-images.jianshu.io/upload_images/13449852-c751b03f38672ea6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="同步异步.png"></p>
+<p>以上是关于异步的概念的解释，接下来我们通俗地解释一下异步：异步就是从主线程发射一个子线程来完成任务。<br><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5.png" alt="同步异步"></p>
 <h2 id="2、什么时候用异步编程"><a href="#2、什么时候用异步编程" class="headerlink" title="2、什么时候用异步编程"></a>2、什么时候用异步编程</h2><p>在编程中，我们在处理一些简短、快速的操作时，例如计算 1 + 1 的结果，往往在主线程中就可以完成。主线程作为一个线程，不能够同时接受多方面的请求。所以，当一个事件没有结束时，界面将无法处理其他请求。</p>
 <p>为了避免这种情况的发生，我们常常用子线程来完成一些可能消耗时间足够长以至于被用户察觉的事情，比如读取一个大文件或者发出一个网络请求。因为子线程独立于主线程，所以即使出现阻塞也不会影响主线程的运行。但是子线程有一个局限：一旦发射了以后就会与主线程失去同步，我们无法确定它的结束，如果结束之后需要处理一些事情，比如处理来自服务器的信息，我们是无法将它合并到主线程中去的。<br>为了解决这个问题，JavaScript 中的异步操作函数往往通过回调函数来实现异步任务的结果处理。</p>
 <h2 id="3、回调函数"><a href="#3、回调函数" class="headerlink" title="3、回调函数"></a>3、回调函数</h2><p>回调函数就是一个函数，它是在我们启动一个异步任务的时候就告诉它：等你完成了这个任务之后要干什么。这样一来主线程几乎不用关心异步任务的状态了，他自己会善始善终。</p>
@@ -475,7 +475,7 @@
     console.log("蜡笔小新！");
 }, 1000);
 console.log("你真帅！");</code></pre><h1 id="二、Promise"><a href="#二、Promise" class="headerlink" title="二、Promise"></a>二、Promise</h1><h2 id="1、介绍"><a href="#1、介绍" class="headerlink" title="1、介绍"></a>1、介绍</h2><p>Promise 是一个 ECMAScript 6 提供的类，目的是更加优雅地书写复杂的异步任务。<br>由于 Promise 是 ES6 新增加的，所以一些旧的浏览器并不支持，苹果的 Safari 10 和 Windows 的 Edge 14 版本以上浏览器才开始支持 ES6 特性。</p>
-<p>以下是 Promise 浏览器支持的情况：<br><img src="https://upload-images.jianshu.io/upload_images/13449852-774d169e23770db5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="promise浏览器支持情况.png"></p>
+<p>以下是 Promise 浏览器支持的情况：<br><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/promise%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%AF%E6%8C%81%E6%83%85%E5%86%B5.png" alt="promise浏览器支持情况"></p>
 <h2 id="2、构造Promise"><a href="#2、构造Promise" class="headerlink" title="2、构造Promise"></a>2、构造Promise</h2><pre><code>new Promise(function (resolve, reject) {
     // do somesthing...
 });</code></pre><p>示例比较：</p>
@@ -559,8 +559,12 @@ asyncFunc();</code></pre><p>这种返回值为一个 Promise 对象的函数称�
 <h2 id="5、解惑"><a href="#5、解惑" class="headerlink" title="5、解惑"></a>5、解惑</h2><ul>
 <li>then、catch 和 finally 序列顺序可以颠倒，效果完全一样。但不建议这样做，最好按 then-catch-finally 的顺序编写程序。</li>
 <li>then 块如何中断：then 块默认会向下顺序执行，return 是不能中断的，可以通过 throw 来跳转至 catch 实现中断。</li>
-<li>Promise 不是一种将异步转换为同步的方法，Promise 只不过是一种更良好的编程风格。</li>
+<li>Promise 不是一种将异步转换为同步的方法，Promise 只不过是一种更良好的编程风格。<h2 id="6、promise-A-规范"><a href="#6、promise-A-规范" class="headerlink" title="6、promise/A+规范"></a>6、promise/A+规范</h2>其实Promise 规范有很多，如Promise/A，Promise/B，Promise/D 以及 Promise/A 的升级版 Promise/A+。ES6中采用了 Promise/A+ 规范。<h3 id="解读"><a href="#解读" class="headerlink" title="解读"></a>解读</h3></li>
+<li>一个promise的当前状态只能是pending、fulfilled和rejected三种之一。状态改变只能是pending到fulfilled或者pending到rejected。状态改变不可逆。</li>
+<li>promise的then方法接收两个可选参数，表示该promise状态改变时的回调(promise.then(onFulfilled, onRejected))。then方法返回一个promise，then 方法可以被同一个 promise 调用多次。</li>
+<li>Promise/A+并未规范race、all、catch方法，这些是ES6自己规范的。</li>
 </ul>
+<p>参考：<a href="https://malcolmyu.github.io/2015/06/12/Promises-A-Plus/#note-4" target="_blank" rel="noopener">Promises/A+规范-翻译</a></p>
 <h1 id="三、Event-loop"><a href="#三、Event-loop" class="headerlink" title="三、Event loop"></a>三、Event loop</h1><h2 id="1、定义"><a href="#1、定义" class="headerlink" title="1、定义"></a>1、定义</h2><p>event loop是一个执行模型，在不同的地方有不同的实现。浏览器和NodeJS基于不同的技术实现了各自的Event Loop。</p>
 <ul>
 <li>浏览器的Event Loop是在<a href="https://www.w3.org/TR/html5/webappapis.html#event-loops" target="_blank" rel="noopener">html5的规范</a>中明确定义。</li>
@@ -580,7 +584,7 @@ asyncFunc();</code></pre><p>这种返回值为一个 Promise 对象的函数称�
 <li>Object.observe</li>
 <li>MutationObserver<br>（注：这里只针对浏览器和NodeJS）</li>
 </ul>
-<h2 id="3、浏览器的Event-Loop"><a href="#3、浏览器的Event-Loop" class="headerlink" title="3、浏览器的Event Loop"></a>3、浏览器的Event Loop</h2><h3 id="（1）图解："><a href="#（1）图解：" class="headerlink" title="（1）图解："></a>（1）图解：</h3><p><img src="https://upload-images.jianshu.io/upload_images/13449852-be449e05ecaf4ea5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="浏览器的Eventloop.png"></p>
+<h2 id="3、浏览器的Event-Loop"><a href="#3、浏览器的Event-Loop" class="headerlink" title="3、浏览器的Event Loop"></a>3、浏览器的Event Loop</h2><h3 id="（1）图解："><a href="#（1）图解：" class="headerlink" title="（1）图解："></a>（1）图解：</h3><p><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84Eventloop.png" alt="浏览器的Eventloop"></p>
 <h3 id="（2）执行一个JavaScript代码的具体流程："><a href="#（2）执行一个JavaScript代码的具体流程：" class="headerlink" title="（2）执行一个JavaScript代码的具体流程："></a>（2）执行一个JavaScript代码的具体流程：</h3><ol>
 <li>执行全局Script同步代码，这些同步代码有一些是同步语句，有一些是异步语句（比如setTimeout等）；</li>
 <li>全局Script代码执行完毕后，调用栈Stack会清空；</li>
