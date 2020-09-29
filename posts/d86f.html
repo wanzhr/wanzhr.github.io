@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="first article, HTML,CSS,JavaScript,JQuery,React,Vue.js等">
+    <meta name="keywords" content="JS基础知识储备-五, HTML,CSS,JavaScript,JQuery,React,Vue.js等">
     <meta name="description" content="学习Web,Android,分享生活,分享知识">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>first article | Wanzhr</title>
+    <title>JS基础知识储备-五 | Wanzhr</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -311,12 +311,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">first article</h1>
+                    <h1 class="description center-align post-title">JS基础知识储备-五</h1>
                 </div>
             </div>
         </div>
@@ -431,9 +431,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/JS/">
+                                <span class="chip bg-color">JS</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -445,7 +449,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-06-04
+                    2020-09-29
                 </div>
                 
 
@@ -461,7 +465,109 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <script>
+                <h1 id="1、浏览器渲染过程"><a href="#1、浏览器渲染过程" class="headerlink" title="1、浏览器渲染过程"></a>1、浏览器渲染过程</h1><p><img src="https://upload-images.jianshu.io/upload_images/13449852-f20879c6852ab9be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>从上面这个图上，我们可以看到，浏览器渲染过程如下：</p>
+<ul>
+<li>解析HTML，生成DOM树，解析CSS，生成CSSOM树</li>
+<li>将DOM树和CSSOM树结合，生成渲染树(Render Tree)</li>
+<li>Layout(回流):根据生成的渲染树，进行回流(Layout)，得到节点的几何信息（位置，大小）</li>
+<li>Painting(重绘):根据渲染树以及回流得到的几何信息，得到节点的绝对像素</li>
+<li>Display:将像素发送给GPU，展示在页面上。（这一步其实还有很多内容，比如会在GPU将多个合成层合并为同一个层，并展示在页面中。而css3硬件加速的原理则是新建合成层，这里我们不展开，之后有机会会写一篇博客）</li>
+</ul>
+<p>渲染过程看起来很简单，让我们来具体了解下每一步具体做了什么。</p>
+<h2 id="生成渲染树"><a href="#生成渲染树" class="headerlink" title="生成渲染树"></a>生成渲染树</h2><p><img src="https://upload-images.jianshu.io/upload_images/13449852-2e3304710432bdd2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>为了构建渲染树，浏览器主要完成了以下工作：</p>
+<ol>
+<li>从DOM树的根节点开始遍历每个可见节点。</li>
+<li>对于每个可见的节点，找到CSSOM树中对应的规则，并应用它们。</li>
+<li>根据每个可见节点以及其对应的样式，组合生成渲染树。</li>
+</ol>
+<p>第一步中，既然说到了要遍历可见的节点，那么我们得先知道，什么节点是不可见的。不可见的节点包括：</p>
+<ul>
+<li>一些不会渲染输出的节点，比如script、meta、link等。</li>
+<li>一些通过css进行隐藏的节点。比如display:none。注意，利用visibility和opacity隐藏的节点，还是会显示在渲染树上的。只有display:none的节点才不会显示在渲染树上。</li>
+</ul>
+<p><strong>注意：渲染树只包含可见的节点</strong></p>
+<h1 id="2、回流与重绘"><a href="#2、回流与重绘" class="headerlink" title="2、回流与重绘"></a>2、回流与重绘</h1><h2 id="1、概述"><a href="#1、概述" class="headerlink" title="1、概述"></a>1、概述</h2><ul>
+<li>回流：当render tree中的一部分（或全部），因为元素的规模尺寸、布局、隐藏等改变而需要重新构建，这就是回流（reflow）</li>
+<li>重绘：回流完成后，浏览器会重新绘制受影响的部分，这就是重绘过程。<br>当render tree中的一些元素需要更新属性，而这些属性只是影响元素的外观、风格，而不影响布局，则称为重绘（repaints）</li>
+</ul>
+<h2 id="2、何时发生回流重绘"><a href="#2、何时发生回流重绘" class="headerlink" title="2、何时发生回流重绘"></a>2、何时发生回流重绘</h2><p>当页面布局和几何属性改变时就需要回流</p>
+<ul>
+<li>添加或删除可见的DOM元素</li>
+<li>元素的位置发生变化（offsetWidth、offsetHeight）</li>
+<li>元素尺寸发生变化（包括外边距、内边框、边框大小、高度和宽度等）</li>
+<li>内容发生变化（文本、图片、input框）</li>
+<li>页面渲染初始化</li>
+<li>浏览器窗口尺寸改变（回流是根据视口的大小来计算元素的位置和大小的）</li>
+<li>增加或移除样式表</li>
+<li>操作class属性</li>
+<li>改变字体</li>
+<li>激活伪类（如：hover）</li>
+</ul>
+<p><strong>注意：回流一定会触发重绘，而重绘不一定会回流</strong><br>（比如在body最前面插入一个元素，会导致整个render tree回流，如果在body后面插入一个元素，则不会影响前面元素的回流）</p>
+<h2 id="3、浏览器的优化机制"><a href="#3、浏览器的优化机制" class="headerlink" title="3、浏览器的优化机制"></a>3、浏览器的优化机制</h2><p>现代的浏览器都是很聪明的，由于每次重排都会造成额外的计算消耗，因此大多数浏览器都会通过队列化修改并批量执行来优化重排过程。浏览器会将修改操作放入到队列里，直到过了一段时间或者操作达到了一个阈值，才清空队列。但是！<strong>当你获取布局信息的操作的时候，会强制队列刷新</strong>，比如当你访问以下属性或者使用以下方法：</p>
+<ul>
+<li>offsetTop、offsetLeft、offsetWidth、offsetHeight</li>
+<li>scrollTop、scrollLeft、scrollWidth、scrollHeight</li>
+<li>clientTop、clientLeft、clientWidth、clientHeight</li>
+<li>getComputedStyle() 或者 IE中：currentStyle</li>
+<li>getBoundingClientRect</li>
+<li>具体可以访问这个网站：<a href="https://gist.github.com/paulirish/5d52fb081b3570c81e3a" target="_blank" rel="noopener">https://gist.github.com/pauli…</a></li>
+</ul>
+<p>以上属性和方法都需要返回最新的布局信息，因此浏览器不得不清空队列，触发回流重绘来返回正确的值。因此，我们在修改样式的时候，<strong>最好避免使用上面列出的属性，他们都会刷新渲染队列。</strong>如果要使用它们，最好将值缓存起来。</p>
+<h1 id="3、如何减少回流重绘"><a href="#3、如何减少回流重绘" class="headerlink" title="3、如何减少回流重绘"></a>3、如何减少回流重绘</h1><h2 id="1、最小化重绘"><a href="#1、最小化重绘" class="headerlink" title="1、最小化重绘"></a>1、最小化重绘</h2><p>减少对render tree的操作，并减少一些对style信息的请求，合理利用浏览器的优化策略</p>
+<pre><code>const el = document.getElementById('test');
+el.style.padding = '5px';
+el.style.borderLeft = '1px';
+el.style.borderRight = '2px';</code></pre><ul>
+<li><p>使用cssText</p>
+<pre><code>const el = document.getElementById('test');
+el.style.cssText += 'border-left: 1px; border-right: 2px; padding: 5px;';</code></pre></li>
+<li><p>修改CSS的classname</p>
+<pre><code>const el = document.getElementById('test');
+el.className += ' active';</code></pre></li>
+</ul>
+<h2 id="2、批量处理DOM"><a href="#2、批量处理DOM" class="headerlink" title="2、批量处理DOM"></a>2、批量处理DOM</h2><p>当我们需要对DOM对一系列修改的时候，可以通过以下步骤减少回流重绘次数：</p>
+<ol>
+<li>使元素脱离文档流</li>
+<li>对其进行多次修改</li>
+<li>将元素带回到文档中。</li>
+</ol>
+<p>该过程的第一步和第三步可能会引起回流，但是经过第一步之后，对DOM的所有修改都不会引起回流，因为它已经不在渲染树了。</p>
+<p>有三种方式可以让DOM脱离文档流：</p>
+<ul>
+<li>隐藏元素，应用修改，重新显示</li>
+<li>使用文档片段(document fragment)在当前DOM之外构建一个子树，再把它拷贝回文档。</li>
+<li>将原始元素拷贝到一个脱离文档的节点中，修改节点后，再替换原始的元素。</li>
+</ul>
+<h2 id="3、避免触发同步布局事件"><a href="#3、避免触发同步布局事件" class="headerlink" title="3、避免触发同步布局事件"></a>3、避免触发同步布局事件</h2><p>当我们访问元素的一些属性的时候，会导致浏览器强制清空队列，进行强制同步布局。举个例子，比如说我们想将一个p标签数组的宽度赋值为一个元素的宽度，我们可能写出这样的代码：</p>
+<pre><code>function initP() {
+    for (let i = 0; i &lt; paragraphs.length; i++) {
+        paragraphs[i].style.width = box.offsetWidth + 'px';
+    }
+}</code></pre><p>这段代码看上去是没有什么问题，可是其实会造成很大的性能问题。在每次循环的时候，都读取了box的一个offsetWidth属性值，然后利用它来更新p标签的width属性。这就导致了每一次循环的时候，浏览器都必须先使上一次循环中的样式更新操作生效，才能响应本次循环的样式读取操作。每一次循环都会强制浏览器刷新队列。我们可以优化为:</p>
+<pre><code>const width = box.offsetWidth;
+function initP() {
+    for (let i = 0; i &lt; paragraphs.length; i++) {
+        paragraphs[i].style.width = width + 'px';
+    }
+}</code></pre><h2 id="4、对于复杂动画效果-使用绝对定位让其脱离文档流"><a href="#4、对于复杂动画效果-使用绝对定位让其脱离文档流" class="headerlink" title="4、对于复杂动画效果,使用绝对定位让其脱离文档流"></a>4、对于复杂动画效果,使用绝对定位让其脱离文档流</h2><p>对于复杂动画效果，由于会经常的引起回流重绘，因此，我们可以使用绝对定位，让它脱离文档流。否则会引起父元素以及后续元素频繁的回流。<a href="https://chenjigeng.github.io/example/share/%E9%81%BF%E5%85%8D%E5%9B%9E%E6%B5%81%E9%87%8D%E7%BB%98/%E5%B0%86%E5%A4%8D%E6%9D%82%E5%8A%A8%E7%94%BB%E6%B5%AE%E5%8A%A8%E5%8C%96.html" target="_blank" rel="noopener">例子</a></p>
+<h2 id="5、css3硬件加速（GPU加速）"><a href="#5、css3硬件加速（GPU加速）" class="headerlink" title="5、css3硬件加速（GPU加速）"></a>5、css3硬件加速（GPU加速）</h2><p><strong>使用css3硬件加速，可以让transform、opacity、filters这些动画不会引起回流重绘 。但是对于动画的其它属性，比如background-color这些，还是会引起回流重绘的，不过它还是可以提升这些动画的性能。</strong></p>
+<h3 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h3><ul>
+<li>transform</li>
+<li>opacity</li>
+<li>filters</li>
+<li>Will-change<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3>我们可以先看个<a href="https://chenjigeng.github.io/example/share/%E5%AF%B9%E6%AF%94gpu%E5%8A%A0%E9%80%9F/gpu%E5%8A%A0%E9%80%9F-transform.html" target="_blank" rel="noopener">例子</a>。我通过使用chrome的Performance捕获了一段时间的回流重绘情况，实际结果如下图：</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/13449852-47f19b404eed0417.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"><br>从图中我们可以看出，在动画进行的时候，没有发生任何的回流重绘。</p>
+<h3 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h3><ul>
+<li>使用css3硬件加速，可以让transform、opacity、filters这些动画不会引起回流重绘</li>
+<li>对于动画的其它属性，比如background-color这些，还是会引起回流重绘的，不过它还是可以提升这些动画的性能。<h3 id="css3硬件加速的坑"><a href="#css3硬件加速的坑" class="headerlink" title="css3硬件加速的坑"></a>css3硬件加速的坑</h3></li>
+<li>如果你为太多元素使用css3硬件加速，会导致内存占用较大，会有性能问题。</li>
+<li>在GPU渲染字体会导致抗锯齿无效。这是因为GPU和CPU的算法不同。因此如果你不在动画结束的时候关闭硬件加速，会产生字体模糊。</li>
+</ul>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -504,7 +610,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://wanzhr.github.io/posts/bd8.html">https://wanzhr.github.io/posts/bd8.html</a>
+                    <a href="https://wanzhr.github.io/posts/d86f.html">https://wanzhr.github.io/posts/d86f.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -541,7 +647,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/JS/">
+                                    <span class="chip bg-color">JS</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -710,7 +820,7 @@
         repo: 'wanzhr.github.io',
         owner: 'wanzhr',
         admin: "wanzhr",
-        id: '2020-06-04T23-42-38',
+        id: '2020-09-29T15-28-24',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -734,29 +844,35 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/posts/323b.html">
+                <a href="/posts/d86f.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="JS基础知识储备-一">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="JS基础知识储备-五">
                         
-                        <span class="card-title">JS基础知识储备-一</span>
+                        <span class="card-title">JS基础知识储备-五</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一、预编译1、预编译前奏JavaScript执行三部曲：我们知道，JS是解释性语言，解释一行执行一行，但是在解释执行之前，他会进行两个过程，语法分析和预编译，语法分析就是他会把正片JS代码扫描一遍，看看有没有语法错误，接下来进行的就预编译。
+                            1、浏览器渲染过程
+从上面这个图上，我们可以看到，浏览器渲染过程如下：
+
+解析HTML，生成DOM树，解析CSS，生成CSSOM树
+将DOM树和CSSOM树结合，生成渲染树(Render Tree)
+Layout(回流):根据生成的渲染树，
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-26
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-29
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -765,6 +881,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -783,24 +900,27 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/3eeb.html">
+                <a href="/posts/4c66.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="JS基础知识储备-四">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">JS基础知识储备-四</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                            
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-29
                             </span>
                         <span class="publish-author">
                             
@@ -809,6 +929,14 @@
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JS/">
+                        <span class="chip bg-color">JS</span>
+                    </a>
+                    
                 </div>
                 
             </div>
