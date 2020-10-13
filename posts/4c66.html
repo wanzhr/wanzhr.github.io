@@ -491,75 +491,81 @@
 <p><em>注意：class 选择器在 ie8 和 ie8 以下的浏览器中没有，但是新版本是可以的， 所以在 js 里，class 选择器并没有标签选择器那么常用，标签选择器 getElementsByTagName 在任意一个浏览器里都好使。</em></p>
 <h4 id="（5）name选择器"><a href="#（5）name选择器" class="headerlink" title="（5）name选择器"></a>（5）name选择器</h4><p>比如&lt; input name=”abc”&gt;，然后 var input = document.getElementsByName(“abc”)[0]， 访问 input 就得到&lt; input name=”abc”&gt;。需注意这个 name 属性只对部分元素生效，如 表单、表单元素、img 等，name 选择器很少用。</p>
 <h4 id="（6）css选择器"><a href="#（6）css选择器" class="headerlink" title="（6）css选择器"></a>（6）css选择器</h4><p>css 选择器能让我们在 js 里选择元素的时候和 css 里一样灵活，比如说：</p>
-<pre><code>&lt;div&gt; 
-        &lt;strong&gt;&lt;/strong&gt;
-&lt;/div&gt;
-&lt;div&gt;
-        &lt;span&gt;
-             &lt;strong&gt;&lt;/strong&gt;
-        &lt;/span&gt;
-&lt;/div&gt;</code></pre><p>然后在 js 里写上 var strong = document.querySelector(“div span strong”);括号 里写的东西就和 css 里选择标签的方法是一样的，此时访问 strong 就得到 &lt; strong&gt;&lt; /strong&gt;，这选的是一个，还有一个 var strong = document.querySelectorAll(“div span strong”);他选出来是一组，你再访问 strong 就得到 NodeList[strong]</p>
+<pre class=" language-js"><code class="language-js"><span class="token operator">&lt;</span>div<span class="token operator">></span> 
+        <span class="token operator">&lt;</span>strong<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>strong<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token operator">&lt;</span>div<span class="token operator">></span>
+        <span class="token operator">&lt;</span>span<span class="token operator">></span>
+             <span class="token operator">&lt;</span>strong<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>strong<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span></code></pre>
+<p>然后在 js 里写上 var strong = document.querySelector(“div span strong”);括号 里写的东西就和 css 里选择标签的方法是一样的，此时访问 strong 就得到 &lt; strong&gt;&lt; /strong&gt;，这选的是一个，还有一个 var strong = document.querySelectorAll(“div span strong”);他选出来是一组，你再访问 strong 就得到 NodeList[strong]</p>
 <p><em>注意：在 ie7 及以下的版本没有，这个对我们并没有什么影响，还有一个致命的问题，就是 这个 querySelector 和 querySelectorAll 选出来的东西不是实时的，在用法上就及其受局限，除非极特殊情况，你就想选他的副本保存起来才会用这个，否则的话我 们不用。</em></p>
 <h3 id="2、遍历节点树（非方法类操作）"><a href="#2、遍历节点树（非方法类操作）" class="headerlink" title="2、遍历节点树（非方法类操作）"></a>2、遍历节点树（非方法类操作）</h3><h4 id="（1）parentNode-父节点"><a href="#（1）parentNode-父节点" class="headerlink" title="（1）parentNode:父节点"></a>（1）parentNode:父节点</h4><p>比如说：</p>
-<pre><code>&lt;div&gt;
-    &lt;span&gt;&lt;/span&gt;
-    &lt;strong&gt;&lt;/strong&gt; 
-    &lt;em&gt;&lt;/em&gt;
-&lt;/div&gt;
-&lt;script type="text/javascript"&gt;
-    var strong = document.getElementsByTagName("strong")[0]; 
-&lt;/script&gt;</code></pre><p>现在访问 strong.parentNode 就是他的父节点，得到&lt; div&gt;…&lt; /div&gt;，继续 strong.parentNode.parentNode 就是 div 的父亲，即&lt; body&gt;…&lt; /body&gt;，继续就是 body 的父级，即&lt; html&gt;…&lt; /html&gt;， 再就是 HTML 的父级，即 #document，再继续就得到 null，这就说明 <strong>document 就到顶层了，他是顶层的父级节点，代表整个文档</strong>。</p>
+<pre class=" language-js"><code class="language-js"><span class="token operator">&lt;</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+    <span class="token operator">&lt;</span>strong<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>strong<span class="token operator">></span> 
+    <span class="token operator">&lt;</span>em<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>em<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+    <span class="token keyword">var</span> strong <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"strong"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> 
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre>
+<p>现在访问 strong.parentNode 就是他的父节点，得到&lt; div&gt;…&lt; /div&gt;，继续 strong.parentNode.parentNode 就是 div 的父亲，即&lt; body&gt;…&lt; /body&gt;，继续就是 body 的父级，即&lt; html&gt;…&lt; /html&gt;， 再就是 HTML 的父级，即 #document，再继续就得到 null，这就说明 <strong>document 就到顶层了，他是顶层的父级节点，代表整个文档</strong>。</p>
 <h4 id="（2）childNodes-子节点们"><a href="#（2）childNodes-子节点们" class="headerlink" title="（2）childNodes 子节点们"></a>（2）childNodes 子节点们</h4><p>遍历的是节点树，并不是只有元素节点算节点，节点的类型有很多，它包括文本节点、元素节点、属性节点、注释节点 等<br>比如：</p>
-<pre><code>&lt;div&gt;
-  &lt;!-- this is comment! --&gt; 
-  &lt;strong&gt;&lt;/strong&gt; 
-  &lt;span&gt;&lt;/span&gt;
-&lt;/div&gt;
-&lt;script type="text/javascript"&gt;
-  var div = document.getElementsByTagName("div")[0]; 
-&lt;/script&gt;</code></pre><p>访问 div.childNodes 就得到 odeList(7)[text, comment, text, strong, text, span, text]，可见他有七个节点:依次是文本节点、注释节点、文本节点、元素节点、 文本节点、元素节点、文本节点。（<em>空格文本和文本和回车文本都写在一起，就是一个文本 节点</em>）</p>
+<pre class=" language-js"><code class="language-js"><span class="token operator">&lt;</span>div<span class="token operator">></span>
+  <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> <span class="token keyword">this</span> is comment<span class="token operator">!</span> <span class="token operator">--</span><span class="token operator">></span> 
+  <span class="token operator">&lt;</span>strong<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>strong<span class="token operator">></span> 
+  <span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+  <span class="token keyword">var</span> div <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> 
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre>
+<p>访问 div.childNodes 就得到 odeList(7)[text, comment, text, strong, text, span, text]，可见他有七个节点:依次是文本节点、注释节点、文本节点、元素节点、 文本节点、元素节点、文本节点。（<em>空格文本和文本和回车文本都写在一起，就是一个文本 节点</em>）</p>
 <h4 id="（3）firstChild-lastChild-第一个子节点-最后一个子节点"><a href="#（3）firstChild-lastChild-第一个子节点-最后一个子节点" class="headerlink" title="（3）firstChild/lastChild 第一个子节点/最后一个子节点"></a>（3）firstChild/lastChild 第一个子节点/最后一个子节点</h4><p>例如上边的，现在 div.firstChild 就是文本 123 和回车，div.lastChild 就是#text， 还是文本节点，只不过是空的，他就那样显示了。</p>
 <h4 id="（4）nextSibling-previousSibling-后一个兄弟节点-前一个兄弟节点"><a href="#（4）nextSibling-previousSibling-后一个兄弟节点-前一个兄弟节点" class="headerlink" title="（4）nextSibling/previousSibling 后一个兄弟节点/前一个兄弟节点"></a>（4）nextSibling/previousSibling 后一个兄弟节点/前一个兄弟节点</h4><p>还是上边的，var strong = document.getElementsByTagName(“strong”)[0];，然后 strong.nextSibling 就得到#text</p>
 <h3 id="3、遍历元素节点树"><a href="#3、遍历元素节点树" class="headerlink" title="3、遍历元素节点树"></a>3、遍历元素节点树</h3><p>这几种方法只遍历的是元素节点，其他的都不掺杂了。比如说:</p>
-<pre><code>&lt;div&gt; 123
-  &lt;!-- this is comment! --&gt; 
-  &lt;strong&gt;&lt;/strong&gt; 
-  &lt;span&gt;&lt;/span&gt;
-&lt;/div&gt;</code></pre><h4 id="（1）parentElement-元素父节点"><a href="#（1）parentElement-元素父节点" class="headerlink" title="（1）parentElement 元素父节点"></a>（1）parentElement 元素父节点</h4><p>在 js 里 var div = document.getElementsByTagName(“div”)[0]; 然 后 div .parentElement 他 的 元 素 父 节 点 就 是 … ， 然 后 div.parentElement.parentElement，就是 body 的元素父节点，即…， 再父节点就是 null，因为 document 不叫 元素节点，他自称为一个节点，所以 parentNode 和 parentElement 的区别就在于有没有document。</p>
+<pre class=" language-js"><code class="language-js"><span class="token operator">&lt;</span>div<span class="token operator">></span> <span class="token number">123</span>
+  <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> <span class="token keyword">this</span> is comment<span class="token operator">!</span> <span class="token operator">--</span><span class="token operator">></span> 
+  <span class="token operator">&lt;</span>strong<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>strong<span class="token operator">></span> 
+  <span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span></code></pre>
+<h4 id="（1）parentElement-元素父节点"><a href="#（1）parentElement-元素父节点" class="headerlink" title="（1）parentElement 元素父节点"></a>（1）parentElement 元素父节点</h4><p>在 js 里 var div = document.getElementsByTagName(“div”)[0]; 然 后 div .parentElement 他 的 元 素 父 节 点 就 是 … ， 然 后 div.parentElement.parentElement，就是 body 的元素父节点，即…， 再父节点就是 null，因为 document 不叫 元素节点，他自称为一个节点，所以 parentNode 和 parentElement 的区别就在于有没有document。</p>
 <h4 id="（2）children-元素子节点"><a href="#（2）children-元素子节点" class="headerlink" title="（2）children 元素子节点"></a>（2）children 元素子节点</h4><p>现在 div.children 就得到 HTMLCollection(2)[strong,span]，只有两个。</p>
 <h4 id="（3）childElementCount-children-length-元素子节点的个数"><a href="#（3）childElementCount-children-length-元素子节点的个数" class="headerlink" title="（3）childElementCount === children.length 元素子节点的个数"></a>（3）childElementCount === children.length 元素子节点的个数</h4><p>比如说 div.childElementCount 就得到 2，你 div.children.length 也是 2，两者用法一样</p>
 <h4 id="（4）firstElementChild-lastElementChild-第一个元素子节点-最后一个元素子节-点"><a href="#（4）firstElementChild-lastElementChild-第一个元素子节点-最后一个元素子节-点" class="headerlink" title="（4）firstElementChild/lastElementChild 第一个元素子节点/最后一个元素子节 点"></a>（4）firstElementChild/lastElementChild 第一个元素子节点/最后一个元素子节 点</h4><p>现在 div.firstElementChild 就是&lt; strong&gt;&lt; /strong&gt;，div.lastElementChild 就是 &lt; span&gt;&lt; /span&gt;。</p>
 <h4 id="（5）nextElementSibling-previousElementSibling-后一个兄弟元素节点-前一个兄-弟元素节点"><a href="#（5）nextElementSibling-previousElementSibling-后一个兄弟元素节点-前一个兄-弟元素节点" class="headerlink" title="（5）nextElementSibling/previousElementSibling 后一个兄弟元素节点/前一个兄 弟元素节点"></a>（5）nextElementSibling/previousElementSibling 后一个兄弟元素节点/前一个兄 弟元素节点</h4><p>strong.nextElementSibling 就得到 &lt; span&gt;&lt; /span&gt;</p>
 <p><strong>备注:以上遍历节点树的方法所有浏览器都兼容，但是遍历元素节点树的方法除 children 以外，ie9 及以下的浏览器都不兼容。</strong></p>
-<h3 id="4、节点的四个属性"><a href="#4、节点的四个属性" class="headerlink" title="4、节点的四个属性"></a>4、节点的四个属性</h3><pre><code>&lt;div&gt; 
-  123
-  &lt;!-- this is comment! --&gt;
-  &lt;strong&gt;&lt;/strong&gt; 
-  &lt;span&gt;&lt;/span&gt; 
-  &lt;em&gt;&lt;/em&gt;
-  &lt;i&gt;&lt;/i&gt;
-  &lt;b&gt;&lt;/b&gt;
-&lt;/div&gt;
-&lt;script type="text/javascript"&gt;
-  var strong = document.getElementsByTagName("strong")[0];
-&lt;/script&gt;</code></pre><h4 id="（1）nodeName-元素的标签名，只读"><a href="#（1）nodeName-元素的标签名，只读" class="headerlink" title="（1）nodeName 元素的标签名，只读"></a>（1）nodeName 元素的标签名，只读</h4><p>var div = document.getElementsByTagName(“div”)[0];<br>你访问 document.nodeName 就得到 “#document”，<br>访问 div.firstChild.nodeName，他是一个文本节点，就得到”#text”，<br>继续 div.childNodes[1].nodeName，第二个子节点是注释，就得到”#comment”， div.childNodes[3].nodeName 是元素节点，就得到”STRONG”。返回的是一个字符串， 只读就是只能读取不能写入，比如说我把 div.childNodes[3].nodeName = “abc”，再 访问的话还是”STRONG”。</p>
+<h3 id="4、节点的四个属性"><a href="#4、节点的四个属性" class="headerlink" title="4、节点的四个属性"></a>4、节点的四个属性</h3><pre class=" language-js"><code class="language-js"><span class="token operator">&lt;</span>div<span class="token operator">></span> 
+  <span class="token number">123</span>
+  <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> <span class="token keyword">this</span> is comment<span class="token operator">!</span> <span class="token operator">--</span><span class="token operator">></span>
+  <span class="token operator">&lt;</span>strong<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>strong<span class="token operator">></span> 
+  <span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span> 
+  <span class="token operator">&lt;</span>em<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>em<span class="token operator">></span>
+  <span class="token operator">&lt;</span>i<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>i<span class="token operator">></span>
+  <span class="token operator">&lt;</span>b<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>b<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+  <span class="token keyword">var</span> strong <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"strong"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre>
+<h4 id="（1）nodeName-元素的标签名，只读"><a href="#（1）nodeName-元素的标签名，只读" class="headerlink" title="（1）nodeName 元素的标签名，只读"></a>（1）nodeName 元素的标签名，只读</h4><p>var div = document.getElementsByTagName(“div”)[0];<br>你访问 document.nodeName 就得到 “#document”，<br>访问 div.firstChild.nodeName，他是一个文本节点，就得到”#text”，<br>继续 div.childNodes[1].nodeName，第二个子节点是注释，就得到”#comment”， div.childNodes[3].nodeName 是元素节点，就得到”STRONG”。返回的是一个字符串， 只读就是只能读取不能写入，比如说我把 div.childNodes[3].nodeName = “abc”，再 访问的话还是”STRONG”。</p>
 <h4 id="（2）nodeValue-text节点或comment节点的文本内容，可读写"><a href="#（2）nodeValue-text节点或comment节点的文本内容，可读写" class="headerlink" title="（2）nodeValue text节点或comment节点的文本内容，可读写"></a>（2）nodeValue text节点或comment节点的文本内容，可读写</h4><p>这个属性只有文本节点和注释节点才有，<br>访问 div.childNodes[0].nodeValue 就得到 文本的回车和 123，这个可以改，你 div.childNodes[0].nodeValue = “234”，<br>再访问 的话就是”234”，再比如访问 div.childNodes[1].nodeValue 就得到” this is comment! “，如果 div.childNodes[1].nodeValue = “ that is comment! “，再访问 div.childNodes[1]就是&lt;! – that is comment! –&gt;。</p>
 <h4 id="（3）nodeType-该节点的类型，只读"><a href="#（3）nodeType-该节点的类型，只读" class="headerlink" title="（3）nodeType 该节点的类型，只读"></a>（3）nodeType 该节点的类型，只读</h4><p>比如说现在有一个节点，我也不知道里边是什么节点，就有他来分辨，每一个节点都 有这个 nodeType 属性，你调用他返回的是一个具体的值:<br><strong>元素节点是 1，<br>属性节点是 2，<br>文本节点是 3，<br>注释节点是 8，<br>document 节点是 9，<br>DocumentFragment(文档碎片节点)是 11</strong><br>现在 document.nodeType 就是 9，div.childNodes[1].nodeType 第二个是 注释节点就返回 8，div.childNodes[0].nodeType 文本节点返回 3， div.childNodes[3].nodeType 元素节点就是 1。</p>
 <p><em>练习题<br>还是上边的例子，现在封装一个方法，要求返回 div 的直接子元素节点，但是 不允许用 children。</em></p>
-<pre><code>function retElementChild(node) { 
-  var temp = {
-              length: 0,
-              push: Array.prototype.push, 
-              splice: Array.prototype.splice
-              },
-      child = node.childNodes, len = child.length;
-      for (var i = 0; i &lt; len; i++) { 
-        if (child[i].nodeType === 1) {
-            temp.push(child[i]); 
-            }
-        }
-    return temp;
- }</code></pre><h4 id="（4）attributes-元素节点的属性集合"><a href="#（4）attributes-元素节点的属性集合" class="headerlink" title="（4）attributes 元素节点的属性集合"></a>（4）attributes 元素节点的属性集合</h4><p>这个属性就是访问元素的属性节点的，<br>&lt; div id=”only” class=”demo”&gt;&lt; /div&gt;<br>然后继续把 div 选出来:var div = document.getElementsByTagName(“div”)[0];现 在 div.attributes 就得到 NamedNodeMap{0: id, 1: class, id: id, class: class, length: 2}，<br>访问 div.attributes[0]就得到 id=”only”，<br>访问 div.attributes[1]就 是 class=”demo”。<br>div.attributes[1].nodeType 就得到 2. 你也可以把他的属性名和属性值都取出来，<br>div.attributes[0].name 就得到”id”，<br>div.attributes[0].value 就得到”only”。<br><strong>属性名是只读的，属性值可读可写。</strong></p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">retElementChild</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+  <span class="token keyword">var</span> temp <span class="token operator">=</span> <span class="token punctuation">{</span>
+              length<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+              push<span class="token punctuation">:</span> Array<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>push<span class="token punctuation">,</span> 
+              splice<span class="token punctuation">:</span> Array<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>splice
+              <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      child <span class="token operator">=</span> node<span class="token punctuation">.</span>childNodes<span class="token punctuation">,</span> len <span class="token operator">=</span> child<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>child<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>nodeType <span class="token operator">===</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            temp<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>child<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> temp<span class="token punctuation">;</span>
+ <span class="token punctuation">}</span></code></pre>
+<h4 id="（4）attributes-元素节点的属性集合"><a href="#（4）attributes-元素节点的属性集合" class="headerlink" title="（4）attributes 元素节点的属性集合"></a>（4）attributes 元素节点的属性集合</h4><p>这个属性就是访问元素的属性节点的，<br>&lt; div id=”only” class=”demo”&gt;&lt; /div&gt;<br>然后继续把 div 选出来:var div = document.getElementsByTagName(“div”)[0];现 在 div.attributes 就得到 NamedNodeMap{0: id, 1: class, id: id, class: class, length: 2}，<br>访问 div.attributes[0]就得到 id=”only”，<br>访问 div.attributes[1]就 是 class=”demo”。<br>div.attributes[1].nodeType 就得到 2. 你也可以把他的属性名和属性值都取出来，<br>div.attributes[0].name 就得到”id”，<br>div.attributes[0].value 就得到”only”。<br><strong>属性名是只读的，属性值可读可写。</strong></p>
 <h3 id="5、节点的一个方法-Node-hasChildNodes"><a href="#5、节点的一个方法-Node-hasChildNodes" class="headerlink" title="5、节点的一个方法 Node.hasChildNodes()"></a>5、节点的一个方法 Node.hasChildNodes()</h3><p>这个方法就是判断这个<strong>元素</strong>有没有子节点，现在 div.hasChildNodes()就返回 true， 因为空格回车文本也算文本节点，除非&lt; div id=”only” class=”demo”&gt;&lt; /div&gt;的话， 访问 div.hasChildNodes()是 false，中间啥都没有(属性节点不算，他是 div 自己的， 不能算子节点)才能返回 false。</p>
 <h2 id="（三）DOM-继承树及基本操作"><a href="#（三）DOM-继承树及基本操作" class="headerlink" title="（三）DOM 继承树及基本操作"></a>（三）DOM 继承树及基本操作</h2><h3 id="1、DOM继承树"><a href="#1、DOM继承树" class="headerlink" title="1、DOM继承树"></a>1、DOM继承树</h3><p><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/dom%E7%BB%93%E6%9E%84%E6%A0%91.png" alt=""></p>
 <ul>
@@ -575,150 +581,156 @@
 <li>getElementsByTagName 方法定义在 Document.prototype 和 Element.prototype 上。</li>
 </ol>
 <p><em>解释：这个方法在两个地方都定义了，就都能用，比如说</em></p>
-<pre><code>&lt;div&gt;
-  &lt;span&gt;1&lt;/span&gt;
-&lt;/div&gt;
-&lt;span&gt;&lt;/span&gt;
-&lt;script type="text/javascript"&gt;
-  var div = document.getElementsByTagName('div')[0];
-  var span = div.getElementsByTagName("span")[0]; 
-&lt;/script&gt;</code></pre><ol start="4">
+<pre class=" language-js"><code class="language-js"><span class="token operator">&lt;</span>div<span class="token operator">></span>
+  <span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token number">1</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+<span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+  <span class="token keyword">var</span> div <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> span <span class="token operator">=</span> div<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> 
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre>
+<ol start="4">
 <li>HTMLDocument.prototype 定义了一些常用的属性，body,head,分别指代 HTML 文 档中的&lt; body&gt;和&lt; head&gt;标签。</li>
 </ol>
 <p><em>解释：要选 head 标签或者 body 标签的话就直接 document.head 或者 document.body 就可以了。</em><br>5. Document.prototype 上定义了 documentElement 属性，指代文档的根元素，在 HTML 文档中，他总是指代&lt; html&gt;元素。<br>6. getElementsByClassName、querySelectorAll、querySelector 这几个方法在 Document.prototype 和 Element.prototype 类中均有定义。</p>
 <p><em>练习题1：遍历元素节点树(在原型链上编程)</em></p>
-<pre><code>&lt;body&gt;
-    &lt;div&gt;
-        &lt;span&gt;
-            &lt;em&gt;&lt;/em&gt;
-            &lt;strong&gt;
-                &lt;em&gt;
-                    &lt;a href=""&gt;&lt;/a&gt;
-                &lt;/em&gt;
-            &lt;/strong&gt;
-        &lt;/span&gt;
-        &lt;p&gt;&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;span&gt;&lt;/span&gt;
-    &lt;script type="text/javascript"&gt;
-        var div = document.getElementsByTagName('div')[0];
-        Element.prototype.retChildElements = function () {
-            var child = this.childNodes,
-                len = child.length;
-            for (var i = 0; i &lt; len; i++) {
-                if (child[i].nodeType === 1) {
-                    console.log(child[i]);
-                }
-            }
-        }
-    &lt;/script&gt;
-&lt;/body&gt;</code></pre><p><em>练习题2：封装函数，返回元素 a 的第 n 层祖先元素节点</em></p>
-<pre><code>&lt;body&gt;
-    &lt;div&gt;
-        &lt;span&gt;
-            &lt;strong&gt;
-                &lt;em&gt;
-                    &lt;a href=""&gt;&lt;/a&gt;
-                &lt;/em&gt;
-            &lt;/strong&gt;
-        &lt;/span&gt;
-    &lt;/div&gt;
-    &lt;script type="text/javascript"&gt;
-        var a = document.getElementsByTagName('a')[0];
+<pre class=" language-js"><code class="language-js"><span class="token operator">&lt;</span>body<span class="token operator">></span>
+    <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        <span class="token operator">&lt;</span>span<span class="token operator">></span>
+            <span class="token operator">&lt;</span>em<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>em<span class="token operator">></span>
+            <span class="token operator">&lt;</span>strong<span class="token operator">></span>
+                <span class="token operator">&lt;</span>em<span class="token operator">></span>
+                    <span class="token operator">&lt;</span>a href<span class="token operator">=</span><span class="token string">""</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">></span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>em<span class="token operator">></span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>strong<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+        <span class="token operator">&lt;</span>p<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+    <span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+        <span class="token keyword">var</span> div <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        Element<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>retChildElements <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">var</span> child <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>childNodes<span class="token punctuation">,</span>
+                len <span class="token operator">=</span> child<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>child<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>nodeType <span class="token operator">===</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>child<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span></code></pre>
+<p><em>练习题2：封装函数，返回元素 a 的第 n 层祖先元素节点</em></p>
+<pre class=" language-js"><code class="language-js"><span class="token operator">&lt;</span>body<span class="token operator">></span>
+    <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        <span class="token operator">&lt;</span>span<span class="token operator">></span>
+            <span class="token operator">&lt;</span>strong<span class="token operator">></span>
+                <span class="token operator">&lt;</span>em<span class="token operator">></span>
+                    <span class="token operator">&lt;</span>a href<span class="token operator">=</span><span class="token string">""</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">></span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>em<span class="token operator">></span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>strong<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+        <span class="token keyword">var</span> a <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-        function retParent(elem, n) {
-            while (elem &amp;&amp; n) {
-                elem = elem.parentElement;
-                n--;
-            }
-            return elem;
-        }
-    &lt;/script&gt;
+        <span class="token keyword">function</span> <span class="token function">retParent</span><span class="token punctuation">(</span>elem<span class="token punctuation">,</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>elem <span class="token operator">&amp;&amp;</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                elem <span class="token operator">=</span> elem<span class="token punctuation">.</span>parentElement<span class="token punctuation">;</span>
+                n<span class="token operator">--</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> elem<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
 
-&lt;/body&gt;</code></pre><p><em>练习题3：编辑函数，封装 myChildren 功能，解决以前部分浏览器的兼容性问题。</em></p>
-<pre><code>&lt;body&gt;
-    &lt;div&gt;
-        &lt;b&gt;&lt;/b&gt;
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span></code></pre>
+<p><em>练习题3：编辑函数，封装 myChildren 功能，解决以前部分浏览器的兼容性问题。</em></p>
+<pre class=" language-js"><code class="language-js"><span class="token operator">&lt;</span>body<span class="token operator">></span>
+    <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        <span class="token operator">&lt;</span>b<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>b<span class="token operator">></span>
         蜡笔小新
-        &lt;!-- this is comment --&gt;
-        &lt;strong&gt;
-            &lt;span&gt;
-                &lt;i&gt;&lt;/i&gt;
-            &lt;/span&gt;
-        &lt;/strong&gt;
-    &lt;/div&gt;
-    &lt;script type="text/javascript"&gt;
-        Element.prototype.myChildren = function () {
-            var child = this.childNodes;
-            var len = child.length;
-            var arr = [];
-            for (var i = 0; i &lt; len; i++) {
-                if (child[i].nodeType == 1) {
-                    arr.push(child[i]);
-                }
-            }
-            return arr;
-        }
-        var div = document.getElementsByTagName("div")[0];
-    &lt;/script&gt;
-&lt;/body&gt;</code></pre><p><em>练习题4：自己封装 hasChildren()方法，不可用 children 属性。</em></p>
-<pre><code>&lt;body&gt;
-    &lt;div&gt;
-        &lt;b&gt;&lt;/b&gt;
+        <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> <span class="token keyword">this</span> is comment <span class="token operator">--</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>strong<span class="token operator">></span>
+            <span class="token operator">&lt;</span>span<span class="token operator">></span>
+                <span class="token operator">&lt;</span>i<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>i<span class="token operator">></span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>strong<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+        Element<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>myChildren <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">var</span> child <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>childNodes<span class="token punctuation">;</span>
+            <span class="token keyword">var</span> len <span class="token operator">=</span> child<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+            <span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>child<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>nodeType <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    arr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>child<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> arr<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">var</span> div <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span></code></pre>
+<p><em>练习题4：自己封装 hasChildren()方法，不可用 children 属性。</em></p>
+<pre class=" language-js"><code class="language-js"><span class="token operator">&lt;</span>body<span class="token operator">></span>
+    <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        <span class="token operator">&lt;</span>b<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>b<span class="token operator">></span>
         蜡笔小新
-        &lt;!-- this is comment --&gt; 
-        &lt;strong&gt;
-            &lt;span&gt;
-                &lt;i&gt;&lt;/i&gt;
-            &lt;/span&gt;
-        &lt;/strong&gt;
-    &lt;/div&gt;
-    &lt;script type="text/javascript"&gt;
-        Element.prototype.hasChildren = function () {
-            var child = this.childNodes;
-            var len = child.length;
-            for (var i = 0; i &lt; len; i++) {
-                if (child[i].nodeType == 1) {
-                    return true;
-                }
-            }
-            return false;
-        }
-        var div = document.getElementsByTagName("div")[0];
-    &lt;/script&gt;
-&lt;/body&gt;</code></pre><p><em>练习题5：封装函数，返回元素 e 的第 n 个兄弟元素节点，n 为正，返回后面的兄弟元素 节点，n 为负，返回前面的，n 为 0，返回自己。</em></p>
-<pre><code>&lt;body&gt;
-    &lt;div&gt;
-        &lt;span&gt;&lt;/span&gt;
-        &lt;p&gt;&lt;/p&gt; &lt;strong&gt;&lt;/strong&gt;
-        &lt;!-- this is comment --&gt; &lt;i&gt;&lt;/i&gt;
-        &lt;address&gt;&lt;/address&gt;
-    &lt;/div&gt;
-    &lt;script type="text/javascript"&gt;
-        function retSibling(e, n) {
-            while (e &amp;&amp; n) {
-                if (n &gt; 0) {
-                    if (e.nextElementSibling) {
-                        e = e.nextElementSibling;
-                    } else {
-                        for (e = e.nextSibling; e &amp;&amp; e.nodeType != 1; e =
-                            e.nextSibling);
-                    }
-                    n--;
-                } else {
-                    if (e.previousElementSibling) {
-                        e = e.previousElementSibling;
-                    } else {
-                        for (e = e.previousSibling; e &amp;&amp; e.nodeType != 1; e = e.previousSibling);
-                    }
-                    n++;
-                }
-            }
-            return e;
-        }
-        var strong = document.getElementsByTagName("strong")[0];
-    &lt;/script&gt;
-&lt;/body&gt;</code></pre><h3 id="3、DOM基本操作"><a href="#3、DOM基本操作" class="headerlink" title="3、DOM基本操作"></a>3、DOM基本操作</h3><p>上边讲的所有方法都是查看操作，下边讲其他的几个操作。</p>
+        <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> <span class="token keyword">this</span> is comment <span class="token operator">--</span><span class="token operator">></span> 
+        <span class="token operator">&lt;</span>strong<span class="token operator">></span>
+            <span class="token operator">&lt;</span>span<span class="token operator">></span>
+                <span class="token operator">&lt;</span>i<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>i<span class="token operator">></span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>strong<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+        Element<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>hasChildren <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">var</span> child <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>childNodes<span class="token punctuation">;</span>
+            <span class="token keyword">var</span> len <span class="token operator">=</span> child<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>child<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>nodeType <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">var</span> div <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span></code></pre>
+<p><em>练习题5：封装函数，返回元素 e 的第 n 个兄弟元素节点，n 为正，返回后面的兄弟元素 节点，n 为负，返回前面的，n 为 0，返回自己。</em></p>
+<pre class=" language-js"><code class="language-js"><span class="token operator">&lt;</span>body<span class="token operator">></span>
+    <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        <span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+        <span class="token operator">&lt;</span>p<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span> <span class="token operator">&lt;</span>strong<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>strong<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> <span class="token keyword">this</span> is comment <span class="token operator">--</span><span class="token operator">></span> <span class="token operator">&lt;</span>i<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>i<span class="token operator">></span>
+        <span class="token operator">&lt;</span>address<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>address<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+        <span class="token keyword">function</span> <span class="token function">retSibling</span><span class="token punctuation">(</span>e<span class="token punctuation">,</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>e <span class="token operator">&amp;&amp;</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>nextElementSibling<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        e <span class="token operator">=</span> e<span class="token punctuation">.</span>nextElementSibling<span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                        <span class="token keyword">for</span> <span class="token punctuation">(</span>e <span class="token operator">=</span> e<span class="token punctuation">.</span>nextSibling<span class="token punctuation">;</span> e <span class="token operator">&amp;&amp;</span> e<span class="token punctuation">.</span>nodeType <span class="token operator">!=</span> <span class="token number">1</span><span class="token punctuation">;</span> e <span class="token operator">=</span>
+                            e<span class="token punctuation">.</span>nextSibling<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                    n<span class="token operator">--</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>previousElementSibling<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        e <span class="token operator">=</span> e<span class="token punctuation">.</span>previousElementSibling<span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                        <span class="token keyword">for</span> <span class="token punctuation">(</span>e <span class="token operator">=</span> e<span class="token punctuation">.</span>previousSibling<span class="token punctuation">;</span> e <span class="token operator">&amp;&amp;</span> e<span class="token punctuation">.</span>nodeType <span class="token operator">!=</span> <span class="token number">1</span><span class="token punctuation">;</span> e <span class="token operator">=</span> e<span class="token punctuation">.</span>previousSibling<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                    n<span class="token operator">++</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> e<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">var</span> strong <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"strong"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span></code></pre>
+<h3 id="3、DOM基本操作"><a href="#3、DOM基本操作" class="headerlink" title="3、DOM基本操作"></a>3、DOM基本操作</h3><p>上边讲的所有方法都是查看操作，下边讲其他的几个操作。</p>
 <h4 id="（1）增"><a href="#（1）增" class="headerlink" title="（1）增"></a>（1）增</h4><ul>
 <li>创建元素节点(即创建标签):document.createElement()</li>
 <li>创建文本节点:document.createTextNode()</li>
@@ -732,19 +744,20 @@
 <ul>
 <li>父级.insertBefore(a, b)：父级调用，里边传两个参数，意思是在 b 之前插入 a</li>
 </ul>
-<h4 id="（3）删"><a href="#（3）删" class="headerlink" title="（3）删"></a>（3）删</h4><pre><code>&lt;body&gt;
-    &lt;div&gt;
-        &lt;span&gt;&lt;/span&gt;
-        &lt;strong&gt;&lt;/strong&gt;
-        &lt;i&gt;&lt;/i&gt;
-    &lt;/div&gt;
-    &lt;script type="text/javascript"&gt;
-        var div = document.getElementsByTagName("div")[0];
-        var span = document.getElementsByTagName("span")[0];
-        var strong = document.getElementsByTagName("strong")[0];
-        var i = document.getElementsByTagName("i")[0];
-    &lt;/script&gt;
-&lt;/body&gt;</code></pre><ul>
+<h4 id="（3）删"><a href="#（3）删" class="headerlink" title="（3）删"></a>（3）删</h4><pre class=" language-js"><code class="language-js"><span class="token operator">&lt;</span>body<span class="token operator">></span>
+    <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        <span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+        <span class="token operator">&lt;</span>strong<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>strong<span class="token operator">></span>
+        <span class="token operator">&lt;</span>i<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>i<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+        <span class="token keyword">var</span> div <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> span <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> strong <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"strong"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> i <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"i"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span></code></pre>
+<ul>
 <li>parentNode.removeChild(a) 父级删除自己的子节点<br>div.removeChild(i)后其实是把 i 标签剪切出来了，比如说上边的代码刷新后 var ii = div.removeChild(i)， 你在访问 ii 就是&lt; i&gt;&lt; /i&gt;。</li>
 <li>a.remove()<br>比如上边代码刷新后 i.remove();strong.remove();div 里边就只剩下 span 了，remove 是真正的删除，删掉后就啥都没有了。</li>
 </ul>
@@ -753,50 +766,53 @@
 </ul>
 <h3 id="4、Element-节点的一些属性"><a href="#4、Element-节点的一些属性" class="headerlink" title="4、Element 节点的一些属性"></a>4、Element 节点的一些属性</h3><h4 id="（1）innerHTML"><a href="#（1）innerHTML" class="headerlink" title="（1）innerHTML"></a>（1）innerHTML</h4><p>这个属性可以改变 html 里的内容，这个 innerHTML 取得是 HTML 结构，是可读写的，所以你写进去什么东西他都会识别成 HTML 结构。</p>
 <h4 id="（2）innerText"><a href="#（2）innerText" class="headerlink" title="（2）innerText"></a>（2）innerText</h4><p>这个赋值的话里边的东西就全部被覆盖了，所以在用这个方法的时候需要谨慎， 如果标签底下有其他子标签，最好在赋值的时候不要用这个。<br><em>还有这个 innerText 老 版本的火狐浏览器不兼容，当时火狐有一个属性 textContent 和这个作用是一样的，但是火狐这个方法老版本的 ie 不好使(都是老版本的兼容性问题，现在的新版本不存 在不兼容的)。</em></p>
-<h3 id="5、Element-节点的一些方法"><a href="#5、Element-节点的一些方法" class="headerlink" title="5、Element 节点的一些方法"></a>5、Element 节点的一些方法</h3><pre><code>&lt;body&gt;
-    &lt;div&gt;&lt;/div&gt;
-    &lt;script type="text/javascript"&gt;
-        var div = document.getElementsByTagName("div")[0];
-    &lt;/script&gt;
-&lt;/body&gt;</code></pre><h4 id="（1）元素-setAttribute-添加属性"><a href="#（1）元素-setAttribute-添加属性" class="headerlink" title="（1）元素.setAttribute() 添加属性"></a>（1）元素.setAttribute() 添加属性</h4><p>现在 div.setAttribute(“class”,”demo”)，括号里第一个是属性名，第二个是属性值， 在访问 div 就得到&lt; div class=”demo”&gt;&lt; /div&gt;，继续 div.setAttribute(“id”,”only”)， 在访问 div 就是&lt; div class=”demo” id=”only”&gt;&lt; /div&gt;。</p>
+<h3 id="5、Element-节点的一些方法"><a href="#5、Element-节点的一些方法" class="headerlink" title="5、Element 节点的一些方法"></a>5、Element 节点的一些方法</h3><pre class=" language-js"><code class="language-js"><span class="token operator">&lt;</span>body<span class="token operator">></span>
+    <span class="token operator">&lt;</span>div<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+        <span class="token keyword">var</span> div <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span></code></pre>
+<h4 id="（1）元素-setAttribute-添加属性"><a href="#（1）元素-setAttribute-添加属性" class="headerlink" title="（1）元素.setAttribute() 添加属性"></a>（1）元素.setAttribute() 添加属性</h4><p>现在 div.setAttribute(“class”,”demo”)，括号里第一个是属性名，第二个是属性值， 在访问 div 就得到&lt; div class=”demo”&gt;&lt; /div&gt;，继续 div.setAttribute(“id”,”only”)， 在访问 div 就是&lt; div class=”demo” id=”only”&gt;&lt; /div&gt;。</p>
 <h4 id="（2）元素-getAttribute-查看属性"><a href="#（2）元素-getAttribute-查看属性" class="headerlink" title="（2）元素.getAttribute() 查看属性"></a>（2）元素.getAttribute() 查看属性</h4><p>接着上边的，现在 div.getAttribute(“id”)就得到”only”，div.getAttribute(“class”) 就得到”demo”。<br>有了这些操作，就更灵活了，比如说我在 css 里定义了一个 class 样式，然后可以再 js 里动态的添加 class 属性，让这个样式作用在对应的元素上。</p>
 <p><em>练习题1：封装函数 insertAfter()，功能类似 insertBefore(). 提示:可忽略老版本浏览器，直接在 Element.prototype 上编程。</em></p>
-<pre><code>&lt;body&gt;
-    &lt;div&gt;
-        &lt;span&gt;&lt;/span&gt;
-        &lt;i&gt;&lt;/i&gt;
-        &lt;b&gt;&lt;/b&gt; &lt;strong&gt;&lt;/strong&gt;
-    &lt;/div&gt;
-    &lt;script type="text/javascript"&gt;
-        var div = document.getElementsByTagName("div")[0];
-        var b = document.getElementsByTagName("b")[0];
-        var strong = document.getElementsByTagName("strong")[0];
-        Element.prototype.insertAfter = function (targetNode, afterNode) {
-            var beforeNode = afterNode.nextElementSibling;
-            if (beforeNode == null) {
-                this.appendChild(targetNode);
-            } else {
-                this.insertBefore(targetNode, beforeNode);
-            }
-        }
-        var p = document.createElement("p");
-    &lt;/script&gt;
-&lt;/body&gt;</code></pre><p><em>练习题2：将目标节点的内部节点逆序</em></p>
-<pre><code>&lt;body&gt;
-    &lt;div&gt;
-        &lt;span&gt;&lt;/span&gt; &lt;i&gt;&lt;/i&gt;
-        &lt;b&gt;&lt;/b&gt; &lt;strong&gt;&lt;/strong&gt;
-    &lt;/div&gt;
-    &lt;script type="text/javascript"&gt;
-        var div = document.getElementsByTagName("div")[0];
-        Element.prototype.inversElement = function () {
-            var len = this.children.length;
-            for (var i = len - 1; i &gt;= 0; i--) {
-                this.appendChild(this.children[i]);
-            }
-        }
-    &lt;/script&gt;
-&lt;/body&gt;</code></pre><h1 id="三、获取窗口属性、获取-DOM-尺寸、脚本化-CSS"><a href="#三、获取窗口属性、获取-DOM-尺寸、脚本化-CSS" class="headerlink" title="三、获取窗口属性、获取 DOM 尺寸、脚本化 CSS"></a>三、获取窗口属性、获取 DOM 尺寸、脚本化 CSS</h1><h2 id="1、查看滚动条的滚动距离"><a href="#1、查看滚动条的滚动距离" class="headerlink" title="1、查看滚动条的滚动距离"></a>1、查看滚动条的滚动距离</h2><ul>
+<pre class=" language-js"><code class="language-js"><span class="token operator">&lt;</span>body<span class="token operator">></span>
+    <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        <span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+        <span class="token operator">&lt;</span>i<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>i<span class="token operator">></span>
+        <span class="token operator">&lt;</span>b<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>b<span class="token operator">></span> <span class="token operator">&lt;</span>strong<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>strong<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+        <span class="token keyword">var</span> div <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> b <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"b"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> strong <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"strong"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        Element<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>insertAfter <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>targetNode<span class="token punctuation">,</span> afterNode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">var</span> beforeNode <span class="token operator">=</span> afterNode<span class="token punctuation">.</span>nextElementSibling<span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>beforeNode <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>targetNode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">insertBefore</span><span class="token punctuation">(</span>targetNode<span class="token punctuation">,</span> beforeNode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">var</span> p <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span></code></pre>
+<p><em>练习题2：将目标节点的内部节点逆序</em></p>
+<pre class=" language-js"><code class="language-js"><span class="token operator">&lt;</span>body<span class="token operator">></span>
+    <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        <span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span> <span class="token operator">&lt;</span>i<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>i<span class="token operator">></span>
+        <span class="token operator">&lt;</span>b<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>b<span class="token operator">></span> <span class="token operator">&lt;</span>strong<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>strong<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+        <span class="token keyword">var</span> div <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        Element<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>inversElement <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">var</span> len <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>children<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> len <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>children<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span></code></pre>
+<h1 id="三、获取窗口属性、获取-DOM-尺寸、脚本化-CSS"><a href="#三、获取窗口属性、获取-DOM-尺寸、脚本化-CSS" class="headerlink" title="三、获取窗口属性、获取 DOM 尺寸、脚本化 CSS"></a>三、获取窗口属性、获取 DOM 尺寸、脚本化 CSS</h1><h2 id="1、查看滚动条的滚动距离"><a href="#1、查看滚动条的滚动距离" class="headerlink" title="1、查看滚动条的滚动距离"></a>1、查看滚动条的滚动距离</h2><ul>
 <li><strong>标准方法 : window.pageXOffset window.pageYOffset</strong></li>
 </ul>
 <p>但是以上两种方法 ie8 及 ie8 以下浏览器不兼容，这些浏览器提供了两种方法:</p>
@@ -806,19 +822,20 @@
 </ul>
 <p><em>注意：以上两种方法兼容性比较混乱，就是 ie8 及 ie8 以下的浏览器有的浏览器版本第一个 方法好使，有的版本第二个方法好使，但是任何一个浏览器版本只要一种方法好使， 返回的有值，另一种不好使的方法返回的一定是 0，所以咱们在 ie8 及 ie8 以下的浏览 器不管哪个版本直接把两个值相加就行了。</em></p>
 <p><em>练习题：封装兼容性方法，求滚动条滚动距离 getScrollOffset()</em></p>
-<pre><code>function getScrollOffset() {
-            if (window.pageXOffset) {
-                return {
-                    x: window.pageXOffset,
-                    y: window.pageYOffset
-                }
-            } else {
-                return {
-                    x: document.body.scrollLeft + document.documentElement.scrollLeft,
-                    y: document.body.scrollTop + document.documentElement.scrollTop
-                }
-            }
-        }</code></pre><h2 id="2、查看可视区窗口尺寸"><a href="#2、查看可视区窗口尺寸" class="headerlink" title="2、查看可视区窗口尺寸"></a>2、查看可视区窗口尺寸</h2><p>可视区窗口就是咱们编写的 html 文档能看到的部分，不包括菜单栏、地址栏和控制台。 </p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">getScrollOffset</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>window<span class="token punctuation">.</span>pageXOffset<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token punctuation">{</span>
+                    x<span class="token punctuation">:</span> window<span class="token punctuation">.</span>pageXOffset<span class="token punctuation">,</span>
+                    y<span class="token punctuation">:</span> window<span class="token punctuation">.</span>pageYOffset
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token punctuation">{</span>
+                    x<span class="token punctuation">:</span> document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>scrollLeft <span class="token operator">+</span> document<span class="token punctuation">.</span>documentElement<span class="token punctuation">.</span>scrollLeft<span class="token punctuation">,</span>
+                    y<span class="token punctuation">:</span> document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>scrollTop <span class="token operator">+</span> document<span class="token punctuation">.</span>documentElement<span class="token punctuation">.</span>scrollTop
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span></code></pre>
+<h2 id="2、查看可视区窗口尺寸"><a href="#2、查看可视区窗口尺寸" class="headerlink" title="2、查看可视区窗口尺寸"></a>2、查看可视区窗口尺寸</h2><p>可视区窗口就是咱们编写的 html 文档能看到的部分，不包括菜单栏、地址栏和控制台。 </p>
 <ul>
 <li><strong>标准方法:window.innerWidth window.innerHeight</strong></li>
 </ul>

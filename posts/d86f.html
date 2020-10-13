@@ -517,16 +517,19 @@
 </ul>
 <p>以上属性和方法都需要返回最新的布局信息，因此浏览器不得不清空队列，触发回流重绘来返回正确的值。因此，我们在修改样式的时候，<strong>最好避免使用上面列出的属性，他们都会刷新渲染队列。</strong>如果要使用它们，最好将值缓存起来。</p>
 <h1 id="3、如何减少回流重绘"><a href="#3、如何减少回流重绘" class="headerlink" title="3、如何减少回流重绘"></a>3、如何减少回流重绘</h1><h2 id="1、最小化重绘"><a href="#1、最小化重绘" class="headerlink" title="1、最小化重绘"></a>1、最小化重绘</h2><p>减少对render tree的操作，并减少一些对style信息的请求，合理利用浏览器的优化策略</p>
-<pre><code>const el = document.getElementById('test');
-el.style.padding = '5px';
-el.style.borderLeft = '1px';
-el.style.borderRight = '2px';</code></pre><ul>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> el <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>padding <span class="token operator">=</span> <span class="token string">'5px'</span><span class="token punctuation">;</span>
+el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>borderLeft <span class="token operator">=</span> <span class="token string">'1px'</span><span class="token punctuation">;</span>
+el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>borderRight <span class="token operator">=</span> <span class="token string">'2px'</span><span class="token punctuation">;</span></code></pre>
+<ul>
 <li><p>使用cssText</p>
-<pre><code>const el = document.getElementById('test');
-el.style.cssText += 'border-left: 1px; border-right: 2px; padding: 5px;';</code></pre></li>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> el <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>cssText <span class="token operator">+</span><span class="token operator">=</span> <span class="token string">'border-left: 1px; border-right: 2px; padding: 5px;'</span><span class="token punctuation">;</span></code></pre>
+</li>
 <li><p>修改CSS的classname</p>
-<pre><code>const el = document.getElementById('test');
-el.className += ' active';</code></pre></li>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> el <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+el<span class="token punctuation">.</span>className <span class="token operator">+</span><span class="token operator">=</span> <span class="token string">' active'</span><span class="token punctuation">;</span></code></pre>
+</li>
 </ul>
 <h2 id="2、批量处理DOM"><a href="#2、批量处理DOM" class="headerlink" title="2、批量处理DOM"></a>2、批量处理DOM</h2><p>当我们需要对DOM对一系列修改的时候，可以通过以下步骤减少回流重绘次数：</p>
 <ol>
@@ -542,17 +545,19 @@ el.className += ' active';</code></pre></li>
 <li>将原始元素拷贝到一个脱离文档的节点中，修改节点后，再替换原始的元素。</li>
 </ul>
 <h2 id="3、避免触发同步布局事件"><a href="#3、避免触发同步布局事件" class="headerlink" title="3、避免触发同步布局事件"></a>3、避免触发同步布局事件</h2><p>当我们访问元素的一些属性的时候，会导致浏览器强制清空队列，进行强制同步布局。举个例子，比如说我们想将一个p标签数组的宽度赋值为一个元素的宽度，我们可能写出这样的代码：</p>
-<pre><code>function initP() {
-    for (let i = 0; i &lt; paragraphs.length; i++) {
-        paragraphs[i].style.width = box.offsetWidth + 'px';
-    }
-}</code></pre><p>这段代码看上去是没有什么问题，可是其实会造成很大的性能问题。在每次循环的时候，都读取了box的一个offsetWidth属性值，然后利用它来更新p标签的width属性。这就导致了每一次循环的时候，浏览器都必须先使上一次循环中的样式更新操作生效，才能响应本次循环的样式读取操作。每一次循环都会强制浏览器刷新队列。我们可以优化为:</p>
-<pre><code>const width = box.offsetWidth;
-function initP() {
-    for (let i = 0; i &lt; paragraphs.length; i++) {
-        paragraphs[i].style.width = width + 'px';
-    }
-}</code></pre><h2 id="4、对于复杂动画效果-使用绝对定位让其脱离文档流"><a href="#4、对于复杂动画效果-使用绝对定位让其脱离文档流" class="headerlink" title="4、对于复杂动画效果,使用绝对定位让其脱离文档流"></a>4、对于复杂动画效果,使用绝对定位让其脱离文档流</h2><p>对于复杂动画效果，由于会经常的引起回流重绘，因此，我们可以使用绝对定位，让它脱离文档流。否则会引起父元素以及后续元素频繁的回流。<a href="https://chenjigeng.github.io/example/share/%E9%81%BF%E5%85%8D%E5%9B%9E%E6%B5%81%E9%87%8D%E7%BB%98/%E5%B0%86%E5%A4%8D%E6%9D%82%E5%8A%A8%E7%94%BB%E6%B5%AE%E5%8A%A8%E5%8C%96.html" target="_blank" rel="noopener">例子</a></p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">initP</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> paragraphs<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        paragraphs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>width <span class="token operator">=</span> box<span class="token punctuation">.</span>offsetWidth <span class="token operator">+</span> <span class="token string">'px'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>这段代码看上去是没有什么问题，可是其实会造成很大的性能问题。在每次循环的时候，都读取了box的一个offsetWidth属性值，然后利用它来更新p标签的width属性。这就导致了每一次循环的时候，浏览器都必须先使上一次循环中的样式更新操作生效，才能响应本次循环的样式读取操作。每一次循环都会强制浏览器刷新队列。我们可以优化为:</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> width <span class="token operator">=</span> box<span class="token punctuation">.</span>offsetWidth<span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">initP</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> paragraphs<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        paragraphs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>width <span class="token operator">=</span> width <span class="token operator">+</span> <span class="token string">'px'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="4、对于复杂动画效果-使用绝对定位让其脱离文档流"><a href="#4、对于复杂动画效果-使用绝对定位让其脱离文档流" class="headerlink" title="4、对于复杂动画效果,使用绝对定位让其脱离文档流"></a>4、对于复杂动画效果,使用绝对定位让其脱离文档流</h2><p>对于复杂动画效果，由于会经常的引起回流重绘，因此，我们可以使用绝对定位，让它脱离文档流。否则会引起父元素以及后续元素频繁的回流。<a href="https://chenjigeng.github.io/example/share/%E9%81%BF%E5%85%8D%E5%9B%9E%E6%B5%81%E9%87%8D%E7%BB%98/%E5%B0%86%E5%A4%8D%E6%9D%82%E5%8A%A8%E7%94%BB%E6%B5%AE%E5%8A%A8%E5%8C%96.html" target="_blank" rel="noopener">例子</a></p>
 <h2 id="5、css3硬件加速（GPU加速）"><a href="#5、css3硬件加速（GPU加速）" class="headerlink" title="5、css3硬件加速（GPU加速）"></a>5、css3硬件加速（GPU加速）</h2><p><strong>使用css3硬件加速，可以让transform、opacity、filters这些动画不会引起回流重绘 。但是对于动画的其它属性，比如background-color这些，还是会引起回流重绘的，不过它还是可以提升这些动画的性能。</strong></p>
 <h3 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h3><ul>
 <li>transform</li>
