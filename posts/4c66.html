@@ -478,9 +478,9 @@
 <h2 id="3、两者联系"><a href="#3、两者联系" class="headerlink" title="3、两者联系"></a>3、两者联系</h2><blockquote>
 <p>javacsript是通过访问BOM（Browser Object Model）对象来访问、控制、修改客户端(浏览器)，由于BOM的window包含了document，window对象的属性和方法是直接可以使用而且被感知的，因此可以直接使用window对象的document属性，通过document属性就可以访问、检索、修改XHTML文档内容与结构。因为document对象又是DOM（Document Object Model）模型的根节点。可以说，BOM包含了DOM(对象)，浏览器提供出来给予访问的是BOM对象，从BOM对象再访问到DOM对象，从而js可以操作浏览器以及浏览器读取到的文档</p>
 </blockquote>
-<p>网上抠了两张图（哈哈哈）：<br><img src="https://upload-images.jianshu.io/upload_images/13449852-39f9b7b4e067b980.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/13449852-31e3a659ce246376.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<h1 id="二、DOM基本操作"><a href="#二、DOM基本操作" class="headerlink" title="二、DOM基本操作"></a>二、DOM基本操作</h1><p><img src="https://upload-images.jianshu.io/upload_images/13449852-277a5b0f3ce3694c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"><br>接下来我们来具体学习一下DOM的基本操作</p>
+<p>网上抠了两张图（哈哈哈）：<br><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/BOM%E5%92%8CDOM%E7%BB%93%E6%9E%84%E5%85%B3%E7%B3%BB%E5%9B%BE.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/window%E5%AF%B9%E8%B1%A1%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE.png" alt=""></p>
+<h1 id="二、DOM基本操作"><a href="#二、DOM基本操作" class="headerlink" title="二、DOM基本操作"></a>二、DOM基本操作</h1><p><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/DOM%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E5%AF%BC%E5%9B%BE.png" alt=""><br>接下来我们来具体学习一下DOM的基本操作</p>
 <h2 id="（一）定义"><a href="#（一）定义" class="headerlink" title="（一）定义"></a>（一）定义</h2><p><strong>DOM:Document Object Model</strong>，即文档对象模型。DOM 里边定义了一系列方法，是用 来操作 html 和 xml 功能的一类对象的集合，也有人称 DOM 是 html 和 xml 的标准编程 接口。</p>
 <p><strong>注意:我们所说的改变不了 css 指的是改变不了 css 样式表，但是我们可以改变 HTML 的行间样式，也就是说我们可以通过间接地改变行间样式来改变他</strong></p>
 <h2 id="（二）DOM选择器、节点类型和属性"><a href="#（二）DOM选择器、节点类型和属性" class="headerlink" title="（二）DOM选择器、节点类型和属性"></a>（二）DOM选择器、节点类型和属性</h2><h3 id="1、DOM选择器（方法类操作）"><a href="#1、DOM选择器（方法类操作）" class="headerlink" title="1、DOM选择器（方法类操作）"></a>1、DOM选择器（方法类操作）</h3><h4 id="（1）-document-代表整个文档"><a href="#（1）-document-代表整个文档" class="headerlink" title="（1） document 代表整个文档"></a>（1） document 代表整个文档</h4><p>document 是一个对象，这个对象上边有一些属性和方法，单独的 document 就代表的是整个文档在 js 里的显示形式，我们现在所说的整个文档最顶级的标签看上 去好像是 html 标签，但是如果在 html 标签外边再套一个标签的话，这个标签就是 document，就是说 document 才是真正的代表整个文档，html 只是他下面的一个根标签。</p>
@@ -561,7 +561,7 @@
     return temp;
  }</code></pre><h4 id="（4）attributes-元素节点的属性集合"><a href="#（4）attributes-元素节点的属性集合" class="headerlink" title="（4）attributes 元素节点的属性集合"></a>（4）attributes 元素节点的属性集合</h4><p>这个属性就是访问元素的属性节点的，<br>&lt; div id=”only” class=”demo”&gt;&lt; /div&gt;<br>然后继续把 div 选出来:var div = document.getElementsByTagName(“div”)[0];现 在 div.attributes 就得到 NamedNodeMap{0: id, 1: class, id: id, class: class, length: 2}，<br>访问 div.attributes[0]就得到 id=”only”，<br>访问 div.attributes[1]就 是 class=”demo”。<br>div.attributes[1].nodeType 就得到 2. 你也可以把他的属性名和属性值都取出来，<br>div.attributes[0].name 就得到”id”，<br>div.attributes[0].value 就得到”only”。<br><strong>属性名是只读的，属性值可读可写。</strong></p>
 <h3 id="5、节点的一个方法-Node-hasChildNodes"><a href="#5、节点的一个方法-Node-hasChildNodes" class="headerlink" title="5、节点的一个方法 Node.hasChildNodes()"></a>5、节点的一个方法 Node.hasChildNodes()</h3><p>这个方法就是判断这个<strong>元素</strong>有没有子节点，现在 div.hasChildNodes()就返回 true， 因为空格回车文本也算文本节点，除非&lt; div id=”only” class=”demo”&gt;&lt; /div&gt;的话， 访问 div.hasChildNodes()是 false，中间啥都没有(属性节点不算，他是 div 自己的， 不能算子节点)才能返回 false。</p>
-<h2 id="（三）DOM-继承树及基本操作"><a href="#（三）DOM-继承树及基本操作" class="headerlink" title="（三）DOM 继承树及基本操作"></a>（三）DOM 继承树及基本操作</h2><h3 id="1、DOM继承树"><a href="#1、DOM继承树" class="headerlink" title="1、DOM继承树"></a>1、DOM继承树</h3><p><img src="https://upload-images.jianshu.io/upload_images/13449852-df10314c24f08d6d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<h2 id="（三）DOM-继承树及基本操作"><a href="#（三）DOM-继承树及基本操作" class="headerlink" title="（三）DOM 继承树及基本操作"></a>（三）DOM 继承树及基本操作</h2><h3 id="1、DOM继承树"><a href="#1、DOM继承树" class="headerlink" title="1、DOM继承树"></a>1、DOM继承树</h3><p><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/dom%E7%BB%93%E6%9E%84%E6%A0%91.png" alt=""></p>
 <ul>
 <li>首先我们知道 document 代表的是整个文档，访问就得到#document，但是我访问 Document 就得到ƒ Document() { [native code] }，是一个构造函数。假如说你给 Document 的原型上加一些属 性的话，比如 Document.prototype.abc = “abc”，那么 document 就能继承他的属性， 你访问 document.abc 就得到”abc”，上边的结构树就表示这一系列继承的关系。</li>
 <li>第二个 CharacterData 下边有 Text 和 Comment，这就说明文本节点能用的属性和 方法全部继承自 Text.prototype，注释节点的方法则全部继承自 Comment.prototype， 然后一层一层向上继承。</li>
@@ -832,26 +832,27 @@
 </ul>
 <p><em>怎么区分标准模式和怪异模式?<br>document 上有个属性 compatMode，在标准模式下访问 document.compatMode 得”CSS1Compat”，在怪异模式下访问 document.compatMode 得 “BackCompat”。</em></p>
 <p><em>练习题：封装兼容性方法，返回浏览器视口尺寸 getViewportOffset()</em></p>
-<pre><code>function getViewportOffset() {
-            if (window.innerWidth) {
-                return {
-                    w: window.innerWidth,
-                    h: window.innerHeight
-                }
-            } else {
-                if (document.compatMode === "BackCompat") {
-                    return {
-                        w: document.body.clientWidth,
-                        h: document.body.clientHeight
-                    }
-                } else {
-                    return {
-                        w: document.documentElement.clientWidth,
-                        h: document.documentElement.clientHeight
-                    }
-                }
-            }
-        }</code></pre><h2 id="3、查看元素几何尺寸"><a href="#3、查看元素几何尺寸" class="headerlink" title="3、查看元素几何尺寸"></a>3、查看元素几何尺寸</h2><ul>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">getViewportOffset</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>window<span class="token punctuation">.</span>innerWidth<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token punctuation">{</span>
+                    w<span class="token punctuation">:</span> window<span class="token punctuation">.</span>innerWidth<span class="token punctuation">,</span>
+                    h<span class="token punctuation">:</span> window<span class="token punctuation">.</span>innerHeight
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>document<span class="token punctuation">.</span>compatMode <span class="token operator">===</span> <span class="token string">"BackCompat"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+                        w<span class="token punctuation">:</span> document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>clientWidth<span class="token punctuation">,</span>
+                        h<span class="token punctuation">:</span> document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>clientHeight
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+                        w<span class="token punctuation">:</span> document<span class="token punctuation">.</span>documentElement<span class="token punctuation">.</span>clientWidth<span class="token punctuation">,</span>
+                        h<span class="token punctuation">:</span> document<span class="token punctuation">.</span>documentElement<span class="token punctuation">.</span>clientHeight
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span></code></pre>
+<h2 id="3、查看元素几何尺寸"><a href="#3、查看元素几何尺寸" class="headerlink" title="3、查看元素几何尺寸"></a>3、查看元素几何尺寸</h2><ul>
 <li><strong>dom.getBoundingClientRect()</strong></li>
 </ul>
 <p>返回的是一个对象，对象里边有 left、top、right、bottom 等属性，left 和 top 代表该元素左上角的 X 和 Y 坐标，right 和 buttom 代表元素右下角的 X 和 Y 坐标， 这个方法兼容性很好，但是老版本的 ie 里并没有 height 和 width，所以我们在老版本 的 ie 只能计算来求宽高，而且这个方法返回的结果并不是实时的，比如说我 var box = div. getBoundingClientRect();div.style.width = “200px”，再访问 box 的话里边 的 width 还是 100px，所以他不是实时的。</p>
@@ -869,32 +870,33 @@
 </ul>
 <p>用法都是将 x、y 坐标传入，即实现让滚动条滚动到当前位置。<br><em>window.scroll()和 window.scrollTo()两个方法完全一样，兼容性也一样，比如说 window.scroll(0,100)他就能让 y 方向的滚动条滚动到 100 像素这个位置，你继续 window.scroll(0,100)他是不变的，说明他是让滚动条滚动到当前位置。<br>而 window.scrollBy()是累加滚动当前距离，比如说 window.scrollBy(0,10)他是让滚 动条向下滚动 10 像素，继续 window.scrollBy(0,10)就继续向下滚动 10 像素，继续 window.scrollBy(0,-10)就又向上滚动 10 像素。</em></p>
 <p><em>练习题：模仿手机阅读器，做一个自动阅读的功能</em></p>
-<pre><code>&lt;body&gt;
-    &lt;div
-        style="width:100px;height:100px;background-color:orange;color:#fff;font-si ze:40px;font-weight:bold;text-align:center;line-height:100px;position:fixe d;bottom:200px;right:50px;border-radius: 50%;opacity:0.5;"&gt;
-        start&lt;/div&gt;
-    &lt;div
-        style="width:100px;height:100px;background-color:#0f0;color:#fff;font-size :40px;font-weight:bold;text-align:center;line-height:100px;position:fixed; bottom:50px;right:50px;border-radius: 50%;opacity:0.5;"&gt;
-        stop&lt;/div&gt;
-    &lt;script type="text/javascript"&gt;
-        var start = document.getElementsByTagName("div")[0];
-        var stop = document.getElementsByTagName("div")[1];
-        var timer = 0;
-        var key = true;
-        start.onclick = function () {
-            if (key) {
-                timer = setInterval(function () {
-                    window.scrollBy(0, 10);
-                }, 100)
-            }
-            key = false;
-        }
-        stop.onclick = function () {
-            clearInterval(timer);
-            key = true;
-        }
-    &lt;/script&gt;
-&lt;/body&gt;</code></pre><h2 id="7、脚本化css"><a href="#7、脚本化css" class="headerlink" title="7、脚本化css"></a>7、脚本化css</h2><h3 id="（1）读写元素css属性-dom-style"><a href="#（1）读写元素css属性-dom-style" class="headerlink" title="（1）读写元素css属性 dom.style"></a>（1）读写元素css属性 dom.style</h3><p>任何一个 dom 元素都会有 style 属性，我们在控制台访问 div.style 得到，这个 dom.style 没有任何兼容性问题，但是注意碰到 float 这样的保留字属性，前边 应该加上 css，如 div.style.cssFloat = “right”。还有就是复合属性(如 border) 最好把他拆解开设置，但是现在写在一起也是可以的，最好把他拆解开。</p>
+<pre class=" language-js"><code class="language-js"><span class="token operator">&lt;</span>body<span class="token operator">></span>
+    <span class="token operator">&lt;</span>div
+        style<span class="token operator">=</span><span class="token string">"width:100px;height:100px;background-color:orange;color:#fff;font-si ze:40px;font-weight:bold;text-align:center;line-height:100px;position:fixe d;bottom:200px;right:50px;border-radius: 50%;opacity:0.5;"</span><span class="token operator">></span>
+        start<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span>div
+        style<span class="token operator">=</span><span class="token string">"width:100px;height:100px;background-color:#0f0;color:#fff;font-size :40px;font-weight:bold;text-align:center;line-height:100px;position:fixed; bottom:50px;right:50px;border-radius: 50%;opacity:0.5;"</span><span class="token operator">></span>
+        stop<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+        <span class="token keyword">var</span> start <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> stop <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> timer <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> key <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        start<span class="token punctuation">.</span>onclick <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                timer <span class="token operator">=</span> <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    window<span class="token punctuation">.</span><span class="token function">scrollBy</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+            key <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        stop<span class="token punctuation">.</span>onclick <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">clearInterval</span><span class="token punctuation">(</span>timer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            key <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span></code></pre>
+<h2 id="7、脚本化css"><a href="#7、脚本化css" class="headerlink" title="7、脚本化css"></a>7、脚本化css</h2><h3 id="（1）读写元素css属性-dom-style"><a href="#（1）读写元素css属性-dom-style" class="headerlink" title="（1）读写元素css属性 dom.style"></a>（1）读写元素css属性 dom.style</h3><p>任何一个 dom 元素都会有 style 属性，我们在控制台访问 div.style 得到，这个 dom.style 没有任何兼容性问题，但是注意碰到 float 这样的保留字属性，前边 应该加上 css，如 div.style.cssFloat = “right”。还有就是复合属性(如 border) 最好把他拆解开设置，但是现在写在一起也是可以的，最好把他拆解开。</p>
 <h3 id="（2）查询计算样式"><a href="#（2）查询计算样式" class="headerlink" title="（2）查询计算样式"></a>（2）查询计算样式</h3><ul>
 <li><strong>window.getComputedStyle(dom,null)</strong></li>
 </ul>
@@ -905,27 +907,28 @@
 </ul>
 <p>这个是 ie 独有的属性，他也能返回一个样式表，和 window.getComputedStyle()方法 类似，也是只能读取不能写入，他获取的也是最终展示的那个值，但是他返回的计算 样式的值不是经过转换的绝对值，写啥就展示啥。</p>
 <p><em>练习题：做一个小木块运动。</em></p>
-<pre><code>&lt;body&gt;
-    &lt;div style="width:100px;height:100px;background-color:red;position:absolute;"&gt;&lt;/div&gt;
-    &lt;script type="text/javascript"&gt;
-        function getStyle(elem, prop) {
-            if (window.getComputedStyle) {
-                return window.getComputedStyle(elem, null)[prop];
-            } else {
-                return elem.currentStyle[prop];
-            }
-        }
-        var div = document.getElementsByTagName("div")[0];
-        var speed = 2;
-        var timer = setInterval(function () {
-            speed += speed / 7;
-            div.style.left = parseInt(getStyle(div, "left")) + speed + "px";
-            if (parseInt(getStyle(div, "left")) &gt; 500) {
-                clearInterval(timer);
-            }
-        }, 10)
-    &lt;/script&gt;
-&lt;/body&gt;</code></pre><script>
+<pre class=" language-js"><code class="language-js"><span class="token operator">&lt;</span>body<span class="token operator">></span>
+    <span class="token operator">&lt;</span>div style<span class="token operator">=</span><span class="token string">"width:100px;height:100px;background-color:red;position:absolute;"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+        <span class="token keyword">function</span> <span class="token function">getStyle</span><span class="token punctuation">(</span>elem<span class="token punctuation">,</span> prop<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>window<span class="token punctuation">.</span>getComputedStyle<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> window<span class="token punctuation">.</span><span class="token function">getComputedStyle</span><span class="token punctuation">(</span>elem<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">[</span>prop<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> elem<span class="token punctuation">.</span>currentStyle<span class="token punctuation">[</span>prop<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">var</span> div <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> speed <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> timer <span class="token operator">=</span> <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            speed <span class="token operator">+</span><span class="token operator">=</span> speed <span class="token operator">/</span> <span class="token number">7</span><span class="token punctuation">;</span>
+            div<span class="token punctuation">.</span>style<span class="token punctuation">.</span>left <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token function">getStyle</span><span class="token punctuation">(</span>div<span class="token punctuation">,</span> <span class="token string">"left"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> speed <span class="token operator">+</span> <span class="token string">"px"</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token function">getStyle</span><span class="token punctuation">(</span>div<span class="token punctuation">,</span> <span class="token string">"left"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">500</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token function">clearInterval</span><span class="token punctuation">(</span>timer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span></code></pre>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }

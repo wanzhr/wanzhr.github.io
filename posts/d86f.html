@@ -465,7 +465,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1、浏览器渲染过程"><a href="#1、浏览器渲染过程" class="headerlink" title="1、浏览器渲染过程"></a>1、浏览器渲染过程</h1><p><img src="https://upload-images.jianshu.io/upload_images/13449852-f20879c6852ab9be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+                <h1 id="1、浏览器渲染过程"><a href="#1、浏览器渲染过程" class="headerlink" title="1、浏览器渲染过程"></a>1、浏览器渲染过程</h1><p><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E8%BF%87%E7%A8%8B.png" alt=""></p>
 <p>从上面这个图上，我们可以看到，浏览器渲染过程如下：</p>
 <ul>
 <li>解析HTML，生成DOM树，解析CSS，生成CSSOM树</li>
@@ -475,7 +475,7 @@
 <li>Display:将像素发送给GPU，展示在页面上。（这一步其实还有很多内容，比如会在GPU将多个合成层合并为同一个层，并展示在页面中。而css3硬件加速的原理则是新建合成层，这里我们不展开，之后有机会会写一篇博客）</li>
 </ul>
 <p>渲染过程看起来很简单，让我们来具体了解下每一步具体做了什么。</p>
-<h2 id="生成渲染树"><a href="#生成渲染树" class="headerlink" title="生成渲染树"></a>生成渲染树</h2><p><img src="https://upload-images.jianshu.io/upload_images/13449852-2e3304710432bdd2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<h2 id="生成渲染树"><a href="#生成渲染树" class="headerlink" title="生成渲染树"></a>生成渲染树</h2><p><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/%E6%9E%84%E5%BB%BA%E6%B8%B2%E6%9F%93%E6%A0%91.png" alt=""></p>
 <p>为了构建渲染树，浏览器主要完成了以下工作：</p>
 <ol>
 <li>从DOM树的根节点开始遍历每个可见节点。</li>
@@ -560,7 +560,7 @@ function initP() {
 <li>filters</li>
 <li>Will-change<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3>我们可以先看个<a href="https://chenjigeng.github.io/example/share/%E5%AF%B9%E6%AF%94gpu%E5%8A%A0%E9%80%9F/gpu%E5%8A%A0%E9%80%9F-transform.html" target="_blank" rel="noopener">例子</a>。我通过使用chrome的Performance捕获了一段时间的回流重绘情况，实际结果如下图：</li>
 </ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/13449852-47f19b404eed0417.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"><br>从图中我们可以看出，在动画进行的时候，没有发生任何的回流重绘。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/%E7%A4%BA%E4%BE%8B%E6%88%AA%E5%9B%BE.png" alt=""><br>从图中我们可以看出，在动画进行的时候，没有发生任何的回流重绘。</p>
 <h3 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h3><ul>
 <li>使用css3硬件加速，可以让transform、opacity、filters这些动画不会引起回流重绘</li>
 <li>对于动画的其它属性，比如background-color这些，还是会引起回流重绘的，不过它还是可以提升这些动画的性能。<h3 id="css3硬件加速的坑"><a href="#css3硬件加速的坑" class="headerlink" title="css3硬件加速的坑"></a>css3硬件加速的坑</h3></li>
