@@ -270,14 +270,6 @@ mark {
     opacity: 0.6; /* 此数值即为透明度，范围 0-1 */
 }
 
-@-webkit-keyframes rainbow {
-    /* 动态切换背景颜色. */
- }
- 
-@keyframes rainbow {
-     /* 动态切换背景颜色. */
- }
-
 .text-color {
     color: #0f9d58 !important;
 }
@@ -628,6 +620,7 @@ header .go-back i {
     font-weight: 400;
 }
 
+ /* 动态切换背景颜色. */
 @-webkit-keyframes rainbow {
 
     0%,
