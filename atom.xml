@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wanzhr.github.io/"/>
-  <updated>2020-10-23T07:59:06.298Z</updated>
+  <updated>2020-10-23T08:00:58.345Z</updated>
   <id>https://wanzhr.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://wanzhr.github.io/posts/b62e.html"/>
     <id>https://wanzhr.github.io/posts/b62e.html</id>
     <published>2020-10-23T07:56:17.000Z</published>
-    <updated>2020-10-23T07:59:06.298Z</updated>
+    <updated>2020-10-23T08:00:58.345Z</updated>
     
     <summary type="html">
     
@@ -36,6 +36,8 @@
     </summary>
     
     
+    
+      <category term="JS" scheme="https://wanzhr.github.io/tags/JS/"/>
     
   </entry>
   
