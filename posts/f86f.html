@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="JS基础知识储备-二, HTML,CSS,JavaScript,JQuery,React,Vue.js等">
+    <meta name="keywords" content="JS基础知识储备-八, HTML,CSS,JavaScript,JQuery,React,Vue.js等">
     <meta name="description" content="学习Web,Android,分享生活,分享知识">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>JS基础知识储备-二 | Wanzhr</title>
+    <title>JS基础知识储备-八 | Wanzhr</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -311,12 +311,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">JS基础知识储备-二</h1>
+                    <h1 class="description center-align post-title">JS基础知识储备-八</h1>
                 </div>
             </div>
         </div>
@@ -449,7 +449,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-07-31
+                    2020-12-11
                 </div>
                 
 
@@ -458,14 +458,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    11 分
                 </div>
                 
 
@@ -480,134 +480,202 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一、this"><a href="#一、this" class="headerlink" title="一、this"></a>一、this</h1><h2 id="1、说明"><a href="#1、说明" class="headerlink" title="1、说明"></a>1、说明</h2><p>this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，实际上this的最终指向的是那个调用它的对象</p>
-<h2 id="2、举例"><a href="#2、举例" class="headerlink" title="2、举例"></a>2、举例</h2><pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> test <span class="token operator">=</span> <span class="token punctuation">{</span>
-    a <span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
-    b <span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        a <span class="token punctuation">:</span> <span class="token number">12</span><span class="token punctuation">,</span>
-        fn <span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//12</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-test<span class="token punctuation">.</span>b<span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h2 id="3、解读"><a href="#3、解读" class="headerlink" title="3、解读"></a>3、解读</h2><p>这里同样也是对象test点出来的，但是同样this并没有执行它，那你肯定会说我一开始说的那些不就都是错误的吗？其实也不是，只是一开始说的不准确</p>
+                <h1 id="一、-css字体属性"><a href="#一、-css字体属性" class="headerlink" title="一、 css字体属性"></a>一、 css字体属性</h1><p><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/css%E5%AD%97%E4%BD%93%E5%B1%9E%E6%80%A7.png" alt=""></p>
+<p>浏览器支持情况：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/css%E5%AD%97%E4%BD%93%E5%B1%9E%E6%80%A7%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%AF%E6%8C%81%E6%83%85%E5%86%B5.png" alt=""></p>
+<h1 id="二-、-属性详细说明"><a href="#二-、-属性详细说明" class="headerlink" title="二 、 属性详细说明"></a>二 、 属性详细说明</h1><h2 id="1、font"><a href="#1、font" class="headerlink" title="1、font"></a>1、font</h2><p> font 简写属性在一个声明中设置所有字体属性。</p>
+<p><strong>注释</strong>：此属性也有第六个值：”line-height”，可设置行间距。</p>
+<p><em>说明</em></p>
 <ul>
-<li><p>情况1：如果一个函数中有this，但是它没有被上一级的对象所调用，那么this指向的就是window，这里需要说明的是在js的严格版中this指向的不是window（undefined），但是我们这里不探讨严格版的问题。</p>
+<li>这个简写属性用于一次设置元素字体的两个或更多方面。使用 icon 等关键字可以适当地设置元素的字体，使之与用户计算机环境中的某个方面一致。注意，如果没有使用这些关键词，至少要指定字体大小和字体系列。</li>
+</ul>
+<p>可以按顺序设置如下属性：</p>
+<ul>
+<li>font-style</li>
+<li>font-variant</li>
+<li>font-weight</li>
+<li>font-size/line-height</li>
+<li>font-family</li>
+</ul>
+<h2 id="2、font-style：规定字体样式"><a href="#2、font-style：规定字体样式" class="headerlink" title="2、font-style：规定字体样式"></a>2、font-style：规定字体样式</h2><ul>
+<li>normal    默认值。浏览器显示一个标准的字体样式。</li>
+<li>italic    浏览器会显示一个斜体的字体样式。</li>
+<li>oblique    浏览器会显示一个倾斜的字体样式。</li>
+<li>inherit    规定应该从父元素继承字体样式。（IE不支持）</li>
+</ul>
+<h2 id="3、font-variant-：规定字体异体"><a href="#3、font-variant-：规定字体异体" class="headerlink" title="3、font-variant ：规定字体异体"></a>3、font-variant ：规定字体异体</h2><ul>
+<li>normal    默认值。浏览器会显示一个标准的字体。</li>
+<li>small-caps    浏览器会显示小型大写字母的字体。</li>
+<li>inherit    规定应该从父元素继承 font-variant 属性的值。</li>
+</ul>
+<h2 id="4、font-weight：规定字体粗细"><a href="#4、font-weight：规定字体粗细" class="headerlink" title="4、font-weight：规定字体粗细"></a>4、font-weight：规定字体粗细</h2><ul>
+<li>normal    默认值。定义标准的字符。</li>
+<li>bold    定义粗体字符。</li>
+<li>bolder    定义更粗的字符。</li>
+<li>lighter    定义更细的字符。</li>
+<li>100-900   定义由粗到细的字符。400 等同于 normal，而 700 等同于 bold。</li>
+<li>inherit    规定应该从父元素继承字体的粗细。</li>
+</ul>
+<h2 id="5、font-size：规定字体尺寸"><a href="#5、font-size：规定字体尺寸" class="headerlink" title="5、font-size：规定字体尺寸"></a>5、font-size：规定字体尺寸</h2><ul>
+<li>xx-small，x-small，small，medium，large，x-large，xx-large 把字体的尺寸设置为不同的尺寸，从 xx-small 到 xx-large。默认值：medium。</li>
+<li>smaller    把 font-size 设置为比父元素更小的尺寸。</li>
+<li>larger    把 font-size 设置为比父元素更大的尺寸。</li>
+<li>length    把 font-size 设置为一个固定的值。</li>
+<li>%    把 font-size 设置为基于父元素的一个百分比值。</li>
+<li>inherit    规定应该从父元素继承字体尺寸。</li>
+</ul>
+<h2 id="6-、line-height：规定字体行高"><a href="#6-、line-height：规定字体行高" class="headerlink" title="6 、line-height：规定字体行高"></a>6 、line-height：规定字体行高</h2><ul>
+<li>normal    默认。设置合理的行间距。</li>
+<li>number    设置数字，此数字会与当前的字体尺寸相乘来设置行间距。</li>
+<li>length    设置固定的行间距。</li>
+<li>%    基于当前字体尺寸的百分比行间距。</li>
+<li>inherit    规定应该从父元素继承 line-height 属性的值。</li>
+</ul>
+<h2 id="7、font-family：规定字体系列"><a href="#7、font-family：规定字体系列" class="headerlink" title="7、font-family：规定字体系列"></a>7、font-family：规定字体系列</h2><ul>
+<li>family-name/generic-family 用于某个元素的字体族名称或/及类族名称的一个优先表。默认值：取决于浏览器。</li>
+<li>inherit    规定应该从父元素继承字体系列。</li>
+</ul>
+<h2 id="8、word-spacing：增加或减少单词间的空白（即字间隔）。"><a href="#8、word-spacing：增加或减少单词间的空白（即字间隔）。" class="headerlink" title="8、word-spacing：增加或减少单词间的空白（即字间隔）。"></a>8、word-spacing：增加或减少单词间的空白（即字间隔）。</h2><ul>
+<li>normal  默认，定义单词间的标准空间</li>
+<li>length   定义单词间的固定空间</li>
+<li>inherit  规定应该从父元素继承word-spacing属性的值</li>
+</ul>
+<h2 id="9、word-break：规定自动换行的处理方法"><a href="#9、word-break：规定自动换行的处理方法" class="headerlink" title="9、word-break：规定自动换行的处理方法"></a>9、word-break：规定自动换行的处理方法</h2><ul>
+<li>normal  使用浏览器默认的换行规则</li>
+<li>break-all  允许在单词内换行</li>
+<li>keep-all  只能在半角空格或连字符处换行</li>
+</ul>
+<h2 id="10、letter-spacing：增加或减少字符间的空白（字符间距）"><a href="#10、letter-spacing：增加或减少字符间的空白（字符间距）" class="headerlink" title="10、letter-spacing：增加或减少字符间的空白（字符间距）"></a>10、letter-spacing：增加或减少字符间的空白（字符间距）</h2><ul>
+<li>normal  默认。规定字符间没有额外的空间</li>
+<li>length  定义字符间的固定空间（允许负值）</li>
+<li>inherit  规定应该从父元素继承letter-spacing属性的值</li>
+</ul>
+<h2 id="11、white-space：指定元素内的空白怎样处理"><a href="#11、white-space：指定元素内的空白怎样处理" class="headerlink" title="11、white-space：指定元素内的空白怎样处理"></a>11、white-space：指定元素内的空白怎样处理</h2><ul>
+<li>normal  默认。空白会被浏览器忽略</li>
+<li>pre  空白会被浏览器保留，其行为方式类似Html中的&lt; pre&gt;标签</li>
+<li>nowrap  文本不会换行，文本会在同一行上继续，直到遇到&lt; br&gt;标签为止</li>
+<li>pre-wrap 保留空白字符序列，但是正常的进行换行</li>
+<li>pre-line  合并空白字符序列，但是保留换行符</li>
+<li>inherit  规定应该从父元素继承white-space属性的值</li>
+</ul>
+<h2 id="8、其他"><a href="#8、其他" class="headerlink" title="8、其他"></a>8、其他</h2><ul>
+<li>caption  定义被标题控件（比如按钮、下拉列表等）使用的字体。 </li>
+<li>icon  定义被图标标记使用的字体。 </li>
+<li>menu  定义被下拉列表使用的字体。 </li>
+<li>message-box  定义被对话框使用的字体。 </li>
+<li>small-caption  caption 字体的小型版本。 </li>
+<li>status-bar  定义被窗口状态栏使用的字体。 </li>
+</ul>
+<h1 id="三、font-size相关内容"><a href="#三、font-size相关内容" class="headerlink" title="三、font-size相关内容"></a>三、font-size相关内容</h1><h2 id="1、font-size和line-height"><a href="#1、font-size和line-height" class="headerlink" title="1、font-size和line-height"></a>1、font-size和line-height</h2><p><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/font-size%E5%92%8Cline-height.png" alt=""></p>
+<p><strong>4种box</strong></p>
+<p>要说的4种盒子分别是inline box、line box、content area、containing box </p>
+<ul>
+<li><p>inline box (行内框) 每个行内元素会生成一个行内框，行内框是一个浏览器渲染模型中的一个概念，无法显示出来，行内框的高度等于font-size，设定line-height时，行内框的高度不变，改变的是行距。</p>
 </li>
-<li><p>情况2：如果一个函数中有this，这个函数有被上一级的对象所调用，那么this指向的就是上一级的对象。</p>
+<li><p>line box （行框） 行框是指本行的一个虚拟的矩形框，由该行中行内框组成。行框也是浏览器渲染模式中的一个概念，无法显示出来。行框高度等于本行中所有行内框高度的最大值。当有多行内容时，每一行都有自己的行框。</p>
 </li>
-<li><p>情况3：如果一个函数中有this，这个函数中包含多个对象，尽管这个函数是被最外层的对象所调用，this指向的也只是它上一级的对象。</p>
+<li><p>content area （内容区） 内容区是围绕着文字的一种box，无法显示出来，其高度取决于font-size和padding。内容区的高度 = font-size + padding-top + padding-bottom</p>
+</li>
+<li><p>containing box containing box 是包裹着上述三种box的box</p>
 </li>
 </ul>
-<h2 id="4、例题解析"><a href="#4、例题解析" class="headerlink" title="4、例题解析"></a>4、例题解析</h2><pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> test <span class="token operator">=</span> <span class="token punctuation">{</span>
-    a<span class="token punctuation">:</span><span class="token number">10</span><span class="token punctuation">,</span>
-    b<span class="token punctuation">:</span><span class="token punctuation">{</span>
-        a<span class="token punctuation">:</span><span class="token number">12</span><span class="token punctuation">,</span>
-        fn<span class="token punctuation">:</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//undefined</span>
-            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//window</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
+<p><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/4%E4%B8%AAbox.png" alt=""></p>
+<h2 id="2、font-size和vertical-align"><a href="#2、font-size和vertical-align" class="headerlink" title="2、font-size和vertical-align"></a>2、font-size和vertical-align</h2><h3 id="（1）vertical-align可能的值："><a href="#（1）vertical-align可能的值：" class="headerlink" title="（1）vertical-align可能的值："></a>（1）vertical-align可能的值：</h3><ul>
+<li>baseline    默认。元素放置在父元素的基线上。</li>
+<li>sub    垂直对齐文本的下标。</li>
+<li>super    垂直对齐文本的上标</li>
+<li>top    把元素的顶端与行中最高元素的顶端对齐</li>
+<li>text-top    把元素的顶端与父元素字体的顶端对齐</li>
+<li>middle    把此元素放置在父元素的中部。</li>
+<li>bottom    把元素的顶端与行中最低的元素的顶端对齐。</li>
+<li>text-bottom    把元素的底端与父元素字体的底端对齐。</li>
+<li>length     </li>
+<li>%    使用 “line-height” 属性的百分比值来排列此元素。允许使用负值。</li>
+<li>inherit    规定应该从父元素继承 vertical-align 属性的值。</li>
+</ul>
+<p><em>vertical-align 属性，它也是计算 line-box 高度的重要因素之一。我们甚至可以说 vertical-align 是内联格式化上下文（IFC）中最重要的属性。</em></p>
+<h3 id="（2）字体的相关高度计算"><a href="#（2）字体的相关高度计算" class="headerlink" title="（2）字体的相关高度计算"></a>（2）字体的相关高度计算</h3><ul>
+<li>一款字体会定义一个 <a href="https://link.zhihu.com/?target=http%3A//designwithfontforge.com/zh-CN/The_EM_Square.html">em-square</a>，它是用来盛放字符的金属容器。这个 em-square 一般被设定为宽高均为 1000 相对单位，不过也可以是 1024、2048 相对单位。</li>
+<li>字体度量都是基于这个相对单位设置的，包括 ascender、descender、capital height、x-height 等。注意这里面的值是允许相对于 em-square 出血（bleed outside）的（译者注：大概可以理解为超出 em-square）</li>
+<li>在浏览器中，上面的 1000 相对单位会按照你需要的 font-size 缩放。</li>
+<li>em-square 是 1000</li>
+<li>ascender 是 1100，descender 是 540。通过测试发现，macOS 上的浏览器使用了 HHead Ascent 和 HHead Descent 值，Windows 上的浏览器使用了 Win Ascent 和 Win Descent（而且两个平台上的值不一样）。我们还看到 Capital Height 是 680，X height 是 485。<br><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/%E8%AE%A1%E7%AE%97%E5%AD%97%E4%BD%93%E9%AB%98%E5%BA%A6.png" alt=""></li>
+</ul>
+<p>这意味着 Catamaran 字体占据了 1100 + 540 个相对单位，尽管它的 em-square 只有 1000 个相对单位，所以当我们设置 font-size:100px 时，这个字体里的文字高度是 164px。<strong>这个计算出来的高度决定了 HTML 元素的 content-area（内容区域）</strong>你可以认为 content-area 就是 background 作用的区域。</p>
+<h3 id="（3）line-box计算"><a href="#（3）line-box计算" class="headerlink" title="（3）line-box计算"></a>（3）line-box计算</h3><ul>
+<li>对于内联元素，padding 和 border 会增大 background 区域，但是不会增大 content-area（不是 line-box 的高度）。一般来说你无法再屏幕上看到 content-area。margin-top 和 margin-bottom 对两者都没有影响。</li>
+<li>对于可替换内联元素（replaced inline elements）、inline-block 元素和 blockified 内联元素，padding、margin 和 border 会增大 height（译者注：注意 margin），因此会影响 content-area 和 line-box 的高度</li>
+</ul>
+<h3 id="（4）vertical-align"><a href="#（4）vertical-align" class="headerlink" title="（4）vertical-align"></a>（4）vertical-align</h3><p>它的默认值是 baseline。还记得字体度量里的 ascender 和 descender 吗？这两个值决定了 baseline 的位置。很少有字体的 ascender 和 descender 的比例是一比一的，所以我们经常看到一些意想不到的现象。</p>
+<pre class=" language-js"><code class="language-js"><span class="token operator">&lt;</span>p<span class="token operator">></span>
+    <span class="token operator">&lt;</span>span<span class="token operator">></span>Ba<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+    <span class="token operator">&lt;</span>span<span class="token operator">></span>Ba<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span>
+
+p <span class="token punctuation">{</span>
+    font<span class="token operator">-</span>family<span class="token punctuation">:</span> Catamaran<span class="token punctuation">;</span>
+    font<span class="token operator">-</span>size<span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    line<span class="token operator">-</span>height<span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-<span class="token keyword">var</span> j <span class="token operator">=</span> test<span class="token punctuation">.</span>b<span class="token punctuation">.</span>fn<span class="token punctuation">;</span>
-<span class="token function">j</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>this永远指向的是最后调用它的对象，也就是看它执行的时候是谁调用的，例子4中虽然函数fn是被对象b所引用，但是在将fn赋值给变量j的时候并没有执行所以最终指向的是window。</p>
-<h2 id="5、当this遇到return"><a href="#5、当this遇到return" class="headerlink" title="5、当this遇到return"></a>5、当this遇到return</h2><pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  
-<span class="token punctuation">{</span>  
-    <span class="token keyword">this</span><span class="token punctuation">.</span>user <span class="token operator">=</span> <span class="token string">'蜡笔小清新'</span><span class="token punctuation">;</span>  
-    <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">fn</span><span class="token punctuation">;</span>  
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//undefined</span></code></pre>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  
-<span class="token punctuation">{</span>  
-    <span class="token keyword">this</span><span class="token punctuation">.</span>user <span class="token operator">=</span> <span class="token string">'蜡笔小清新'</span><span class="token punctuation">;</span>  
-    <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">fn</span><span class="token punctuation">;</span>  
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//蜡笔小清新</span></code></pre>
-<p>如果返回值是一个对象（除了null,undefined），那么this指向的就是那个返回的对象，如果返回值不是一个对象那么this还是指向函数的实例。</p>
-<h1 id="二、call-apply"><a href="#二、call-apply" class="headerlink" title="二、call/apply"></a>二、call/apply</h1><h2 id="1、说明-1"><a href="#1、说明-1" class="headerlink" title="1、说明"></a>1、说明</h2><ul>
-<li>两者都可以改变this指向<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">{</span>
-  user<span class="token punctuation">:</span><span class="token string">"蜡笔小清新"</span><span class="token punctuation">,</span>
-  fn<span class="token punctuation">:</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//蜡笔小清新</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> b <span class="token operator">=</span> a<span class="token punctuation">.</span>fn<span class="token punctuation">;</span>
-b<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+span<span class="token punctuation">:</span>last<span class="token operator">-</span>child <span class="token punctuation">{</span>
+    font<span class="token operator">-</span>size<span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>我们会发现一个非常奇怪的现象，line-box 的高度变高了！如下图所示。提示你一下，line-box 的高度是从子元素的最高点到最低点。<br><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/line-box%20%E7%9A%84%E9%AB%98%E5%BA%A6%E5%8F%98%E9%AB%98.png" alt=""></p>
+<p>用 baseline 来对齐令人费解，如果我们用 vertical-align: middle，middle 的意思是「用父元素 baseline 高度加上父元素中 x-height 的一半的高度来对齐当前元素的垂直方向的中点」。baseline 所处的高度跟字体有关，x-height 的高度也跟字体有关，所以 middle 对齐也不靠谱。更糟糕的是，一般来说，middle 根本就不是居中对齐！内联元素的对齐受太多因素影响，因此不可能用 CSS 实现。</p>
+<p>vertical-align 的其他 4 个值</p>
+<ul>
+<li>vertical-align: top / bottom，表示与 line-box 的顶部或底部对齐</li>
+<li>vertical-align: text-top / text-bottom，表示与 content-area 的顶部或底部对齐</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/%E5%85%B6%E4%BB%96%E5%9B%9B%E4%B8%AA%E5%80%BC%E4%BD%8D%E7%BD%AE%E5%B1%95%E7%A4%BA.png" alt=""></p>
+<p>不过你依然要小心，大部分情况下，对齐的是 line-height ，也就是一个不可见的高度。看看下面这个用 vertical-align:top 的例子：<br><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/vertical-align-top%20%E7%9A%84%E4%BE%8B%E5%AD%90.png" alt=""></p>
+<ul>
+<li>所有的内联元素都有两个高度：基于字体度量的 content-area，line-height ，这两个高度你都无法看到</li>
+<li>line-height: normal 是基于字体度量计算出来的</li>
+<li>line-height: n (n=1,2,3…) 可能得出一个比line-height 还要矮的 content-area</li>
+<li>vertical-align 不靠谱</li>
+<li>line-box 的高度的受其子元素的 line-height 和 vertical-align 的影响</li>
+<li>我们无法轻易的用 CSS 来控制字体度量</li>
+</ul>
+<h2 id="3、font-size和ex、em、rem"><a href="#3、font-size和ex、em、rem" class="headerlink" title="3、font-size和ex、em、rem"></a>3、font-size和ex、em、rem</h2><p><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/css%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E5%B0%BA%E5%AF%B8.png" alt=""></p>
+<ul>
+<li>px像素（Pixel）。相对长度单位。像素px是相对于显示器屏幕分辨率而言的。(引自CSS2.0手册)</li>
+<li>em是相对长度单位。相对于当前对象内文本的字体尺寸。如当前对行内文本的字体尺寸未被人为设置，则相对于浏览器的默认字体尺寸。(引自CSS2.0手册)</li>
+</ul>
+<p><em>任意浏览器的默认字体高都是16px。所有未经调整的浏览器都符合: 1em=16px。那么12px=0.75em,10px=0.625em。为了简化font-size的换算，需要在css中的body选择器中声明Font-size=62.5%，这就使em值变为 16px*62.5%=10px, 这样12px=1.2em, 10px=1em, 也就是说只需要将你的原来的px数值除以10，然后换上em作为单位就行了。</em></p>
+<p><strong>px特点</strong></p>
+<ol>
+<li>IE无法调整那些使用px作为单位的字体大小；</li>
+<li>国外的大部分网站能够调整的原因在于其使用了em或rem作为字体单位；</li>
+<li>Firefox能够调整px和em。</li>
+</ol>
+<p><strong>em特点</strong></p>
+<ol>
+<li>em的值并不是固定的；</li>
+<li>em会继承父级元素的字体大小。</li>
+</ol>
+<p><strong>rem特点</strong></p>
+<p> rem是<a href="http://www.html5cn.org/portal.php?mod=list&amp;catid=16" target="_blank" rel="noopener">CSS3</a>新增的一个相对单位（root em，根em），这个单位引起了广泛关注。这个单位与em有什么区别呢？区别在于使用rem为元素设定字体大小时，仍然是相对大小，但相对的只是HTML根元素。这个单位可谓集相对大小和绝对大小的优点于一身，通过它既可以做到只修改根元素就成比例地调整所有字体大小，又可以避免字体大小逐层复合的连锁反应。目前，除了IE8及更早版本外，所有浏览器均已支持rem。对于不支持它的浏览器，应对方法也很简单，就是多写一个绝对单位的声明。这些浏览器会忽略用rem设定的字体大小。</p>
+<h1 id="四、font-face及图标字体"><a href="#四、font-face及图标字体" class="headerlink" title="四、font face及图标字体"></a>四、font face及图标字体</h1><ul>
+<li>iconfont <a href="https://www.iconfont.cn/" target="_blank" rel="noopener">官网</a><br><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/iconfont.png" alt=""></li>
+</ul>
+<ul>
+<li><p>Font Awesome <a href="https://fontawesome.dashgame.com/" target="_blank" rel="noopener">官网</a><br><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/Font%20Awesome.png" alt=""></p>
 </li>
-<li>任何一个方法都可以.call，其实方法的执行就是方法.call 执行，例如test() 就相当于 test.call()<pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>’蜡笔小清新‘<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//蜡笔小清新</span>
-<span class="token punctuation">}</span>
-test<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h2 id="2、用法"><a href="#2、用法" class="headerlink" title="2、用法"></a>2、用法</h2><pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span>age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
-<span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-Person<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<li><p>icomoon：<a href="https://icomoon.io/" target="_blank" rel="noopener">官网</a><br><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/IcoMoon.png" alt=""></p>
 </li>
-<li>call 后边的括号里是可以传东西的，比如传一个 obj 进去，他就会引导着 Person 发生 很大的变化。如果在 Person 底下 new 的话，this 就代表了构造函数所 产生的对象，我们假如说没有new的话，this默认是指向window的，但是我们在call 里传 obj 了，那么这个 this 就不是默认的了，就变成 obj 了，就是 call 里边传谁进 去，this 就是谁。等于说里边现在执行的时候就是 obj.name = name，obj.age = age， 即使是这样，依然可以传参:<br>Person.call(obj,’小万’,20);<br>现在访问 obj 就得到{name: “小万”, age: 20},因为 call 括号里的第一位会改变 this 指向，第一位以后都会当成正常的实参传到形参里边去（null就指向window），所以这里边第二个实参对应 的是函数执行的第一位形参，第三个实参对应的是函数执行的第二位形参。所以 call 的根本原因是改变 this 指向，借用 Person 的执行封装了 obj，借用你的方法来实现我 的功能。<h2 id="3、示例"><a href="#3、示例" class="headerlink" title="3、示例"></a>3、示例</h2></li>
+<li><p>glyphicons：<a href="https://v3.bootcss.com/components/" target="_blank" rel="noopener">官网</a><br><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/Glyphicons.png" alt=""></p>
+</li>
+<li><p>weather icons：<a href="http://erikflowers.github.io/weather-icons/" target="_blank" rel="noopener">官网</a><br><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/weather-icons.png" alt=""></p>
+</li>
+<li><p>lonicons：<a href="https://ionicons.com/" target="_blank" rel="noopener">官网</a><br><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/Ionicons.png" alt=""></p>
+</li>
+<li><p>themify icon：<a href="https://themify.me/themify-icons" target="_blank" rel="noopener">官网</a><br><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/themify-icons.png" alt=""></p>
+</li>
+<li><p>material design iconic：<a href="http://zavoloklom.github.io/material-design-iconic-font/index.html" target="_blank" rel="noopener">官网</a><br><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/material-design-iconic-font.png" alt=""></p>
+</li>
 </ul>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">Wheel</span><span class="token punctuation">(</span>wheelSize<span class="token punctuation">,</span> style<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>wheelSize <span class="token operator">=</span> wheelSize<span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>style <span class="token operator">=</span> style<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">function</span> <span class="token function">Sit</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> sitColor<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>c <span class="token operator">=</span> c<span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>sitColor <span class="token operator">=</span> sitColor<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">function</span> <span class="token function">Model</span><span class="token punctuation">(</span>height<span class="token punctuation">,</span> width<span class="token punctuation">,</span> len<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>height <span class="token operator">=</span> height<span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>width <span class="token operator">=</span> width<span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>len <span class="token operator">=</span> len<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">function</span> <span class="token function">Car</span><span class="token punctuation">(</span>wheelSize<span class="token punctuation">,</span> style<span class="token punctuation">,</span> c<span class="token punctuation">,</span> sitColor<span class="token punctuation">,</span> height<span class="token punctuation">,</span> width<span class="token punctuation">,</span> len<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    Wheel<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> wheelSize<span class="token punctuation">,</span> style<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Sit<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> c<span class="token punctuation">,</span> sitColor<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Model<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> height<span class="token punctuation">,</span> width<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> car <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Car</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token string">"魂动之恶魔之眼"</span><span class="token punctuation">,</span> <span class="token string">"织物"</span><span class="token punctuation">,</span> <span class="token string">"white"</span><span class="token punctuation">,</span> <span class="token number">1800</span><span class="token punctuation">,</span> <span class="token number">1900</span><span class="token punctuation">,</span> <span class="token number">4900</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h2 id="4、apply"><a href="#4、apply" class="headerlink" title="4、apply"></a>4、apply</h2><ul>
-<li>call 和 apply 基本上是一样的，只是写法不一样，call 需要把实参一个个传进去，但 是 apply 只能传一个值 arguments，即实参列表</li>
-</ul>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">,</span> sex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>sex <span class="token operator">=</span> sex<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">function</span> <span class="token function">Student</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">,</span> sex<span class="token punctuation">,</span> tel<span class="token punctuation">,</span> grade<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    Person<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>name<span class="token punctuation">,</span> age<span class="token punctuation">,</span> sex<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>tel <span class="token operator">=</span> tel<span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>grade <span class="token operator">=</span> grade<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> student <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token string">'小万'</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token string">'male'</span><span class="token punctuation">,</span> <span class="token number">187</span><span class="token punctuation">,</span> <span class="token number">2017</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h1 id="三、bind"><a href="#三、bind" class="headerlink" title="三、bind"></a>三、bind</h1><h2 id="1、区别"><a href="#1、区别" class="headerlink" title="1、区别"></a>1、区别</h2><ul>
-<li>bind和call、apply方法不同，实际上bind方法返回的是一个修改过后的函数。(可以通过call和apply方法来实现bind)</li>
-</ul>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">{</span>
-    user<span class="token punctuation">:</span><span class="token string">"蜡笔小清新"</span><span class="token punctuation">,</span>
-    fn<span class="token punctuation">:</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//蜡笔小清新</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> b <span class="token operator">=</span> a<span class="token punctuation">.</span>fn<span class="token punctuation">;</span>
-<span class="token keyword">var</span> c <span class="token operator">=</span> b<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">c</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h2 id="2、传参"><a href="#2、传参" class="headerlink" title="2、传参"></a>2、传参</h2><ul>
-<li>同样bind也可以有多个参数，并且参数可以执行的时候再次添加，但是要注意的是，参数是按照形参的顺序进行的。如果传值是对象，返回的是对象的实例。</li>
-</ul>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">{</span>
-    user<span class="token punctuation">:</span><span class="token string">"蜡笔小清新"</span><span class="token punctuation">,</span>
-    fn<span class="token punctuation">:</span><span class="token keyword">function</span><span class="token punctuation">(</span>e<span class="token punctuation">,</span>d<span class="token punctuation">,</span>f<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//蜡笔小清新</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">,</span>d<span class="token punctuation">,</span>f<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//10 1 2</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> b <span class="token operator">=</span> a<span class="token punctuation">.</span>fn<span class="token punctuation">;</span>
-<span class="token keyword">var</span> c <span class="token operator">=</span> b<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">c</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -651,7 +719,7 @@ Person<span class="token punctuation">.</span><span class="token function">call<
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://wanzhr.github.io/posts/7dc8.html">https://wanzhr.github.io/posts/7dc8.html</a>
+                    <a href="https://wanzhr.github.io/posts/f86f.html">https://wanzhr.github.io/posts/f86f.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -861,7 +929,7 @@ Person<span class="token punctuation">.</span><span class="token function">call<
         repo: 'wanzhr.github.io',
         owner: 'wanzhr',
         admin: "wanzhr",
-        id: '2020-07-31T13-29-13',
+        id: '2020-12-11T15-43-28',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -885,30 +953,37 @@ Person<span class="token punctuation">.</span><span class="token function">call<
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/posts/b1ae.html">
+                <a href="/posts/f86f.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="JS基础知识储备-三">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="JS基础知识储备-八">
                         
-                        <span class="card-title">JS基础知识储备-三</span>
+                        <span class="card-title">JS基础知识储备-八</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一、异步编程1、异步的概念异步（Asynchronous, async）是与同步（Synchronous, sync）相对的概念。
-在我们学习的传统单线程编程中，程序的运行是同步的（同步不意味着所有步骤同时运行，而是指步骤在一个控制流序列中
+                            一、 css字体属性
+浏览器支持情况：
+
+二 、 属性详细说明1、font font 简写属性在一个声明中设置所有字体属性。
+注释：此属性也有第六个值：”line-height”，可设置行间距。
+说明
+
+这个简写属性用于一次设置元素字体的两
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-24
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-11
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -917,6 +992,7 @@ Person<span class="token punctuation">.</span><span class="token function">call<
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -935,24 +1011,25 @@ Person<span class="token punctuation">.</span><span class="token function">call<
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/323b.html">
+                <a href="/posts/b62e.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="JS基础知识储备-一">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="JS基础知识储备-七">
                         
-                        <span class="card-title">JS基础知识储备-一</span>
+                        <span class="card-title">JS基础知识储备-七</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一、预编译1、预编译前奏JavaScript执行三部曲：我们知道，JS是解释性语言，解释一行执行一行，但是在解释执行之前，他会进行两个过程，语法分析和预编译，语法分析就是他会把正片JS代码扫描一遍，看看有没有语法错误，接下来进行的就预编译。
+                            一、概述1、介绍“JavaScript是单线程的”这一说法它事实上描述了JavaScript环境在浏览器内的一般行为。
+这样的单线程范例本身是有局限的，因为它妨碍了在语言中其他可行的编程模式，否则可将工作委托给独立的线程或进程。JavaSc
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-23
                             </span>
                         <span class="publish-author">
                             
