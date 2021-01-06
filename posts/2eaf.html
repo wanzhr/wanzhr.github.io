@@ -458,14 +458,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.2k
+                    5.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    23 分
                 </div>
                 
 
@@ -480,18 +480,18 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一、透明度"><a href="#一、透明度" class="headerlink" title="一、透明度"></a>一、透明度</h1><h2 id="1、transparent"><a href="#1、transparent" class="headerlink" title="1、transparent"></a>1、transparent</h2><h3 id="（1）、css中的定义：设置背景为透明"><a href="#（1）、css中的定义：设置背景为透明" class="headerlink" title="（1）、css中的定义：设置背景为透明"></a>（1）、css中的定义：设置背景为透明</h3><pre><code>background:transparent</code></pre><p>实际上background默认的颜色就是透明的属性，其使用场景：</p>
+                <h1 id="一、透明度"><a href="#一、透明度" class="headerlink" title="一、透明度"></a>一、透明度</h1><h2 id="1、transparent"><a href="#1、transparent" class="headerlink" title="1、transparent"></a>1、transparent</h2><h3 id="（1）css中的定义：设置背景为透明"><a href="#（1）css中的定义：设置背景为透明" class="headerlink" title="（1）css中的定义：设置背景为透明"></a>（1）css中的定义：设置背景为透明</h3><pre><code>background:transparent</code></pre><p>实际上background默认的颜色就是透明的属性，其使用场景：</p>
 <ul>
 <li>当一个元素覆盖在另外一个元素之上，而你想显示下面的元素，这时你就需要把上面这个元素的background设置为transparent</li>
 </ul>
-<h3 id="（2）、transparent属性在不同css版本下的使用："><a href="#（2）、transparent属性在不同css版本下的使用：" class="headerlink" title="（2）、transparent属性在不同css版本下的使用："></a>（2）、transparent属性在不同css版本下的使用：</h3><ul>
+<h3 id="（2）transparent属性在不同css版本下的使用："><a href="#（2）transparent属性在不同css版本下的使用：" class="headerlink" title="（2）transparent属性在不同css版本下的使用："></a>（2）transparent属性在不同css版本下的使用：</h3><ul>
 <li>在css1中，transparent被用来作为background-color的一个参数值，用于表示背景透明。</li>
 <li>在css2中，border-color也开始接受transparent作为参数值，《Open eBook(tm) Publication Structure 1.0.1》[OEB101]延伸到color也接受transparent作为参数值。</li>
 <li>在css3中，transparent被延伸到任何一个有color值的属性上。</li>
 </ul>
 <p><strong>浏览器兼容</strong><br><img src="https://cdn.jsdelivr.net/gh/wanzhr/imgs/images/transparent%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9.png" alt=""></p>
 <p><em>border-color和color属性不支持transparent</em></p>
-<h3 id="（3）、画一个直角三角形"><a href="#（3）、画一个直角三角形" class="headerlink" title="（3）、画一个直角三角形"></a>（3）、画一个直角三角形</h3><pre><code>div {
+<h3 id="（3）画一个直角三角形"><a href="#（3）画一个直角三角形" class="headerlink" title="（3）画一个直角三角形"></a>（3）画一个直角三角形</h3><pre><code>div {
     width: 0;
     height: 0;
     border: 200px solid rgb(223, 19, 32);
@@ -535,6 +535,142 @@
 <h2 id="4、HSLA模式"><a href="#4、HSLA模式" class="headerlink" title="4、HSLA模式"></a>4、HSLA模式</h2><p>HSLA模式是HSL的扩展模式，在HSL的基础上增加一个透明通道alpha来设置透明度</p>
 <p><em>[注意]IE8-浏览器不支持</em></p>
 <p><a href="https://www.cnblogs.com/xiaohuochai/p/5204448.html#anchor6" target="_blank" rel="noopener">参考链接</a></p>
+<h2 id="5、相互转化"><a href="#5、相互转化" class="headerlink" title="5、相互转化"></a>5、相互转化</h2><ul>
+<li>RGB转化为HEX</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">/**
+ * @description rgb转化为hex
+ * @param {Number} R 色相 [0,360)
+ * @param {Number} G 饱和度 [0,1]
+ * @param {Number} B 亮度 [0,1]
+ */</span>
+<span class="token keyword">function</span> RGB2HEX <span class="token punctuation">(</span>R <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> G <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> B <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// const bg = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/)</span>
+  <span class="token keyword">function</span> hex <span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token string">"0"</span> <span class="token operator">+</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token string">"#"</span> <span class="token operator">+</span> <span class="token function">hex</span><span class="token punctuation">(</span>R<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">hex</span><span class="token punctuation">(</span>G<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">hex</span><span class="token punctuation">(</span>B<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<ul>
+<li>HEX转化为RGB</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">/**
+ * @description hex转化为rgb
+ * @param {String} hex 16进制颜色字符串
+ * @param {Boolean} stringMode 是否返回字符串模式
+ */</span>
+<span class="token keyword">function</span> HEX2RGB <span class="token punctuation">(</span>hex<span class="token punctuation">,</span> stringMode <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> shorthandRegex <span class="token operator">=</span> <span class="token regex">/^#?([a-f\d])([a-f\d])([a-f\d])$/i</span>
+  hex <span class="token operator">=</span> hex<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>shorthandRegex<span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>m<span class="token punctuation">,</span> r<span class="token punctuation">,</span> g<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> r <span class="token operator">+</span> r <span class="token operator">+</span> g <span class="token operator">+</span> g <span class="token operator">+</span> b <span class="token operator">+</span> b
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token regex">/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>hex<span class="token punctuation">)</span>
+  <span class="token keyword">const</span> R <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>result<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> G <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>result<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> B <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>result<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>stringMode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> result <span class="token operator">?</span> <span class="token string">'rgb('</span> <span class="token operator">+</span> <span class="token punctuation">[</span>
+        R<span class="token punctuation">,</span>
+        G<span class="token punctuation">,</span>
+        B
+      <span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">','</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">')'</span> <span class="token punctuation">:</span> hex
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token punctuation">[</span>R<span class="token punctuation">,</span> G<span class="token punctuation">,</span> B<span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre>
+<ul>
+<li>HSL转化为RGB</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">/**
+ * @description hsl转化为rgb
+ * @param {Number} R [0,255]
+ * @param {Number} G [0,255]
+ * @param {Number} B [0,255]
+ * @param {Boolean} stringMode 是否返回字符串模式
+ */</span>
+<span class="token keyword">function</span> <span class="token function">HSL2RGB</span><span class="token punctuation">(</span>H <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> S <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> L <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> stringMode <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> C <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> Math<span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">*</span> L <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> S
+  <span class="token keyword">const</span> X <span class="token operator">=</span> C <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> Math<span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>H <span class="token operator">/</span> <span class="token number">60</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> m <span class="token operator">=</span> L <span class="token operator">-</span> C <span class="token operator">/</span> <span class="token number">2</span>
+  <span class="token keyword">const</span> vRGB <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>H <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> H <span class="token operator">&lt;</span> <span class="token number">60</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    vRGB<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>C<span class="token punctuation">,</span> X<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>H <span class="token operator">>=</span> <span class="token number">60</span> <span class="token operator">&amp;&amp;</span> H <span class="token operator">&lt;</span> <span class="token number">120</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    vRGB<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>X<span class="token punctuation">,</span> C<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>H <span class="token operator">>=</span> <span class="token number">120</span> <span class="token operator">&amp;&amp;</span> H <span class="token operator">&lt;</span> <span class="token number">180</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    vRGB<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> C<span class="token punctuation">,</span> X<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>H <span class="token operator">>=</span> <span class="token number">180</span> <span class="token operator">&amp;&amp;</span> H <span class="token operator">&lt;</span> <span class="token number">240</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    vRGB<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> X<span class="token punctuation">,</span> C<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>H <span class="token operator">>=</span> <span class="token number">240</span> <span class="token operator">&amp;&amp;</span> H <span class="token operator">&lt;</span> <span class="token number">300</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    vRGB<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>X<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> C<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>H <span class="token operator">>=</span> <span class="token number">300</span> <span class="token operator">&amp;&amp;</span> H <span class="token operator">&lt;</span> <span class="token number">360</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    vRGB<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>C<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> X<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>vR<span class="token punctuation">,</span> vG<span class="token punctuation">,</span> vB<span class="token punctuation">]</span> <span class="token operator">=</span> vRGB
+  <span class="token keyword">const</span> R <span class="token operator">=</span> <span class="token number">255</span> <span class="token operator">*</span> <span class="token punctuation">(</span>vR <span class="token operator">+</span> m<span class="token punctuation">)</span>
+  <span class="token keyword">const</span> G <span class="token operator">=</span> <span class="token number">255</span> <span class="token operator">*</span> <span class="token punctuation">(</span>vG <span class="token operator">+</span> m<span class="token punctuation">)</span>
+  <span class="token keyword">const</span> B <span class="token operator">=</span> <span class="token number">255</span> <span class="token operator">*</span> <span class="token punctuation">(</span>vB <span class="token operator">+</span> m<span class="token punctuation">)</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>stringMode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token template-string"><span class="token string">`rgb(</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>R<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">,</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>G<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">,</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>B<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">)`</span></span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">{</span> R<span class="token punctuation">,</span> G<span class="token punctuation">,</span> B <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<ul>
+<li>RGB转化为HSL</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript">
+<span class="token comment" spellcheck="true">/**
+ * @description rgb转化为hsl
+ * @param {Number} R [0,255]
+ * @param {Number} G [0,255]
+ * @param {Number} B [0,255]
+ * @param {Boolean} stringMode 是否返回字符串模式
+ */</span>
+<span class="token keyword">function</span> <span class="token function">RGB2HSL</span><span class="token punctuation">(</span>R <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> G <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> B <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> stringMode <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> _R <span class="token operator">=</span> R <span class="token operator">/</span> <span class="token number">255</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> _G <span class="token operator">=</span> G <span class="token operator">/</span> <span class="token number">255</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> _B <span class="token operator">=</span> B <span class="token operator">/</span> <span class="token number">255</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> Cmax <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>_R<span class="token punctuation">,</span> _G<span class="token punctuation">,</span> _B<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> Cmin <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>_R<span class="token punctuation">,</span> _G<span class="token punctuation">,</span> _B<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> V <span class="token operator">=</span> Cmax <span class="token operator">-</span> Cmin<span class="token punctuation">;</span>
+
+  <span class="token keyword">let</span> H <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>V <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    H <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>Cmax <span class="token operator">===</span> _R<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    H <span class="token operator">=</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>_G <span class="token operator">-</span> _B<span class="token punctuation">)</span> <span class="token operator">/</span> V<span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>Cmax <span class="token operator">===</span> _G<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    H <span class="token operator">=</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>_B <span class="token operator">-</span> _R<span class="token punctuation">)</span> <span class="token operator">/</span> V <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>Cmax <span class="token operator">===</span> _B<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    H <span class="token operator">=</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>_R <span class="token operator">-</span> _G<span class="token punctuation">)</span> <span class="token operator">/</span> V <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  H <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span><span class="token function">backCycle</span><span class="token punctuation">(</span>H<span class="token punctuation">,</span> <span class="token number">360</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> L <span class="token operator">=</span> <span class="token function">numberFixed</span><span class="token punctuation">(</span><span class="token punctuation">(</span>Cmax <span class="token operator">+</span> Cmin<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> S <span class="token operator">=</span> V <span class="token operator">===</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token number">0</span> <span class="token punctuation">:</span> <span class="token function">numberFixed</span><span class="token punctuation">(</span>V <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> Math<span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">*</span> L <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>stringMode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token template-string"><span class="token string">`hsl(</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>H<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">,</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">numberFixed</span><span class="token punctuation">(</span><span class="token number">100</span> <span class="token operator">*</span> S<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">%,</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">numberFixed</span><span class="token punctuation">(</span><span class="token number">100</span> <span class="token operator">*</span> L<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">%)`</span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">{</span> H<span class="token punctuation">,</span> S<span class="token punctuation">,</span> L <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// utils</span>
+<span class="token keyword">function</span> <span class="token function">backCycle</span><span class="token punctuation">(</span>num<span class="token punctuation">,</span> cycle<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> index <span class="token operator">=</span> num <span class="token operator">%</span> cycle<span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    index <span class="token operator">+</span><span class="token operator">=</span> cycle<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> index<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">numberFixed</span><span class="token punctuation">(</span>num <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> count <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> power <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>num <span class="token operator">*</span> power<span class="token punctuation">)</span> <span class="token operator">/</span> power<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <h1 id="三、currentColor"><a href="#三、currentColor" class="headerlink" title="三、currentColor"></a>三、currentColor</h1><h2 id="1、定义"><a href="#1、定义" class="headerlink" title="1、定义"></a>1、定义</h2><p>来自MDN：currentColor代表了当前元素被应用上的color颜色值。 使用它可以将当前这个颜色值应用到其他属性上，或者嵌套元素的其他属性上。</p>
 <p><em>理解：CSS里你可以在任何需要写颜色的地方使用currentColor这个变量，这个变量的值是当前元素的color值。如果当前元素没有在CSS里显示地指定一个color值，那它的颜色值就遵从CSS规则，从父级元素继承而来。父元素未设定color值，会寻找祖先元素直到有设定color的元素为止，如果没有，以浏览器默认颜色为准。</em></p>
 <h2 id="2、currentColor相关知识"><a href="#2、currentColor相关知识" class="headerlink" title="2、currentColor相关知识"></a>2、currentColor相关知识</h2><ul>
@@ -762,17 +898,275 @@
 <li>none    默认值。不显示背景图像。</li>
 <li>inherit    规定应该从父元素继承 background-image 属性的设置。</li>
 </ul>
-<p><strong>说明</strong><br>1.元素的背景占据了元素的全部尺寸，包括内边距和边框，但不包括外边距。</p>
+<p><strong>说明</strong></p>
+<p>1.元素的背景占据了元素的全部尺寸，包括内边距和边框，但不包括外边距。</p>
 <p>2.默认地，背景图像位于元素的左上角，并在水平和垂直方向上重复。</p>
 <p><em>提示：请设置一种可用的背景颜色，这样的话，假如背景图像不可用，页面也可获得良好的视觉效果。</em></p>
 <p>background-image 属性会在元素的背景中设置一个图像。</p>
 <p>3.根据background-repeat属性的值，图像可以无限平铺、沿着某个轴（x 轴或 y 轴）平铺，或者根本不平铺。<br>初始背景图像（原图像）根据 background-position属性的值放置。</p>
+<p>4.可以设置多张背景图：background-image: url(top-image.jpg), url(middle-image.jpg), url(bottom-image.jpg);</p>
+<p>5.background-image的绘制方向在Z轴上堆叠，先指定的图像会在后指定图像上面background-image绘制在border之下，background-color之上background-image的绘制、显示位置与background-position、background-clip、background-origin相关</p>
+<p>6.计算公式：</p>
+<p>positionX = (容器的宽度 - 图片的宽度) * percentX<br>positionY = (容器的高度 - 图片的高度) * percentY</p>
 <h2 id="9、background-break"><a href="#9、background-break" class="headerlink" title="9、background-break"></a>9、background-break</h2><p>css3里标签元素能被分在不同区域（如：让内联元素span跨多行），background-break属性能够控制背景在不同区域显示。</p>
 <ul>
 <li>continuous;     默认值。忽略盒之间的距离(也就是像元素没有分成多个盒子，依然是一个整体一样)     </li>
 <li>bounding-box;     把盒之间的距离计算在内     </li>
 <li>each-box;     为每个盒子单独重绘背景</li>
 </ul>
+<h1 id="五、background属性demo"><a href="#五、background属性demo" class="headerlink" title="五、background属性demo"></a>五、background属性demo</h1><pre class=" language-js"><code class="language-js"><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">></span>
+<span class="token operator">&lt;</span>html lang<span class="token operator">=</span><span class="token string">"en"</span><span class="token operator">></span>
+  <span class="token operator">&lt;</span>head<span class="token operator">></span>
+    <span class="token operator">&lt;</span>meta charset<span class="token operator">=</span><span class="token string">"UTF-8"</span> <span class="token operator">/</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>meta name<span class="token operator">=</span><span class="token string">"viewport"</span> content<span class="token operator">=</span><span class="token string">"width=device-width, initial-scale=1.0"</span> <span class="token operator">/</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>title<span class="token operator">></span>Document<span class="token operator">&lt;</span><span class="token operator">/</span>title<span class="token operator">></span>
+    <span class="token operator">&lt;</span>style type<span class="token operator">=</span><span class="token string">"text/css"</span><span class="token operator">></span>
+      @<span class="token keyword">import</span> <span class="token string">"./iconfont/index.css"</span><span class="token punctuation">;</span>
+      <span class="token comment" spellcheck="true">/*||||||||||||||||||||||||||||||||||
+
+Just change this color.             */</span>
+
+      html <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">/* color: red; */</span>
+        <span class="token comment" spellcheck="true">/* animation: color 5s linear infinite; */</span>
+      <span class="token punctuation">}</span>
+
+      @keyframes color <span class="token punctuation">{</span>
+        <span class="token number">33.3</span><span class="token operator">%</span> <span class="token punctuation">{</span>
+          color<span class="token punctuation">:</span> #0f0<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token number">66.7</span><span class="token operator">%</span> <span class="token punctuation">{</span>
+          color<span class="token punctuation">:</span> #00f<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token comment" spellcheck="true">/*||||||||||||||||||||||||||||||||||*/</span>
+
+      <span class="token punctuation">.</span>container <span class="token punctuation">{</span>
+        font<span class="token operator">-</span>family<span class="token punctuation">:</span> sans<span class="token operator">-</span>serif<span class="token punctuation">;</span>
+        border<span class="token operator">-</span>top<span class="token punctuation">:</span> 2px solid<span class="token punctuation">;</span>
+        position<span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+        padding<span class="token punctuation">:</span> 1em<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token punctuation">.</span>container<span class="token punctuation">:</span>before <span class="token punctuation">{</span>
+        content<span class="token punctuation">:</span> <span class="token string">""</span><span class="token punctuation">;</span>
+        position<span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+        display<span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+        top<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        bottom<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        left<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        right<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        opacity<span class="token punctuation">:</span> <span class="token number">0.1</span><span class="token punctuation">;</span>
+        background<span class="token operator">-</span>color<span class="token punctuation">:</span> currentColor<span class="token punctuation">;</span>
+        background<span class="token operator">-</span>image<span class="token punctuation">:</span> linear<span class="token operator">-</span><span class="token function">gradient</span><span class="token punctuation">(</span>to bottom<span class="token punctuation">,</span> currentColor<span class="token punctuation">,</span> #fff<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      p<span class="token punctuation">,</span>
+      h1 <span class="token punctuation">{</span>
+        color<span class="token punctuation">:</span> black<span class="token punctuation">;</span>
+        margin<span class="token operator">-</span>top<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      button <span class="token punctuation">{</span>
+        color<span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+        display<span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+        text<span class="token operator">-</span>decoration<span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+        padding<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">.</span>5em 1em<span class="token punctuation">;</span>
+        background<span class="token punctuation">:</span> white<span class="token punctuation">;</span>
+        border<span class="token punctuation">:</span> 2px solid<span class="token punctuation">;</span>
+        margin<span class="token punctuation">:</span> <span class="token number">0</span> auto<span class="token punctuation">;</span>
+        border<span class="token operator">-</span>radius<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">.</span>5em<span class="token punctuation">;</span>
+        box<span class="token operator">-</span>shadow<span class="token punctuation">:</span> 2px 2px<span class="token punctuation">;</span>
+        font<span class="token operator">-</span>weight<span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      #img<span class="token operator">-</span>container <span class="token punctuation">{</span>
+        width<span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+        height<span class="token punctuation">:</span> <span class="token number">100</span><span class="token operator">%</span><span class="token punctuation">;</span>
+        overflow<span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+        display<span class="token punctuation">:</span> inline<span class="token operator">-</span>block<span class="token punctuation">;</span>
+        padding<span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+        border<span class="token punctuation">:</span> 10px dashed <span class="token function">rgba</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        color<span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+        background<span class="token operator">-</span>image<span class="token punctuation">:</span> <span class="token function">url</span><span class="token punctuation">(</span><span class="token string">"static/images/logo.png"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token punctuation">.</span>background <span class="token punctuation">{</span>
+        background<span class="token punctuation">:</span> no<span class="token operator">-</span>repeat center<span class="token operator">/</span><span class="token number">100</span><span class="token operator">%</span> <span class="token function">url</span><span class="token punctuation">(</span><span class="token string">"https://tva1.sinaimg.cn/large/0081Kckwgy1gm3dkuncm4j302s02saa3.jpg"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token punctuation">.</span>background<span class="token operator">-</span>image <span class="token punctuation">{</span>
+        background<span class="token operator">-</span>image<span class="token punctuation">:</span> <span class="token function">url</span><span class="token punctuation">(</span><span class="token string">"https://tva1.sinaimg.cn/large/0081Kckwgy1gm3dkuncm4j302s02saa3.jpg"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        background<span class="token operator">-</span>size<span class="token punctuation">:</span> 280px 300px<span class="token punctuation">;</span>
+        background<span class="token operator">-</span>repeat<span class="token punctuation">:</span> no<span class="token operator">-</span>repeat<span class="token punctuation">;</span>
+        background<span class="token operator">-</span>position<span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>style<span class="token operator">></span>
+
+    　
+  <span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">></span>
+  <span class="token operator">&lt;</span>body<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"container"</span><span class="token operator">></span>
+      <span class="token operator">&lt;</span>h1<span class="token operator">></span>Using currentColor <span class="token keyword">for</span> fun and profit<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
+      <span class="token operator">&lt;</span>p<span class="token operator">></span>
+        在纯CSS中，无论在哪里使用到普通颜色值，都可以使用
+        <span class="token operator">&lt;</span>code<span class="token operator">></span>currentColor<span class="token operator">&lt;</span><span class="token operator">/</span>code<span class="token operator">></span> 这将映射到当前颜色的任何值
+      <span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span>
+      <span class="token operator">&lt;</span>p<span class="token operator">></span>
+        继续将
+        <span class="token operator">&lt;</span>code<span class="token operator">></span>currentColor<span class="token operator">&lt;</span><span class="token operator">/</span>code<span class="token operator">></span>
+        放到渐变和背景中。通过颜色继承，按钮的文本颜色、边框和阴影的默认颜色也是
+        <span class="token operator">&lt;</span>code<span class="token operator">></span>currentColor<span class="token operator">&lt;</span><span class="token operator">/</span>code<span class="token operator">></span>
+        所以，这里无需再定义当前颜色。
+      <span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span>
+
+      <span class="token operator">&lt;</span>button<span class="token operator">></span>Foobar<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span> <span class="token operator">--</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>div style<span class="token operator">=</span><span class="token string">"overflow: scroll; height: 200px"</span><span class="token operator">></span>
+      <span class="token operator">&lt;</span>div style<span class="token operator">=</span><span class="token string">"height: 250px"</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"img-container"</span><span class="token operator">></span>
+          repeat<span class="token punctuation">:</span>
+          图像会按需重复来覆盖整个背景图片所在的区域<span class="token punctuation">.</span>最后一个图像会被裁剪<span class="token punctuation">,</span>
+          如果它的大小不合适的话<span class="token punctuation">.</span>
+          space<span class="token punctuation">:</span><span class="token function">图像会尽可能得重复，但是不会裁剪。第一个和最后一个图像会被固定在元素</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span>的相应的边上，同时空白会均匀地分布在图像之间。除非只有一个图像能被无裁剪地显示。只在一种情况下裁剪会发生，那就是图像太大了以至于没有足够的空间来完整显示一个图像。
+          round<span class="token punctuation">:</span>随着允许的空间在尺寸上的增长，
+          <span class="token function">被重复的图像将会伸展</span><span class="token punctuation">(</span>没有空隙<span class="token punctuation">)</span>，直到有足够的空间来添加一个图像。当下一个图像被添加后，所有的当前的图像会被压缩来腾出空间。例如，
+          一个图像原始大小是260px，重复三次之后，可能会被伸展到300px，直到另一个图像被加进来。这样他们就可能被压缩到225px。（关键是浏览器怎么计算什么时候应该添加一个图像进来<span class="token punctuation">,</span>而不是继续伸展）
+          no<span class="token operator">-</span>repeat<span class="token punctuation">:</span><span class="token function">图像不会被重复</span><span class="token punctuation">(</span>因为背景图像所在的区域将可能没有完全被覆盖<span class="token punctuation">)</span><span class="token punctuation">.</span>那个没有被重复的背景图像的位置是由background<span class="token operator">-</span>position属性决定的。
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 基本属性：background<span class="token operator">-</span>color<span class="token punctuation">;</span>backgroud<span class="token operator">-</span>image<span class="token punctuation">;</span>background<span class="token operator">-</span>repeat<span class="token punctuation">;</span>background<span class="token operator">-</span>attachment<span class="token punctuation">;</span>background<span class="token operator">-</span>position<span class="token punctuation">;</span> background
+        新增属性：background<span class="token operator">-</span>origin<span class="token punctuation">;</span>background<span class="token operator">-</span>clip<span class="token punctuation">;</span>background<span class="token operator">-</span>size<span class="token punctuation">;</span>background<span class="token operator">-</span><span class="token keyword">break</span><span class="token punctuation">;</span> <span class="token operator">--</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>div<span class="token operator">></span>
+      <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        background<span class="token operator">-</span>position<span class="token punctuation">:</span>
+        <span class="token operator">&lt;</span>select id<span class="token operator">=</span><span class="token string">"background-position"</span><span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"initial"</span><span class="token operator">></span>initial<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"top"</span><span class="token operator">></span>top<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"left"</span><span class="token operator">></span>left<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"right"</span><span class="token operator">></span>right<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"bottom"</span><span class="token operator">></span>bottom<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"0% 0%"</span><span class="token operator">></span><span class="token number">0</span><span class="token operator">%</span> <span class="token number">0</span><span class="token operator">%</span><span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"100% 100%"</span><span class="token operator">></span><span class="token number">100</span><span class="token operator">%</span> <span class="token number">100</span><span class="token operator">%</span><span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>select<span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+      <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        background<span class="token operator">-</span>repeat<span class="token punctuation">:</span>
+        <span class="token operator">&lt;</span>select id<span class="token operator">=</span><span class="token string">"background-repeat"</span><span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"initial"</span><span class="token operator">></span>initial<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"repeat"</span><span class="token operator">></span>repeat<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"space"</span><span class="token operator">></span>space<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"round"</span><span class="token operator">></span>round<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"no-repeat"</span><span class="token operator">></span>no<span class="token operator">-</span>repeat<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>select<span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+      <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        background<span class="token operator">-</span>attachment<span class="token punctuation">:</span>
+        <span class="token operator">&lt;</span>select id<span class="token operator">=</span><span class="token string">"background-attachment"</span><span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"initial"</span><span class="token operator">></span>initial<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"fixed"</span><span class="token operator">></span>fixed<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"scroll"</span><span class="token operator">></span>scroll<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"local"</span><span class="token operator">></span>local<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>select<span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+      <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        background<span class="token operator">-</span>color<span class="token punctuation">:</span>
+        <span class="token operator">&lt;</span>select id<span class="token operator">=</span><span class="token string">"background-color"</span><span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"initial"</span><span class="token operator">></span>initial<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"rgba(255,0,0,0.5)"</span><span class="token operator">></span><span class="token function">rgba</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0.5</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"#000"</span><span class="token operator">></span>#<span class="token number">000</span><span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"green"</span><span class="token operator">></span>green<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"transparent"</span><span class="token operator">></span>transparnet<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>select<span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+      CSS3新增属性：
+      <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        background<span class="token operator">-</span>origin<span class="token punctuation">:</span>
+        <span class="token operator">&lt;</span>select id<span class="token operator">=</span><span class="token string">"background-origin"</span><span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"initial"</span><span class="token operator">></span>initial<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"border-box"</span><span class="token operator">></span>border<span class="token operator">-</span>box<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"padding-box"</span><span class="token operator">></span>padding<span class="token operator">-</span>box<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"content-box"</span><span class="token operator">></span>content<span class="token operator">-</span>box<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>select<span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+      <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        background<span class="token operator">-</span>clip<span class="token punctuation">:</span>
+        <span class="token operator">&lt;</span>select id<span class="token operator">=</span><span class="token string">"background-clip"</span><span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"initial"</span><span class="token operator">></span>initial<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"border-box"</span><span class="token operator">></span>border<span class="token operator">-</span>box<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"padding-box"</span><span class="token operator">></span>padding<span class="token operator">-</span>box<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"content-box"</span><span class="token operator">></span>content<span class="token operator">-</span>box<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"text"</span><span class="token operator">></span>text<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>select<span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+
+      <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        background<span class="token operator">-</span>size<span class="token punctuation">:</span>
+        <span class="token operator">&lt;</span>select id<span class="token operator">=</span><span class="token string">"background-size"</span><span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"initial"</span><span class="token operator">></span>initial<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"cover"</span><span class="token operator">></span>cover<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"contain"</span><span class="token operator">></span>contain<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"auto"</span><span class="token operator">></span>auto<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"200px"</span><span class="token operator">></span>200px<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"50%"</span><span class="token operator">></span><span class="token number">50</span><span class="token operator">%</span><span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+          <span class="token operator">&lt;</span>option value<span class="token operator">=</span><span class="token string">"100%"</span><span class="token operator">></span><span class="token number">100</span><span class="token operator">%</span><span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>select<span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+
+    <span class="token operator">&lt;</span>script<span class="token operator">></span>
+      document
+        <span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"background-position"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"change"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"img-container"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>backgroundPosition <span class="token operator">=</span>
+            e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      document
+        <span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"background-repeat"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"change"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"img-container"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>backgroundRepeat <span class="token operator">=</span>
+            e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      document
+        <span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"background-attachment"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"change"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"img-container"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>backgroundAttachment <span class="token operator">=</span>
+            e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      document
+        <span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"background-color"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"change"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"img-container"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>backgroundColor <span class="token operator">=</span>
+            e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      document
+        <span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"background-origin"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"change"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"img-container"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>backgroundOrigin <span class="token operator">=</span>
+            e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      document
+        <span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"background-size"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"change"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"img-container"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>backgroundSize <span class="token operator">=</span>
+            e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      document
+        <span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"background-clip"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"change"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"img-container"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>backgroundClip <span class="token operator">=</span>
+            e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span>
+</code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1067,9 +1461,9 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一、透明度1、transparent（1）、css中的定义：设置背景为透明background:transparent实际上background默认的颜色就是透明的属性，其使用场景：
+                            一、透明度1、transparent（1）css中的定义：设置背景为透明background:transparent实际上background默认的颜色就是透明的属性，其使用场景：
 
-当一个元素覆盖在另外一个元素之上，而你想显示下面的元素
+当一个元素覆盖在另外一个元素之上，而你想显示下面的元素，
                         
                     </div>
                     <div class="publish-info">
@@ -1346,7 +1740,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">26k</span>&nbsp;字
+                class="white-color">27.9k</span>&nbsp;字
             
             
             
